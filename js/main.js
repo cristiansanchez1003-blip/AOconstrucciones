@@ -305,7 +305,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ].join('\n');
 
     const encodedMessage = encodeURIComponent(whatsappText);
-    window.location.href = `https://api.whatsapp.com/send?phone=56949745384&text=${encodedMessage}`;
+    window.location.href = `https://api.whatsapp.com/send?phone=56979925812&text=${encodedMessage}`;
   }
 
   if (formContainer) {
