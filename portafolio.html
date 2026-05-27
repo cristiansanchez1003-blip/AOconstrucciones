@@ -1,0 +1,1262 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portafolio din&aacute;mico de proyectos de AO Construcciones. Construcci&oacute;n desde cota cero, remodelaciones y ampliaciones.">
+  <title>Construcciones AO | Casas Sustentables y Remodelaciones</title>
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="assets/img/favicon.png">
+  <style>
+    :root {
+      --forest-green: #2D4739;
+      --timber-brown: #8B5A2B;
+      --cream-bg: #FAFAF9;
+      --slate-gray: #1E293B;
+      --white: #FFFFFF;
+      --muted: #64748B;
+      --line: rgba(30, 41, 59, 0.12);
+      --shadow-soft: 0 18px 45px rgba(30, 41, 59, 0.12);
+      --shadow-deep: 0 30px 80px rgba(30, 41, 59, 0.18);
+      --radius: 22px;
+      --radius-sm: 14px;
+      --max-width: 1180px;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      color-scheme: light;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top left, rgba(45, 71, 57, 0.08), transparent 34rem),
+        linear-gradient(180deg, var(--cream-bg) 0%, #F2F1EE 100%);
+      color: var(--slate-gray);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .portfolio-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      width: min(100% - 32px, var(--max-width));
+      margin: 0 auto;
+      padding: 18px 0 0;
+    }
+
+    .portfolio-nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 12px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 14px 34px rgba(30, 41, 59, 0.08);
+    }
+
+    .portfolio-nav__logo {
+      display: inline-flex;
+      align-items: center;
+      flex: 0 0 auto;
+    }
+
+    .portfolio-nav__logo img {
+      width: 220px;
+      height: 58px;
+      object-fit: contain;
+      object-position: left center;
+    }
+
+    .portfolio-nav__links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .portfolio-nav__link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 40px;
+      padding: 0 16px;
+      border-radius: 999px;
+      color: var(--slate-gray);
+      font-size: 0.86rem;
+      font-weight: 850;
+      text-decoration: none;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    }
+
+    .portfolio-nav__link:hover {
+      color: var(--forest-green);
+      transform: translateY(-1px);
+    }
+
+    .portfolio-nav__link.active {
+      background: var(--forest-green);
+      color: var(--white);
+      box-shadow: 0 10px 24px rgba(45, 71, 57, 0.2);
+    }
+
+    .portfolio-section {
+      width: min(100% - 32px, var(--max-width));
+      margin: 0 auto;
+      padding: 58px 0 88px;
+    }
+
+    .portfolio-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(300px, 0.72fr);
+      gap: 44px;
+      align-items: center;
+      margin-bottom: 38px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 16px;
+      color: var(--timber-brown);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 2px;
+      border-radius: 999px;
+      background: currentColor;
+    }
+
+    .portfolio-title {
+      max-width: 760px;
+      margin: 0;
+      color: var(--slate-gray);
+      font-size: clamp(2.15rem, 5vw, 4.6rem);
+      font-weight: 850;
+      letter-spacing: 0;
+      line-height: 0.98;
+    }
+
+    .portfolio-intro {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .portfolio-brand {
+      display: grid;
+      gap: 16px;
+      justify-items: end;
+    }
+
+    .portfolio-brand__logo {
+      width: min(100%, 440px);
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 18px 28px rgba(30, 41, 59, 0.14));
+    }
+
+    .filter-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px;
+      margin-bottom: 32px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 999px;
+      box-shadow: 0 14px 36px rgba(30, 41, 59, 0.08);
+      backdrop-filter: blur(18px);
+    }
+
+    .filter-button {
+      min-height: 44px;
+      padding: 0 20px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--slate-gray);
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 800;
+      transition: color 0.3s ease, background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .filter-button:hover {
+      transform: translateY(-2px);
+      color: var(--forest-green);
+    }
+
+    .filter-button.active {
+      background: var(--forest-green);
+      color: var(--white);
+      border-color: rgba(255, 255, 255, 0.35);
+      box-shadow: 0 12px 30px rgba(45, 71, 57, 0.22);
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-auto-flow: dense;
+      gap: clamp(18px, 2.2vw, 30px);
+      align-items: stretch;
+      transition: gap 0.4s ease;
+    }
+
+    .project-card {
+      overflow: hidden;
+      position: relative;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(250, 250, 249, 0.9) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.75);
+      border-radius: var(--radius);
+      box-shadow:
+        0 18px 42px rgba(30, 41, 59, 0.1),
+        0 2px 0 rgba(255, 255, 255, 0.7) inset;
+      display: flex;
+      flex-direction: column;
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      visibility: visible;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease, box-shadow 0.6s ease, border-color 0.4s ease, visibility 0.4s ease;
+      will-change: transform, opacity;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(255, 255, 255, 0.9);
+      box-shadow:
+        0 34px 90px rgba(30, 41, 59, 0.18),
+        0 14px 34px rgba(45, 71, 57, 0.12),
+        0 2px 0 rgba(255, 255, 255, 0.75) inset;
+    }
+
+    .project-card.hidden {
+      opacity: 0;
+      transform: scale(0.92);
+      pointer-events: none;
+      visibility: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .project-card__media {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(45, 71, 57, 0.18), rgba(139, 90, 43, 0.18)),
+        #E7E4DD;
+    }
+
+    .project-card__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .project-card:hover .project-card__media img {
+      transform: scale(1.05);
+    }
+
+    .project-card__category {
+      position: absolute;
+      left: 18px;
+      top: 18px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.88);
+      color: var(--forest-green);
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      backdrop-filter: blur(12px);
+    }
+
+    .project-card__body {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      gap: 16px;
+      padding: 22px;
+      font-family: Montserrat, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .project-card__specs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+      gap: 10px;
+      align-items: stretch;
+    }
+
+    .spec-badge {
+      min-width: 0;
+      padding: 12px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 10px 22px rgba(30, 41, 59, 0.06);
+    }
+
+    .spec-badge span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .spec-badge strong {
+      display: block;
+      margin-top: 4px;
+      color: var(--slate-gray);
+      font-size: 0.88rem;
+      font-weight: 850;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+      white-space: normal;
+    }
+
+    .project-card__title {
+      margin: 4px 0 0;
+      color: var(--slate-gray);
+      font-size: 1.34rem;
+      font-weight: 900;
+      letter-spacing: 0;
+      line-height: 1.18;
+    }
+
+    .project-description {
+      display: -webkit-box;
+      min-height: 4.35em;
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+      line-height: 1.45;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+    }
+
+    .project-materials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      min-height: 32px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .project-material {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(45, 71, 57, 0.08);
+      color: var(--forest-green);
+      font-size: 0.72rem;
+      font-weight: 850;
+      line-height: 1;
+    }
+
+    .details-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 48px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--slate-gray);
+      color: var(--white);
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 850;
+      margin-top: auto;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .details-button:hover {
+      background: var(--forest-green);
+      transform: translateY(-2px);
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      padding: 36px;
+      border: 1px dashed rgba(30, 41, 59, 0.22);
+      border-radius: var(--radius);
+      color: var(--muted);
+      text-align: center;
+      background: rgba(255, 255, 255, 0.68);
+    }
+
+    .portfolio-state {
+      grid-column: 1 / -1;
+      display: grid;
+      place-items: center;
+      gap: 14px;
+      min-height: 280px;
+      padding: 40px;
+      border: 1px solid rgba(30, 41, 59, 0.1);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.74);
+      color: var(--muted);
+      text-align: center;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .portfolio-spinner {
+      width: 42px;
+      height: 42px;
+      border: 4px solid rgba(45, 71, 57, 0.14);
+      border-top-color: var(--forest-green);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    .portfolio-state strong {
+      color: var(--slate-gray);
+      font-size: 1rem;
+    }
+
+    .project-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: grid;
+      place-items: center;
+      padding: clamp(16px, 3vw, 40px);
+      background: rgba(15, 23, 42, 0.4);
+      backdrop-filter: blur(12px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    .project-modal.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .project-modal__dialog {
+      position: relative;
+      width: min(100%, 1180px);
+      max-height: min(88vh, 860px);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.68);
+      border-radius: 28px;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 250, 249, 0.94) 100%);
+      box-shadow:
+        0 48px 120px rgba(15, 23, 42, 0.34),
+        0 2px 0 rgba(255, 255, 255, 0.75) inset;
+      opacity: 0;
+      transform: scale(0.95) translateY(20px);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+    }
+
+    .project-modal.active .project-modal__dialog {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+
+    .project-modal__close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      z-index: 3;
+      display: inline-grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255, 255, 255, 0.58);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.78);
+      color: var(--slate-gray);
+      cursor: pointer;
+      font-size: 1.05rem;
+      line-height: 1;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 12px 26px rgba(30, 41, 59, 0.14);
+      transition: transform 0.35s ease, background 0.35s ease, color 0.35s ease;
+    }
+
+    .project-modal__close:hover {
+      background: var(--forest-green);
+      color: var(--white);
+      transform: rotate(90deg) scale(1.04);
+    }
+
+    .project-modal__content {
+      display: grid;
+      grid-template-columns: minmax(0, 1.14fr) minmax(360px, 0.86fr);
+      max-height: min(88vh, 860px);
+      overflow: auto;
+    }
+
+    .project-modal__media {
+      position: sticky;
+      top: 0;
+      min-height: 620px;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(45, 71, 57, 0.18), rgba(139, 90, 43, 0.16)),
+        #E7E4DD;
+    }
+
+    .project-modal__image {
+      width: 100%;
+      height: 100%;
+      min-height: inherit;
+      object-fit: cover;
+    }
+
+    .project-modal__info {
+      display: flex;
+      flex-direction: column;
+      gap: 26px;
+      padding: clamp(32px, 5vw, 62px);
+      font-family: Montserrat, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .project-modal__eyebrow {
+      width: fit-content;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(45, 71, 57, 0.08);
+      color: var(--forest-green);
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .project-modal__title {
+      margin: 0;
+      color: var(--slate-gray);
+      font-size: clamp(2rem, 4vw, 4.2rem);
+      font-weight: 900;
+      letter-spacing: 0;
+      line-height: 0.98;
+    }
+
+    .project-modal__specs {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .project-modal__spec {
+      min-width: 0;
+      padding: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 12px 28px rgba(30, 41, 59, 0.08);
+    }
+
+    .project-modal__spec span {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: 0.68rem;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .project-modal__spec strong {
+      color: var(--slate-gray);
+      font-size: 0.92rem;
+      font-weight: 850;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+    }
+
+    .project-modal__description {
+      margin: 0;
+      color: #475569;
+      font-size: 1rem;
+      line-height: 1.85;
+    }
+
+    .project-modal__section-title {
+      margin: 0 0 12px;
+      color: var(--slate-gray);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .project-modal__materials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .project-modal__material {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(45, 71, 57, 0.08);
+      color: var(--forest-green);
+      font-size: 0.78rem;
+      font-weight: 850;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @media (max-width: 980px) {
+      .portfolio-header {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+
+      .portfolio-brand {
+        justify-items: start;
+      }
+
+      .portfolio-brand__logo {
+        width: min(100%, 360px);
+      }
+
+      .portfolio-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .project-modal__content {
+        grid-template-columns: 1fr;
+      }
+
+      .project-modal__media {
+        position: relative;
+        min-height: 360px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .portfolio-nav {
+        width: min(100% - 22px, var(--max-width));
+      }
+
+      .portfolio-nav__inner {
+        align-items: flex-start;
+        border-radius: 24px;
+        flex-direction: column;
+      }
+
+      .portfolio-nav__links {
+        width: 100%;
+        flex-wrap: wrap;
+      }
+
+      .portfolio-nav__link {
+        flex: 1 1 calc(50% - 6px);
+        justify-content: center;
+      }
+
+      .portfolio-section {
+        width: min(100% - 22px, var(--max-width));
+        padding: 40px 0 54px;
+      }
+
+      .filter-container {
+        justify-content: flex-start;
+        border-radius: 24px;
+      }
+
+      .filter-button {
+        flex: 1 1 calc(50% - 8px);
+        padding: 0 12px;
+      }
+
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .project-card__body {
+        padding: 18px;
+      }
+
+      .project-modal {
+        padding: 10px;
+      }
+
+      .project-modal__dialog,
+      .project-modal__content {
+        max-height: 92vh;
+        border-radius: 22px;
+      }
+
+      .project-modal__media {
+        min-height: 260px;
+      }
+
+      .project-modal__info {
+        padding: 26px 20px 24px;
+        gap: 20px;
+      }
+
+      .project-modal__specs {
+        grid-template-columns: 1fr;
+      }
+
+      .project-modal__close {
+        top: 12px;
+        right: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="portfolio-nav" aria-label="Navegación principal">
+    <div class="portfolio-nav__inner">
+      <a class="portfolio-nav__logo" href="index.html" aria-label="Volver al inicio de AO Construcciones">
+        <img src="assets/img/ao-construcciones-logo-portfolio-transparent.png" alt="AO Construcciones" width="1012" height="367">
+      </a>
+      <div class="portfolio-nav__links">
+        <a class="portfolio-nav__link" href="index.html">Inicio</a>
+        <a class="portfolio-nav__link active" href="portafolio.html" aria-current="page">Portafolio</a>
+        <a class="portfolio-nav__link" href="index.html#servicios">Servicios</a>
+        <a class="portfolio-nav__link" href="index.html#contacto">Contacto</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section id="portafolio" class="portfolio-section" aria-labelledby="portfolio-title">
+      <header class="portfolio-header">
+        <div>
+          <p class="eyebrow">AO Construcciones</p>
+          <h1 id="portfolio-title" class="portfolio-title">Portafolio de proyectos con oficio, precisi&oacute;n y materialidad noble.</h1>
+        </div>
+        <aside class="portfolio-brand" aria-label="Marca AO Construcciones">
+          <img class="portfolio-brand__logo" src="assets/img/ao-construcciones-logo-portfolio-transparent.png" alt="AO Construcciones" width="1012" height="367">
+          <p class="portfolio-intro">
+            Una muestra din&aacute;mica de obras residenciales y ampliaciones renderizadas desde datos locales, sin base de datos ni dependencias externas.
+          </p>
+        </aside>
+      </header>
+
+      <div id="portfolio-filters" class="filter-container" aria-label="Filtrar proyectos por categor&iacute;a">
+        <button class="filter-button active" type="button" data-filter="todos" aria-pressed="true">Todos</button>
+        <button class="filter-button" type="button" data-filter="cota-cero" aria-pressed="false">Cota Cero</button>
+        <button class="filter-button" type="button" data-filter="remodelaciones" aria-pressed="false">Remodelaciones</button>
+        <button class="filter-button" type="button" data-filter="ampliaciones" aria-pressed="false">Ampliaciones</button>
+      </div>
+
+      <div id="portfolio-grid" class="portfolio-grid" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <div class="project-modal" id="project-modal" aria-hidden="true">
+    <div class="project-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
+      <button class="project-modal__close" type="button" aria-label="Cerrar detalles">✕</button>
+      <div class="project-modal__content">
+        <div class="project-modal__media">
+          <img class="project-modal__image" src="assets/img/service-cota-cero.png" alt="" width="960" height="720">
+        </div>
+        <div class="project-modal__info">
+          <span class="project-modal__eyebrow"></span>
+          <h2 class="project-modal__title" id="project-modal-title"></h2>
+          <div class="project-modal__specs" aria-label="Detalles del proyecto"></div>
+          <p class="project-modal__description"></p>
+          <div>
+            <h3 class="project-modal__section-title">Materiales</h3>
+            <div class="project-modal__materials"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    (() => {
+      const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQSOWfNlUPo2uAR5ZAjenlJk6HKo8H2lYWzQU65wTOGc6kvxpOVEUZFgxUpoKeOWYosK9VCTDQSRG3_/pub?gid=1562743549&single=true&output=csv";
+      const portfolioGrid = document.getElementById("portfolio-grid");
+      const portfolioFilters = document.getElementById("portfolio-filters");
+      const projectModal = document.getElementById("project-modal");
+      const modalCloseButton = projectModal.querySelector(".project-modal__close");
+      const modalImage = projectModal.querySelector(".project-modal__image");
+      const modalEyebrow = projectModal.querySelector(".project-modal__eyebrow");
+      const modalTitle = projectModal.querySelector(".project-modal__title");
+      const modalSpecs = projectModal.querySelector(".project-modal__specs");
+      const modalDescription = projectModal.querySelector(".project-modal__description");
+      const modalMaterials = projectModal.querySelector(".project-modal__materials");
+      let allProjectsData = [];
+
+      const categoryLabels = {
+        "cota-cero": "Cota Cero",
+        "remodelaciones": "Remodelaciones",
+        "ampliaciones": "Ampliaciones"
+      };
+
+      const categoryAliases = {
+        "cota cero": "cota-cero",
+        "cota-cero": "cota-cero",
+        "remodelacion": "remodelaciones",
+        "remodelaci\u00f3n": "remodelaciones",
+        "remodelaciones": "remodelaciones",
+        "remodelacion interior": "remodelaciones",
+        "remodelaci\u00f3n interior": "remodelaciones",
+        "remodelacion exterior": "remodelaciones",
+        "remodelaci\u00f3n exterior": "remodelaciones",
+        "ampliacion": "ampliaciones",
+        "ampliaci\u00f3n": "ampliaciones",
+        "ampliaciones": "ampliaciones"
+      };
+
+      function escapeHTML(value = "") {
+        return String(value)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#x27;")
+          .replace(/\//g, "&#x2F;");
+      }
+
+      function slugifyCategory(value = "") {
+        const cleanValue = String(value)
+          .trim()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase();
+        return categoryAliases[cleanValue] || cleanValue.replace(/\s+/g, "-");
+      }
+
+      function splitList(value = "") {
+        return String(value)
+          .split(/[,;\n]+/)
+          .map((item) => item.trim())
+          .filter(Boolean);
+      }
+
+      function formatMetraje(value = "") {
+        const cleanValue = String(value).trim();
+
+        if (!cleanValue) {
+          return "";
+        }
+
+        return /m(\u00b2|2|&sup2;)?/i.test(cleanValue) ? cleanValue : `${cleanValue} m\u00b2`;
+      }
+
+      function getPortfolioImageUrl(rawUrl = "") {
+        const fallbackImage = "assets/img/service-cota-cero.png";
+        const cleanUrl = String(rawUrl).trim();
+
+        if (!cleanUrl) {
+          return fallbackImage;
+        }
+
+        if (/^https:\/\/i\.ibb\.co\//i.test(cleanUrl)) {
+          return cleanUrl;
+        }
+
+        const imgbbViewerMatch = cleanUrl.match(/^https?:\/\/ibb\.co\/([a-zA-Z0-9]{6,12})\/?$/);
+
+        if (imgbbViewerMatch) {
+          const imageId = imgbbViewerMatch[1];
+          return `https://i.ibb.co/${imageId}/portfolio.jpg`;
+        }
+
+        return cleanUrl;
+      }
+
+      function sanitizeImageURL(rawUrl = "") {
+        const fallbackImage = "assets/img/service-cota-cero.png";
+        const cleanUrl = String(rawUrl).trim();
+
+        if (!cleanUrl) {
+          return fallbackImage;
+        }
+
+        if (/^assets\/img\/[a-zA-Z0-9._/-]+$/.test(cleanUrl)) {
+          return cleanUrl;
+        }
+
+        try {
+          const url = new URL(cleanUrl, window.location.origin);
+          const isAllowedProtocol = url.protocol === "https:" || url.protocol === "http:";
+
+          if (!isAllowedProtocol) {
+            return fallbackImage;
+          }
+
+          return url.href;
+        } catch {
+          return fallbackImage;
+        }
+      }
+
+      function cleanCSVCell(value = "") {
+        return String(value)
+          .replace(/\r/g, "")
+          .replace(/^"|"$/g, "")
+          .replace(/""/g, '"')
+          .trim();
+      }
+
+      function normalizeHeaderKey(header = "") {
+        const normalized = cleanCSVCell(header)
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase()
+          .replace(/[^a-z0-9]/g, "");
+
+        if (normalized.includes("titulo") || normalized.includes("nombreproyecto")) return "titulo";
+        if (normalized.includes("categoria") || normalized.includes("tipoproyecto") || normalized.includes("tipodeproyecto") || normalized.includes("tipodeobra")) return "categoria";
+        if (normalized.includes("ubicacion") || normalized.includes("sector") || normalized.includes("comuna")) return "ubicacion";
+        if (normalized.includes("metraje") || normalized.includes("superficie") || normalized.includes("metros")) return "metraje";
+        if (normalized.includes("material")) return "materiales";
+        if (normalized.includes("descripcion") || normalized.includes("desafio") || normalized.includes("solucion")) return "descripcion";
+        if (normalized.includes("foto") || normalized.includes("imagen")) return "fotos";
+
+        return normalized;
+      }
+
+      function splitCSVRows(csvText) {
+        const rows = [];
+        let currentRow = "";
+        let insideQuotes = false;
+
+        for (let index = 0; index < csvText.length; index += 1) {
+          const char = csvText[index];
+          const nextChar = csvText[index + 1];
+
+          if (char === '"' && insideQuotes && nextChar === '"') {
+            currentRow += '""';
+            index += 1;
+          } else if (char === '"') {
+            insideQuotes = !insideQuotes;
+            currentRow += char;
+          } else if ((char === "\n" || char === "\r") && !insideQuotes) {
+            if (currentRow.trim()) {
+              rows.push(currentRow);
+            }
+            currentRow = "";
+
+            if (char === "\r" && nextChar === "\n") {
+              index += 1;
+            }
+          } else {
+            currentRow += char;
+          }
+        }
+
+        if (currentRow.trim()) {
+          rows.push(currentRow);
+        }
+
+        return rows;
+      }
+
+      function parseCSV(csvText) {
+        const regex = /,(?=(?:(?:[^"]*"){2})*[^"]*$)/;
+        const rows = splitCSVRows(csvText);
+        const headers = rows.shift()?.split(regex).map(normalizeHeaderKey) || [];
+
+        return rows
+          .map((row) => row.split(regex).map(cleanCSVCell))
+          .filter((cells) => cells.some(Boolean))
+          .map((cells) => {
+            return headers.reduce((project, header, headerIndex) => {
+              project[header] = cells[headerIndex] || "";
+              return project;
+            }, {});
+          });
+      }
+
+      function showLoadingState() {
+        portfolioGrid.innerHTML = `
+          <div class="portfolio-state" role="status" aria-live="polite">
+            <div class="portfolio-spinner" aria-hidden="true"></div>
+            <strong>Cargando proyectos</strong>
+            <span>Estamos actualizando el portafolio desde Google Sheets.</span>
+          </div>
+        `;
+      }
+
+      function showErrorState() {
+        portfolioGrid.innerHTML = `
+          <div class="portfolio-state" role="alert">
+            <strong>No pudimos cargar el portafolio en este momento.</strong>
+            <span>Revisa la conexi\u00f3n a internet o confirma que el enlace p\u00fablico de Google Sheets est\u00e9 publicado como CSV.</span>
+          </div>
+        `;
+      }
+
+      async function fetchPortfolioData() {
+        try {
+          if (!SHEET_CSV_URL || SHEET_CSV_URL === "TU_LINK_DE_GOOGLE_SHEETS_AQUI") {
+            throw new Error("Configura SHEET_CSV_URL con el enlace CSV p\u00fablico de Google Sheets.");
+          }
+
+          const response = await fetch(SHEET_CSV_URL, { cache: "no-store" });
+
+          if (!response.ok) {
+            throw new Error(`Google Sheets respondi\u00f3 con estado ${response.status}.`);
+          }
+
+          const csvText = await response.text();
+          const projects = parseCSV(csvText);
+          allProjectsData = projects;
+
+          return projects;
+        } catch (error) {
+          console.error("Error cargando portfolio desde Google Sheets:", error);
+          showErrorState();
+          return [];
+        }
+      }
+
+      function renderPortfolioCards(proyectos) {
+        if (!Array.isArray(proyectos) || proyectos.length === 0) {
+          portfolioGrid.innerHTML = '<p class="empty-state">No hay proyectos publicados por el momento.</p>';
+          return;
+        }
+
+        portfolioGrid.innerHTML = proyectos.map((proyecto, index) => {
+          const title = escapeHTML(proyecto.titulo || "Proyecto sin t\u00edtulo");
+          const categoryToken = slugifyCategory(proyecto.categoria || "");
+          const category = escapeHTML(categoryToken || "sin-categoria");
+          const categoryLabel = escapeHTML(proyecto.categoria || categoryLabels[categoryToken] || "Proyecto");
+          const location = escapeHTML(proyecto.ubicacion || "Caj\u00f3n del Maipo / Santiago");
+          const metraje = formatMetraje(proyecto.metraje);
+          const description = escapeHTML(proyecto.descripcion || "Proyecto desarrollado por AO Construcciones con foco en calidad, oficio y materiales nobles.");
+          const photos = splitList(proyecto.fotos);
+          const image = escapeHTML(sanitizeImageURL(getPortfolioImageUrl(photos[0])));
+          const materials = splitList(proyecto.materiales);
+          const materialTags = materials
+            .map((item) => `<span class="project-material">${escapeHTML(item)}</span>`)
+            .join("");
+          const projectId = escapeHTML(proyecto.id || proyecto.timestamp || `project-${index + 1}`);
+
+          return `
+            <article class="project-card" data-category="${category}" data-project-index="${index}" data-project-id="${projectId}">
+              <div class="project-card__media">
+                <img src="${image}" alt="${title}" loading="lazy" width="720" height="540" onerror="this.onerror=null;this.src='assets/img/service-cota-cero.png';">
+                <span class="project-card__category">${categoryLabel}</span>
+              </div>
+              <div class="project-card__body">
+                <div class="project-card__specs">
+                  <div class="spec-badge">
+                    <span>Metraje</span>
+                    <strong>${metraje || "Por confirmar"}</strong>
+                  </div>
+                  <div class="spec-badge">
+                    <span>Ubicaci\u00f3n</span>
+                    <strong>${location}</strong>
+                  </div>
+                </div>
+                <h3 class="project-card__title">${title}</h3>
+                <p class="project-description">${description}</p>
+                ${materialTags ? `<div class="project-materials" aria-label="Materiales principales">${materialTags}</div>` : '<div class="project-materials" aria-hidden="true"></div>'}
+                <button class="details-button" type="button" data-project-index="${index}" aria-label="Ver detalles de ${title}">Ver Detalles</button>
+              </div>
+            </article>
+          `;
+        }).join("");
+      }
+
+      const renderPortfolio = renderPortfolioCards;
+
+      function getActiveFilter() {
+        return portfolioFilters.querySelector(".filter-button.active")?.dataset.filter || "todos";
+      }
+
+      function filterPortfolio(filterValue) {
+        const cards = portfolioGrid.querySelectorAll(".project-card");
+        const normalizedFilter = filterValue === "todos" ? "todos" : slugifyCategory(filterValue);
+
+        cards.forEach((card) => {
+          const shouldShow = normalizedFilter === "todos" || card.dataset.category === normalizedFilter;
+
+          if (shouldShow) {
+            card.style.display = "";
+            requestAnimationFrame(() => {
+              card.classList.remove("hidden");
+            });
+          } else {
+            card.classList.add("hidden");
+            window.setTimeout(() => {
+              if (card.classList.contains("hidden")) {
+                card.style.display = "none";
+              }
+            }, 420);
+          }
+
+          card.setAttribute("aria-hidden", String(!shouldShow));
+        });
+      }
+
+      portfolioFilters.addEventListener("click", (event) => {
+        const button = event.target.closest(".filter-button");
+
+        if (!button) {
+          return;
+        }
+
+        portfolioFilters.querySelectorAll(".filter-button").forEach((item) => {
+          const isActive = item === button;
+          item.classList.toggle("active", isActive);
+          item.setAttribute("aria-pressed", String(isActive));
+        });
+
+        filterPortfolio(button.dataset.filter);
+      });
+
+      function getModalProjectData(proyecto = {}) {
+        const categoryToken = slugifyCategory(proyecto.categoria || "");
+        const photos = splitList(proyecto.fotos);
+        const materials = splitList(proyecto.materiales);
+
+        return {
+          title: proyecto.titulo || "Proyecto sin t\u00edtulo",
+          category: proyecto.categoria || categoryLabels[categoryToken] || "Proyecto",
+          location: proyecto.ubicacion || "Caj\u00f3n del Maipo / Santiago",
+          metraje: formatMetraje(proyecto.metraje) || "Por confirmar",
+          description: proyecto.descripcion || "Proyecto desarrollado por AO Construcciones con foco en calidad, oficio y materiales nobles.",
+          image: sanitizeImageURL(getPortfolioImageUrl(photos[0])),
+          materials
+        };
+      }
+
+      function openProjectModal(projectIndex) {
+        const proyecto = allProjectsData[Number(projectIndex)];
+
+        if (!proyecto) {
+          return;
+        }
+
+        const project = getModalProjectData(proyecto);
+        const safeTitle = escapeHTML(project.title);
+        const safeCategory = escapeHTML(project.category);
+        const safeLocation = escapeHTML(project.location);
+        const safeMetraje = escapeHTML(project.metraje);
+        const safeDescription = escapeHTML(project.description);
+
+        modalImage.src = project.image;
+        modalImage.alt = project.title;
+        modalImage.onerror = () => {
+          modalImage.onerror = null;
+          modalImage.src = "assets/img/service-cota-cero.png";
+        };
+        modalEyebrow.textContent = project.category;
+        modalTitle.textContent = project.title;
+        modalDescription.textContent = project.description;
+        modalSpecs.innerHTML = `
+          <div class="project-modal__spec">
+            <span>Categor\u00eda</span>
+            <strong>${safeCategory}</strong>
+          </div>
+          <div class="project-modal__spec">
+            <span>Ubicaci\u00f3n</span>
+            <strong>${safeLocation}</strong>
+          </div>
+          <div class="project-modal__spec">
+            <span>Metraje</span>
+            <strong>${safeMetraje}</strong>
+          </div>
+        `;
+        modalMaterials.innerHTML = project.materials.length
+          ? project.materials.map((item) => `<span class="project-modal__material">${escapeHTML(item)}</span>`).join("")
+          : '<span class="project-modal__material">Materiales por confirmar</span>';
+
+        projectModal.classList.add("active");
+        projectModal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeProjectModal() {
+        projectModal.classList.remove("active");
+        projectModal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+      }
+
+      portfolioGrid.addEventListener("click", (event) => {
+        const detailsButton = event.target.closest(".details-button");
+
+        if (!detailsButton) {
+          return;
+        }
+
+        openProjectModal(detailsButton.dataset.projectIndex);
+      });
+
+      modalCloseButton.addEventListener("click", closeProjectModal);
+
+      projectModal.addEventListener("click", (event) => {
+        if (event.target === projectModal) {
+          closeProjectModal();
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && projectModal.classList.contains("active")) {
+          closeProjectModal();
+        }
+      });
+
+      async function initPortfolio() {
+        showLoadingState();
+
+        const projects = await fetchPortfolioData();
+
+        if (projects.length > 0) {
+          renderPortfolio(projects);
+          filterPortfolio(getActiveFilter());
+        }
+      }
+
+      initPortfolio();
+    })();
+  </script>
+</body>
+</html>
