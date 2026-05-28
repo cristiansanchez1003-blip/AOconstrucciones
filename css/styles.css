@@ -844,6 +844,7 @@ button, input, textarea, select {
   font-weight: 600;
   font-size: 0.82rem;
   color: var(--color-accent-light);
+  text-decoration: none;
   margin-top: 0.3rem;
   transform: translateX(-10px);
   opacity: 0;
