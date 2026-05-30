@@ -994,6 +994,59 @@
     .portfolio-nav__link:not(.active):hover {
       color: var(--accent-color);
     }
+
+    /* Light background restoration */
+    :root {
+      --bg-primary: #fafaf9;
+      --bg-surface: #ffffff;
+      --text-primary: #1e293b;
+      --text-secondary: #64748b;
+      --cream-bg: var(--bg-primary);
+      --slate-gray: var(--text-primary);
+      --muted: var(--text-secondary);
+      --shadow-soft: 0 18px 52px rgba(15, 23, 42, 0.1);
+      --shadow-card: 0 24px 70px rgba(15, 23, 42, 0.12);
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 14% 8%, rgba(229, 57, 53, 0.08), transparent 28rem),
+        linear-gradient(180deg, #ffffff 0%, var(--bg-primary) 48%, #f5f5f4 100%);
+      color: var(--text-primary);
+    }
+
+    body::before {
+      background-image:
+        linear-gradient(rgba(30, 41, 59, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(30, 41, 59, 0.035) 1px, transparent 1px);
+      opacity: 0.7;
+    }
+
+    .portfolio-nav__inner,
+    .filter-container,
+    .project-card,
+    .portfolio-brand,
+    .project-modal__dialog,
+    .project-modal__spec,
+    .spec-badge,
+    .portfolio-state,
+    .empty-state {
+      border-color: rgba(30, 41, 59, 0.12);
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--text-primary);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .project-modal__content {
+      background: var(--bg-surface);
+    }
+
+    .project-modal__close,
+    .project-carousel__button {
+      border-color: rgba(30, 41, 59, 0.14);
+      background: rgba(255, 255, 255, 0.88);
+      color: var(--text-primary);
+    }
   </style>
 </head>
 <body>

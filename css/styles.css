@@ -1057,6 +1057,21 @@ label {
   font-size: 0.86rem;
 }
 
+.footer__credit {
+  margin-top: 0.3rem;
+  color: rgba(176, 190, 197, 0.7);
+  font-size: 0.72rem;
+}
+
+.footer__credit a {
+  color: rgba(236, 239, 241, 0.78);
+  transition: color var(--transition);
+}
+
+.footer__credit a:hover {
+  color: var(--accent-color);
+}
+
 .footer__social {
   display: flex;
   gap: 0.7rem;
@@ -1197,4 +1212,87 @@ label {
   .hero__visual {
     display: grid;
   }
+}
+
+/* ============================================
+   Light background restoration
+   Keeps the current layout and red accents
+   ============================================ */
+:root {
+  --bg-primary: #fafaf9;
+  --bg-surface: #ffffff;
+  --bg-elevated: #f4f4f3;
+  --bg-deep: #eceff1;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --border-subtle: rgba(30, 41, 59, 0.12);
+  --shadow-soft: 0 18px 52px rgba(15, 23, 42, 0.1);
+  --shadow-red: 0 18px 42px rgba(229, 57, 53, 0.12);
+}
+
+body {
+  background:
+    radial-gradient(circle at 12% 8%, rgba(229, 57, 53, 0.08), transparent 24rem),
+    linear-gradient(180deg, #ffffff 0%, var(--bg-primary) 46%, #f5f5f4 100%);
+  color: var(--text-primary);
+}
+
+body::before {
+  background-image:
+    linear-gradient(rgba(30, 41, 59, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30, 41, 59, 0.035) 1px, transparent 1px);
+  opacity: 0.7;
+}
+
+.navbar,
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.navbar__links,
+.hero__float-card,
+.hero__stat,
+.project-preview,
+.process__step,
+.contact__form-card,
+.contact__detail,
+.service-card,
+.form-group input,
+.form-group select,
+.form-group textarea,
+.form-option label {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+}
+
+.navbar__toggle span {
+  background: var(--text-primary);
+}
+
+.services,
+.process {
+  background: rgba(30, 41, 59, 0.025);
+  border-block-color: var(--border-subtle);
+}
+
+.service-card__overlay {
+  background:
+    linear-gradient(180deg, rgba(18, 18, 18, 0.02), rgba(18, 18, 18, 0.78)),
+    linear-gradient(90deg, rgba(18, 18, 18, 0.58), transparent);
+}
+
+.service-card__title {
+  color: #ffffff;
+}
+
+.service-card__desc {
+  color: rgba(236, 239, 241, 0.88);
+}
+
+.form-stepper {
+  background: rgba(30, 41, 59, 0.035);
+}
+
+.footer {
+  background: #111111;
 }
