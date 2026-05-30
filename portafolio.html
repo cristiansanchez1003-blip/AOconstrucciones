@@ -348,6 +348,24 @@
       white-space: normal;
     }
 
+    .location-link {
+      display: block;
+      margin-top: 4px;
+      color: var(--forest-green);
+      font-size: 0.88rem;
+      font-weight: 850;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+      text-decoration: none;
+      transition: color 0.25s ease;
+    }
+
+    .location-link:hover {
+      color: var(--timber-brown);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
     .project-card__title {
       margin: 4px 0 0;
       color: var(--slate-gray);
@@ -1722,6 +1740,31 @@
         "ampliaciones": "Ampliaciones"
       };
 
+      const projectLocations = {
+        "2da-remodelacion-cocina": "Condominio La Vizcachas, Puente Alto",
+        "2da-remodelacion-exterior": "Las Vertientes, San José de Maipo",
+        "2da-remodelacion-interior": "Las Vertientes, San José de Maipo",
+        "2da-remodelacion-techumbre": "La Granja",
+        "3ra-remodelacion-de-techumbre": "Las Vertientes, San José de Maipo",
+        "3ra-remodelacion-interior": "San Gabriel, San José de Maipo",
+        "4ta-remodelacion-de-techumbre": "La Florida",
+        "4ta-remodelacion-interior": "Departamental, La Florida",
+        "construccion-casa-en-arbol": "El Manzano, San José de Maipo",
+        "construccion-deck": "Melocotón, San José de Maipo",
+        "proyecto-desde-cota-cero": "El Manzano, San José de Maipo",
+        "remodelacion-acceso-a-quincho": "Las Vertientes, San José de Maipo",
+        "remodelacion-cocina": "El Manzano, San José de Maipo",
+        "remodelacion-de-quincho": "Hacienda El Peñón, Puente Alto",
+        "remodelacion-escala-interior": "Hacienda El Peñón, Puente Alto",
+        "remodelacion-estacionamiento-y-fachada-local-comercial": "Las Vertientes, San José de Maipo",
+        "remodelacion-exterior": "Las Vertientes, San José de Maipo",
+        "remodelacion-fachada": "Las Vertientes, San José de Maipo",
+        "remodelacion-fachada-y-deck": "El Canelo, San José de Maipo",
+        "remodelacion-techumbre": "Hacienda El Peñón, Puente Alto",
+        "remodelacion-terraza": "Las Vertientes, San José de Maipo",
+        "reparacion-de-porton": "Las Vertientes, San José de Maipo"
+      };
+
       let allProjectsData = [];
       let currentProject = null;
       let currentSlide = 0;
@@ -1860,6 +1903,10 @@
         return "";
       }
 
+      function mapsUrl(location = "") {
+        return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location)}`;
+      }
+
       function cleanBaseName(filename) {
         return filename
           .replace(/\.[^.]+$/, "")
@@ -1988,7 +2035,8 @@
               titulo: title,
               categoria,
               categoriaLabel: categoryLabels[categoria],
-              ubicacion: "Cajón del Maipo / Santiago",
+              ubicacion: projectLocations[group.id] || "Cajón del Maipo / Santiago",
+              mapa: mapsUrl(projectLocations[group.id] || "Cajón del Maipo / Santiago"),
               metraje: "Obra ejecutada",
               descripcion: buildDescription(title, categoria),
               materiales: buildMaterials(title, categoria),
@@ -2023,6 +2071,7 @@
                 categoria,
                 categoriaLabel: categoryLabels[categoria] || project.categoria || "Proyecto",
                 ubicacion: project.ubicacion || "Cajón del Maipo / Santiago",
+                mapa: mapsUrl(project.ubicacion || "Cajón del Maipo / Santiago"),
                 metraje: formatMetraje(project.metraje),
                 descripcion: project.descripcion || buildDescription(title, categoria),
                 materiales: splitList(project.materiales),
@@ -2044,6 +2093,7 @@
           const category = escapeHTML(project.categoria);
           const categoryLabel = escapeHTML(project.categoriaLabel);
           const location = escapeHTML(project.ubicacion);
+          const locationUrl = escapeHTML(project.mapa || mapsUrl(project.ubicacion));
           const metraje = escapeHTML(project.metraje);
           const description = escapeHTML(project.descripcion);
           const cover = escapeHTML(project.cover);
@@ -2065,7 +2115,7 @@
                   </div>
                   <div class="spec-badge">
                     <span>Ubicación</span>
-                    <strong>${location}</strong>
+                    <a class="location-link" href="${locationUrl}" target="_blank" rel="noopener noreferrer">${location}</a>
                   </div>
                 </div>
                 <h3 class="project-card__title">${title}</h3>
@@ -2155,6 +2205,7 @@
         modalEyebrow.textContent = project.categoriaLabel;
         modalTitle.textContent = project.titulo;
         modalDescription.textContent = project.descripcion;
+        const safeLocationUrl = escapeHTML(project.mapa || mapsUrl(project.ubicacion));
         modalSpecs.innerHTML = `
           <div class="project-modal__spec">
             <span>Categoría</span>
@@ -2162,7 +2213,7 @@
           </div>
           <div class="project-modal__spec">
             <span>Ubicación</span>
-            <strong>${escapeHTML(project.ubicacion)}</strong>
+            <a class="location-link" href="${safeLocationUrl}" target="_blank" rel="noopener noreferrer">${escapeHTML(project.ubicacion)}</a>
           </div>
           <div class="project-modal__spec">
             <span>Galería</span>
@@ -2198,6 +2249,7 @@
       portfolioGrid.addEventListener("click", (event) => {
         const card = event.target.closest(".project-card");
 
+        if (event.target.closest(".location-link")) return;
         if (!card || card.classList.contains("hidden")) return;
         openProjectModal(card.dataset.projectIndex);
       });
