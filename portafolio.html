@@ -858,6 +858,132 @@
         right: 12px;
       }
     }
+
+    /* Industrial Premium dark theme overrides */
+    :root {
+      --bg-primary: #121212;
+      --bg-surface: #1e1e1e;
+      --accent-color: #e53935;
+      --text-primary: #eceff1;
+      --text-secondary: #b0bec5;
+      --cream-bg: var(--bg-primary);
+      --forest-green: var(--accent-color);
+      --timber-brown: var(--accent-color);
+      --slate-gray: var(--text-primary);
+      --muted: var(--text-secondary);
+      --white: #ffffff;
+      --shadow-soft: 0 18px 60px rgba(0, 0, 0, 0.34);
+      --shadow-card: 0 24px 70px rgba(0, 0, 0, 0.36);
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 14% 8%, rgba(229, 57, 53, 0.1), transparent 28rem),
+        linear-gradient(180deg, #151515 0%, var(--bg-primary) 44%, #0f0f0f 100%);
+      color: var(--text-primary);
+    }
+
+    body::before {
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: 44px 44px;
+      opacity: 1;
+    }
+
+    .portfolio-nav__inner,
+    .filter-container,
+    .project-card,
+    .portfolio-brand,
+    .project-modal__dialog,
+    .project-modal__spec,
+    .spec-badge,
+    .portfolio-state,
+    .empty-state {
+      border-color: rgba(236, 239, 241, 0.1);
+      background: rgba(30, 30, 30, 0.94);
+      color: var(--text-primary);
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.34);
+    }
+
+    .portfolio-nav__link,
+    .portfolio-intro,
+    .project-description,
+    .project-modal__description,
+    .spec-badge span,
+    .project-modal__spec span {
+      color: var(--text-secondary);
+    }
+
+    .portfolio-nav__link.active,
+    .portfolio-nav__link:hover,
+    .eyebrow,
+    .project-card__category,
+    .project-material,
+    .project-modal__eyebrow,
+    .project-modal__material,
+    .portfolio-kicker {
+      color: var(--accent-color);
+    }
+
+    .eyebrow,
+    .project-card__category,
+    .project-material,
+    .project-modal__eyebrow,
+    .project-modal__material {
+      border: 1px solid rgba(229, 57, 53, 0.28);
+      background: rgba(229, 57, 53, 0.1);
+    }
+
+    .filter-button.active,
+    .details-button {
+      background: var(--accent-color);
+      color: var(--white);
+      box-shadow: 0 14px 30px rgba(229, 57, 53, 0.22);
+    }
+
+    .filter-button,
+    .details-button:hover {
+      color: var(--text-primary);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .filter-button:hover,
+    .project-card:hover {
+      border-color: rgba(229, 57, 53, 0.42);
+      box-shadow:
+        0 34px 90px rgba(0, 0, 0, 0.36),
+        0 18px 48px rgba(229, 57, 53, 0.12);
+    }
+
+    .project-card__media,
+    .project-modal__media,
+    .project-carousel__slide {
+      background: #252525;
+    }
+
+    .project-modal {
+      background: rgba(0, 0, 0, 0.58);
+      backdrop-filter: blur(14px);
+    }
+
+    .project-modal__dialog,
+    .project-modal__content {
+      background: var(--bg-surface);
+    }
+
+    .project-modal__close,
+    .project-carousel__button {
+      border-color: rgba(236, 239, 241, 0.14);
+      background: rgba(30, 30, 30, 0.88);
+      color: var(--text-primary);
+    }
+
+    .project-modal__close:hover,
+    .project-carousel__button:hover {
+      background: var(--accent-color);
+      color: var(--white);
+    }
   </style>
 </head>
 <body>
