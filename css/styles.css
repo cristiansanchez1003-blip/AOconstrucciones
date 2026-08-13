@@ -847,6 +847,20 @@ label {
   color: var(--text-secondary);
 }
 
+/* Teléfono y correo son enlaces tocables; no deben verse como link genérico. */
+.contact__detail-content a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color var(--transition), border-color var(--transition);
+}
+
+.contact__detail-content a:hover,
+.contact__detail-content a:focus-visible {
+  color: var(--accent-color);
+  border-bottom-color: var(--accent-color);
+}
+
 .contact__form-card {
   overflow: hidden;
   border: 1px solid var(--border-subtle);
@@ -969,7 +983,7 @@ label {
   transition: border-color var(--transition), background var(--transition);
 }
 
-.form-option label i {
+.form-option label .icon {
   color: var(--accent-color);
 }
 
@@ -1055,6 +1069,13 @@ label {
   border-top: 1px solid var(--border-subtle);
   color: var(--text-secondary);
   font-size: 0.86rem;
+}
+
+.footer__legal {
+  margin-top: 0.3rem;
+  color: rgba(176, 190, 197, 0.78);
+  font-size: 0.74rem;
+  line-height: 1.45;
 }
 
 .footer__credit {
@@ -1295,4 +1316,153 @@ body::before {
 
 .footer {
   background: #111111;
+}
+
+/* ============================================
+   Floating WhatsApp button
+   ============================================ */
+.whatsapp-btn {
+  position: fixed;
+  right: clamp(1rem, 4vw, 1.75rem);
+  bottom: clamp(1rem, 4vw, 1.75rem);
+  /* Below the mobile overlay (90) and navbar (100) so the open menu covers it. */
+  z-index: 80;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #25d366;
+  color: #ffffff;
+  box-shadow:
+    0 10px 28px rgba(37, 211, 102, 0.36),
+    0 4px 12px rgba(15, 23, 42, 0.18);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
+  animation: whatsapp-enter 0.5s var(--ease-out) 0.9s both;
+}
+
+.whatsapp-btn svg {
+  width: 32px;
+  height: 32px;
+  fill: currentColor;
+}
+
+.whatsapp-btn:hover,
+.whatsapp-btn:focus-visible {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow:
+    0 16px 36px rgba(37, 211, 102, 0.44),
+    0 6px 16px rgba(15, 23, 42, 0.22);
+}
+
+.whatsapp-btn:focus-visible {
+  outline: 3px solid var(--accent-color);
+  outline-offset: 3px;
+}
+
+@keyframes whatsapp-enter {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 640px) {
+  .whatsapp-btn {
+    width: 56px;
+    height: 56px;
+    right: 1rem;
+    bottom: 1rem;
+  }
+
+  .whatsapp-btn svg {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .whatsapp-btn {
+    animation: none;
+  }
+
+  .whatsapp-btn:hover,
+  .whatsapp-btn:focus-visible {
+    transform: none;
+  }
+}
+
+/* Botón de WhatsApp dentro del panel de éxito del formulario */
+.form-success__whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  margin-top: 1.4rem;
+  padding: 0.85rem 1.4rem;
+  border-radius: var(--radius-md);
+  background: #25d366;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.92rem;
+  text-decoration: none;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.form-success__whatsapp:hover,
+.form-success__whatsapp:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(37, 211, 102, 0.32);
+}
+
+.form-success__whatsapp .icon {
+  font-size: 1.15rem;
+}
+
+/* Aviso de privacidad bajo el botón de envío */
+.form-privacy {
+  margin-top: 0.9rem;
+  color: var(--text-secondary);
+  font-size: 0.76rem;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.form-privacy a {
+  color: var(--accent-color);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .form-success__whatsapp:hover,
+  .form-success__whatsapp:focus-visible {
+    transform: none;
+  }
+}
+
+/* ============================================
+   Iconos SVG inline (reemplazan Font Awesome)
+   Escalan con el font-size heredado, igual que
+   los glifos que reemplazan.
+   ============================================ */
+.icon-sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  flex: none;
+  vertical-align: -0.125em;
 }

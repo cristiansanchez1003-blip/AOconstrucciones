@@ -3,7 +3,24 @@
    Scroll Animations · Navbar · Mobile Menu · Multi-Step Form
    ============================================ */
 
+/* ---------------------------------------------------------------
+   RESPALDO DEL FORMULARIO — Web3Forms
+
+   PARA ACTIVAR: consigue tu access key gratis en https://web3forms.com
+   (pones construyeao@gmail.com, te llega la key por correo, sin crear
+   cuenta) y reemplázala abajo.
+
+   Mientras siga en "PENDIENTE", el formulario funciona exactamente como
+   antes: manda al usuario a WhatsApp. Con la key puesta, el lead queda
+   guardado por correo ANTES de ofrecer WhatsApp, así no se pierde ninguno.
+   --------------------------------------------------------------- */
+const WEB3FORMS_ACCESS_KEY = 'PENDIENTE';
+const WEB3FORMS_KEY_OK =
+  WEB3FORMS_ACCESS_KEY !== 'PENDIENTE' && WEB3FORMS_ACCESS_KEY.length > 20;
+
 document.addEventListener('DOMContentLoaded', () => {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   // ---- NAVBAR SCROLL BEHAVIOR ----
   const navbar = document.getElementById('navbar');
   const SCROLL_THRESHOLD = 60;
@@ -98,7 +115,9 @@ document.addEventListener('DOMContentLoaded', () => {
   revealElements.forEach(el => revealObserver.observe(el));
 
   // ---- COUNTER ANIMATION ----
-  const counters = document.querySelectorAll('[data-counter]');
+  // The final value is written in the HTML so it is visible without JS.
+  // We only animate from 0 up to that value once the stat scrolls into view.
+  const counters = document.querySelectorAll('[data-target]');
 
   const counterObserver = new IntersectionObserver(
     (entries) => {
@@ -115,8 +134,17 @@ document.addEventListener('DOMContentLoaded', () => {
   counters.forEach(counter => counterObserver.observe(counter));
 
   function animateCounter(element) {
-    const target = parseInt(element.getAttribute('data-counter'), 10);
+    const target = parseInt(element.getAttribute('data-target'), 10);
     const suffix = element.getAttribute('data-suffix') || '';
+
+    // Nothing sensible to animate towards — leave the HTML value untouched.
+    if (!Number.isFinite(target)) return;
+
+    if (prefersReducedMotion) {
+      element.textContent = target + suffix;
+      return;
+    }
+
     const duration = 2000;
     const startTime = performance.now();
 
@@ -275,7 +303,46 @@ document.addEventListener('DOMContentLoaded', () => {
     return true;
   }
 
-  function sendToWhatsApp(event) {
+  // El lead se guarda ANTES de ofrecer WhatsApp. Antes el único destino era la
+  // redirección: si el usuario no tenía WhatsApp o cancelaba el salto de app, el
+  // contacto se perdía sin dejar rastro.
+  async function saveLead(payload) {
+    if (!WEB3FORMS_KEY_OK) {
+      if (window.console) {
+        console.warn(
+          '[AO] Respaldo del formulario inactivo: falta la access key de Web3Forms en js/main.js. ' +
+          'El lead se envía solo por WhatsApp, como antes.'
+        );
+      }
+      return false;
+    }
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      const result = await response.json();
+      return response.ok && result.success === true;
+    } catch (error) {
+      console.error('[AO] No se pudo guardar el lead de respaldo:', error);
+      return false;
+    }
+  }
+
+  function showSuccess(whatsappUrl) {
+    const successWhatsApp = document.getElementById('success-whatsapp');
+    if (successWhatsApp) successWhatsApp.href = whatsappUrl;
+
+    formContainer.style.display = 'none';
+    const stepper = document.querySelector('.form-stepper');
+    if (stepper) stepper.style.display = 'none';
+    if (formSuccess) formSuccess.classList.add('active');
+  }
+
+  async function handleLeadSubmit(event) {
     event.preventDefault();
 
     if (!formContainer || !validateLeadForm()) {
@@ -291,7 +358,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const message = document.getElementById('input-message').value.trim();
 
     const whatsappText = [
-      '🏗️ *Nueva Cotización - Construcciones AO* 🏗️',
+      '🏗️ *Nueva Cotización - AO Construcciones* 🏗️',
       '--------------------------------------------',
       `👤 *Cliente:* ${name}`,
       `📧 *Email:* ${email}`,
@@ -304,12 +371,63 @@ document.addEventListener('DOMContentLoaded', () => {
       `• Descripción: ${message}`
     ].join('\n');
 
-    const encodedMessage = encodeURIComponent(whatsappText);
-    window.location.href = `https://api.whatsapp.com/send?phone=56979925812&text=${encodedMessage}`;
+    const whatsappUrl =
+      `https://api.whatsapp.com/send?phone=56979925812&text=${encodeURIComponent(whatsappText)}`;
+
+    // Evita envíos duplicados por doble clic.
+    const originalLabel = btnSubmit ? btnSubmit.innerHTML : '';
+    if (btnSubmit) {
+      btnSubmit.disabled = true;
+      btnSubmit.innerHTML = 'Enviando…';
+    }
+
+    const saved = await saveLead({
+      access_key: WEB3FORMS_ACCESS_KEY,
+      subject: `Nueva cotización de ${name} — ${projectType}`,
+      from_name: 'Sitio web AO Construcciones',
+      replyto: email,
+      Nombre: name,
+      Email: email,
+      Teléfono: phone,
+      'Tipo de proyecto': projectType,
+      Comuna: location,
+      'Presupuesto estimado': budget,
+      Descripción: message
+    });
+
+    if (btnSubmit) {
+      btnSubmit.disabled = false;
+      btnSubmit.innerHTML = originalLabel;
+    }
+
+    // La conversión se registra igual, se haya guardado o no: el usuario
+    // completó el formulario. Solo enviamos datos del proyecto, nunca nombre,
+    // email ni teléfono.
+    const finish = () => {
+      if (saved) {
+        // El lead ya está a salvo: mostramos confirmación y dejamos WhatsApp a un toque.
+        showSuccess(whatsappUrl);
+      } else {
+        // Sin respaldo, volvemos al comportamiento anterior para no perder el contacto.
+        window.location.href = whatsappUrl;
+      }
+    };
+
+    if (typeof window.aoTrack === 'function') {
+      window.aoTrack('generate_lead', {
+        form_name: 'cotizacion_home',
+        project_type: projectType,
+        project_location: location,
+        project_budget: budget,
+        lead_backup: saved ? 'ok' : 'fallback_whatsapp'
+      }, finish);
+    } else {
+      finish();
+    }
   }
 
   if (formContainer) {
-    formContainer.addEventListener('submit', sendToWhatsApp);
+    formContainer.addEventListener('submit', handleLeadSubmit);
   }
 
   // ---- ACTIVE NAV LINK ON SCROLL ----

@@ -3,10 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portafolio din&aacute;mico de proyectos de AO Construcciones. Construcci&oacute;n desde cota cero, remodelaciones y ampliaciones.">
-  <title>Construcciones AO | Casas Sustentables y Remodelaciones</title>
+  <meta name="description" content="Proyectos ejecutados por AO Construcciones en Cajón del Maipo, Pirque, Puente Alto y La Florida: ampliaciones, remodelaciones y obra nueva.">
+  <title>Portafolio de Obras | AO Construcciones - Cajón del Maipo</title>
+  <link rel="canonical" href="https://aoconstrucciones.cl/portafolio.html">
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="assets/img/favicon.png">
+
+  <!-- Medición: define dataLayer y window.aoTrack antes que cualquier otro script -->
+  <script src="js/tracking.js"></script>
   <style>
     :root {
       --forest-green: #2D4739;
@@ -810,6 +814,11 @@
         justify-content: center;
       }
 
+      /* Queda impar en la grilla de dos columnas: le damos fila propia. */
+      .portfolio-nav__link--legal {
+        flex-basis: 100%;
+      }
+
       .portfolio-section {
         width: min(100% - 22px, var(--max-width));
         padding: 40px 0 54px;
@@ -1065,19 +1074,97 @@
       background: rgba(255, 255, 255, 0.88);
       color: var(--text-primary);
     }
+
+    /* ---- Floating WhatsApp button ---- */
+    .whatsapp-btn {
+      position: fixed;
+      right: clamp(1rem, 4vw, 1.75rem);
+      bottom: clamp(1rem, 4vw, 1.75rem);
+      /* Below the sticky nav (1000) and the project modal (2000). */
+      z-index: 900;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #25d366;
+      color: var(--white);
+      box-shadow:
+        0 10px 28px rgba(37, 211, 102, 0.36),
+        0 4px 12px rgba(30, 41, 59, 0.18);
+      transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+      animation: whatsapp-enter 0.5s var(--ease) 0.9s both;
+    }
+
+    .whatsapp-btn svg {
+      width: 32px;
+      height: 32px;
+      fill: currentColor;
+    }
+
+    .whatsapp-btn:hover,
+    .whatsapp-btn:focus-visible {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow:
+        0 16px 36px rgba(37, 211, 102, 0.44),
+        0 6px 16px rgba(30, 41, 59, 0.22);
+    }
+
+    .whatsapp-btn:focus-visible {
+      outline: 3px solid var(--forest-green);
+      outline-offset: 3px;
+    }
+
+    @keyframes whatsapp-enter {
+      from {
+        opacity: 0;
+        transform: translateY(14px) scale(0.85);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .whatsapp-btn {
+        width: 56px;
+        height: 56px;
+        right: 1rem;
+        bottom: 1rem;
+      }
+
+      .whatsapp-btn svg {
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .whatsapp-btn {
+        animation: none;
+      }
+
+      .whatsapp-btn:hover,
+      .whatsapp-btn:focus-visible {
+        transform: none;
+      }
+    }
   </style>
 </head>
 <body>
   <nav class="portfolio-nav" aria-label="Navegación principal">
     <div class="portfolio-nav__inner">
       <a class="portfolio-nav__logo" href="index.html" aria-label="Volver al inicio de AO Construcciones">
-        <img src="assets/img/ao-construcciones-logo-portfolio-transparent.png" alt="AO Construcciones" width="1012" height="367">
+        <img src="assets/img/ao-construcciones-logo-portfolio-transparent.webp" alt="AO Construcciones" width="512" height="186">
       </a>
       <div class="portfolio-nav__links">
         <a class="portfolio-nav__link" href="index.html">Inicio</a>
         <a class="portfolio-nav__link active" href="portafolio.html" aria-current="page">Portafolio</a>
         <a class="portfolio-nav__link" href="index.html#servicios">Servicios</a>
         <a class="portfolio-nav__link" href="index.html#contacto">Contacto</a>
+        <a class="portfolio-nav__link portfolio-nav__link--legal" href="privacidad.html">Privacidad</a>
       </div>
     </div>
   </nav>
@@ -1090,7 +1177,7 @@
           <h1 id="portfolio-title" class="portfolio-title">Nuestras Obras: Experiencia, solidez y dise&ntilde;o que transforman el paisaje.</h1>
         </div>
         <aside class="portfolio-brand" aria-label="Marca AO Construcciones">
-          <img class="portfolio-brand__logo" src="assets/img/ao-construcciones-logo-portfolio-transparent.png" alt="AO Construcciones" width="1012" height="367">
+          <img class="portfolio-brand__logo" src="assets/img/ao-construcciones-logo-portfolio-transparent.webp" alt="AO Construcciones" width="512" height="186">
           <p class="portfolio-intro">
             Proyectos reales construidos en el Caj&oacute;n del Maipo y Santiago. Transformamos planos e ideas en estructuras s&oacute;lidas, eficientes y hechas para durar toda la vida.
           </p>
@@ -1136,6 +1223,19 @@
     </div>
   </div>
 
+
+  <a
+    id="whatsapp-float"
+    class="whatsapp-btn"
+    href="https://wa.me/56979925812?text=Hola%2C%20vi%20su%20sitio%20web%20y%20quiero%20cotizar%20un%20proyecto"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Escríbenos por WhatsApp para cotizar tu proyecto">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.06 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35z"/>
+      <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.82 2.41a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.69 8.23-8.24 8.23z"/>
+    </svg>
+  </a>
 
   <script>
     (() => {
@@ -1211,7 +1311,7 @@
       }
 
       function getPortfolioImageUrl(rawUrl = "") {
-        const fallbackImage = "assets/img/service-cota-cero.png";
+        const fallbackImage = "assets/img/service-cota-cero.webp";
         const cleanUrl = String(rawUrl).trim();
 
         if (!cleanUrl) {
@@ -1233,7 +1333,7 @@
       }
 
       function sanitizeImageURL(rawUrl = "") {
-        const fallbackImage = "assets/img/service-cota-cero.png";
+        const fallbackImage = "assets/img/service-cota-cero.webp";
         const cleanUrl = String(rawUrl).trim();
 
         if (!cleanUrl) {
@@ -1404,7 +1504,7 @@
           return `
             <article class="project-card" data-category="${category}" data-project-index="${index}" data-project-id="${projectId}">
               <div class="project-card__media">
-                <img src="${image}" alt="${title}" loading="lazy" width="720" height="540" onerror="this.onerror=null;this.src='assets/img/service-cota-cero.png';">
+                <img src="${image}" alt="${title}" loading="lazy" width="720" height="540" onerror="this.onerror=null;this.src='assets/img/service-cota-cero.webp';">
                 <span class="project-card__category">${categoryLabel}</span>
               </div>
               <div class="project-card__body">
@@ -1509,7 +1609,7 @@
         modalImage.alt = project.title;
         modalImage.onerror = () => {
           modalImage.onerror = null;
-          modalImage.src = "assets/img/service-cota-cero.png";
+          modalImage.src = "assets/img/service-cota-cero.webp";
         };
         modalEyebrow.textContent = project.category;
         modalTitle.textContent = project.title;
@@ -1601,133 +1701,133 @@
       const nextButton = projectModal.querySelector(".project-carousel__button--next");
 
       const portfolioFiles = [
-        "2da remodelacion cocina 1.jpeg",
-        "2da remodelacion cocina 2.jpeg",
-        "2da remodelacion cocina 3.jpeg",
-        "2da remodelacion cocina 4.jpeg",
-        "2da remodelacion cocina resultado final.jpeg",
-        "2da remodelacion cocina.jpeg",
-        "2da Remodelación exterior 1.jpeg",
-        "2da Remodelación exterior 2.jpeg",
-        "2da Remodelación exterior 3.jpeg",
-        "2da Remodelación exterior Resultado final.jpeg",
-        "2da Remodelación exterior.jpeg",
-        "2da Remodelación interior 1.jpeg",
-        "2da Remodelación interior 2.jpeg",
-        "2da Remodelación interior 3.jpeg",
-        "2da Remodelación interior 4.jpeg",
-        "2da Remodelación interior 5.jpeg",
-        "2da Remodelación interior Resultado final.jpeg",
-        "2da Remodelación interior.jpeg",
-        "2da Remodelacion techumbre  1.jpeg",
-        "2da Remodelacion techumbre  2.jpeg",
-        "2da Remodelacion techumbre  3.jpeg",
-        "2da Remodelacion techumbre  4.jpeg",
-        "2da Remodelacion techumbre  Resultado final.jpeg",
-        "2da Remodelacion techumbre .jpeg",
-        "3ra remodelacion de techumbre 1.jpeg",
-        "3ra remodelacion de techumbre 2.jpeg",
-        "3ra remodelacion de techumbre 3.jpeg",
-        "3ra remodelacion de techumbre Resultado final.jpeg",
-        "3ra remodelacion de techumbre.jpeg",
-        "3ra remodelacion interior 2.jpeg",
-        "3ra remodelacion interior 3.jpeg",
-        "3ra remodelacion interior 4.jpeg",
-        "3ra remodelacion interior Resultado final.jpeg",
-        "4ta Remodelación de techumbre .jpeg",
-        "4ta Remodelación de techumbre 1.jpeg",
-        "4ta Remodelación de techumbre 2.jpeg",
-        "4ta Remodelación de techumbre resultado final.jpeg",
-        "4ta remodelacion interior 1.jpeg",
-        "4ta remodelacion interior 2.jpeg",
-        "4ta remodelacion interior 3.jpeg",
-        "4ta remodelacion interior 4.jpeg",
-        "4ta remodelacion interior Resultado final.jpeg",
-        "4ta remodelacion interior.jpeg",
-        "Construccion casa en arbol 1.jpeg",
-        "Construccion casa en arbol 2.jpeg",
-        "Construccion casa en arbol 3.jpeg",
-        "Construccion casa en arbol Resultado final.jpeg",
-        "Construccion casa en arbol.jpeg",
-        "Construccion Deck 1.jpeg",
-        "Construccion Deck 2.jpeg",
-        "Construccion Deck 3.jpeg",
-        "Construccion Deck 4.jpeg",
-        "Construccion Deck 5.jpeg",
-        "Construccion Deck 6.jpeg",
-        "Construccion Deck Resultado final.jpeg",
-        "Construccion Deck.jpeg",
-        "Proyecto desde Cota Cero 1.jpeg",
-        "Proyecto desde Cota Cero 10.jpeg",
-        "Proyecto desde Cota Cero 11.jpeg",
-        "Proyecto desde Cota Cero 12.jpeg",
-        "Proyecto desde Cota Cero 13.jpeg",
-        "Proyecto desde Cota Cero 2.jpeg",
-        "Proyecto desde Cota Cero 3.jpeg",
-        "Proyecto desde Cota Cero 4.jpeg",
-        "Proyecto desde Cota Cero 5.jpeg",
-        "Proyecto desde Cota Cero 6.jpeg",
-        "Proyecto desde Cota Cero 7.jpeg",
-        "Proyecto desde Cota Cero 8.jpeg",
-        "Proyecto desde Cota Cero 9.jpeg",
-        "Proyecto desde Cota Cero Resultado final.jpeg",
-        "Proyecto desde Cota Cero.jpeg",
-        "Remodelación acceso a Quincho 1.jpeg",
-        "Remodelación acceso a Quincho 2.jpeg",
-        "Remodelación acceso a Quincho 3.jpeg",
-        "Remodelación acceso a Quincho Resultado final.jpeg",
-        "Remodelación acceso a Quincho.jpeg",
-        "Remodelación Cocina 1.jpeg",
-        "Remodelación Cocina 2.jpeg",
-        "Remodelación Cocina 3.jpeg",
-        "Remodelación Cocina 4.jpeg",
-        "Remodelación Cocina 5.jpeg",
-        "Remodelación Cocina Resultado final.jpeg",
-        "Remodelación Cocina.jpeg",
-        "Remodelacion de quincho 1.jpeg",
-        "Remodelacion de quincho 2.jpeg",
-        "Remodelacion de quincho 3.jpeg",
-        "Remodelacion de quincho Resultado final.jpeg",
-        "Remodelacion de quincho.jpeg",
-        "Remodelación escala interior 1.jpeg",
-        "Remodelación escala interior 2.jpeg",
-        "Remodelación escala interior Resultado final.jpeg",
-        "Remodelación escala interior.jpeg",
-        "Remodelación Estacionamiento y Fachada local comercial 1.jpeg",
-        "Remodelación Estacionamiento y Fachada local comercial 2.jpeg",
-        "Remodelación Estacionamiento y Fachada local comercial 3.jpeg",
-        "Remodelación Estacionamiento y Fachada local comercial 4.jpeg",
-        "Remodelación Estacionamiento y Fachada local comercial 5.jpeg",
-        "Remodelación Estacionamiento y Fachada local comercial 6.jpeg",
-        "Remodelación Estacionamiento y Fachada local comercial 7.jpeg",
-        "Remodelación Estacionamiento y Fachada local comercial Resultado final.jpeg",
-        "Remodelación Estacionamiento y Fachada local comercial.jpeg",
-        "Remodelacion Exterior 1.jpeg",
-        "Remodelacion Exterior Resultado final.jpeg",
-        "Remodelacion Exterior.jpeg",
-        "Remodelación fachada 1.jpeg",
-        "Remodelación fachada 2.jpeg",
-        "Remodelación fachada Resultado final.jpeg",
-        "Remodelación fachada.jpeg",
-        "Remodelacion fachada y deck 1.jpeg",
-        "Remodelacion fachada y deck 2.jpeg",
-        "Remodelacion fachada y deck 3.jpeg",
-        "Remodelacion fachada y deck resultado final.jpeg",
-        "Remodelacion fachada y deck.jpeg",
-        "Remodelación Techumbre 1.jpeg",
-        "Remodelación Techumbre 2.jpeg",
-        "Remodelación Techumbre 3.jpeg",
-        "Remodelación Techumbre 4.jpeg",
-        "Remodelación Techumbre Resultado final.jpeg",
-        "remodelación Techumbre.jpeg",
-        "Remodelacion terraza 1.jpeg",
-        "Remodelacion terraza 2.jpeg",
-        "Remodelacion terraza 3.jpeg",
-        "Remodelacion terraza Resultado final.jpeg",
-        "Remodelacion terraza.jpeg",
-        "Reparacion de Portón .jpeg",
-        "Reparacion de Portón 1.jpeg",
-        "Reparacion de Portón Resultado final.jpeg"
+        "2da remodelacion cocina 1.webp",
+        "2da remodelacion cocina 2.webp",
+        "2da remodelacion cocina 3.webp",
+        "2da remodelacion cocina 4.webp",
+        "2da remodelacion cocina resultado final.webp",
+        "2da remodelacion cocina.webp",
+        "2da Remodelación exterior 1.webp",
+        "2da Remodelación exterior 2.webp",
+        "2da Remodelación exterior 3.webp",
+        "2da Remodelación exterior Resultado final.webp",
+        "2da Remodelación exterior.webp",
+        "2da Remodelación interior 1.webp",
+        "2da Remodelación interior 2.webp",
+        "2da Remodelación interior 3.webp",
+        "2da Remodelación interior 4.webp",
+        "2da Remodelación interior 5.webp",
+        "2da Remodelación interior Resultado final.webp",
+        "2da Remodelación interior.webp",
+        "2da Remodelacion techumbre  1.webp",
+        "2da Remodelacion techumbre  2.webp",
+        "2da Remodelacion techumbre  3.webp",
+        "2da Remodelacion techumbre  4.webp",
+        "2da Remodelacion techumbre  Resultado final.webp",
+        "2da Remodelacion techumbre .webp",
+        "3ra remodelacion de techumbre 1.webp",
+        "3ra remodelacion de techumbre 2.webp",
+        "3ra remodelacion de techumbre 3.webp",
+        "3ra remodelacion de techumbre Resultado final.webp",
+        "3ra remodelacion de techumbre.webp",
+        "3ra remodelacion interior 2.webp",
+        "3ra remodelacion interior 3.webp",
+        "3ra remodelacion interior 4.webp",
+        "3ra remodelacion interior Resultado final.webp",
+        "4ta Remodelación de techumbre .webp",
+        "4ta Remodelación de techumbre 1.webp",
+        "4ta Remodelación de techumbre 2.webp",
+        "4ta Remodelación de techumbre resultado final.webp",
+        "4ta remodelacion interior 1.webp",
+        "4ta remodelacion interior 2.webp",
+        "4ta remodelacion interior 3.webp",
+        "4ta remodelacion interior 4.webp",
+        "4ta remodelacion interior Resultado final.webp",
+        "4ta remodelacion interior.webp",
+        "Construccion casa en arbol 1.webp",
+        "Construccion casa en arbol 2.webp",
+        "Construccion casa en arbol 3.webp",
+        "Construccion casa en arbol Resultado final.webp",
+        "Construccion casa en arbol.webp",
+        "Construccion Deck 1.webp",
+        "Construccion Deck 2.webp",
+        "Construccion Deck 3.webp",
+        "Construccion Deck 4.webp",
+        "Construccion Deck 5.webp",
+        "Construccion Deck 6.webp",
+        "Construccion Deck Resultado final.webp",
+        "Construccion Deck.webp",
+        "Proyecto desde Cota Cero 1.webp",
+        "Proyecto desde Cota Cero 10.webp",
+        "Proyecto desde Cota Cero 11.webp",
+        "Proyecto desde Cota Cero 12.webp",
+        "Proyecto desde Cota Cero 13.webp",
+        "Proyecto desde Cota Cero 2.webp",
+        "Proyecto desde Cota Cero 3.webp",
+        "Proyecto desde Cota Cero 4.webp",
+        "Proyecto desde Cota Cero 5.webp",
+        "Proyecto desde Cota Cero 6.webp",
+        "Proyecto desde Cota Cero 7.webp",
+        "Proyecto desde Cota Cero 8.webp",
+        "Proyecto desde Cota Cero 9.webp",
+        "Proyecto desde Cota Cero Resultado final.webp",
+        "Proyecto desde Cota Cero.webp",
+        "Remodelación acceso a Quincho 1.webp",
+        "Remodelación acceso a Quincho 2.webp",
+        "Remodelación acceso a Quincho 3.webp",
+        "Remodelación acceso a Quincho Resultado final.webp",
+        "Remodelación acceso a Quincho.webp",
+        "Remodelación Cocina 1.webp",
+        "Remodelación Cocina 2.webp",
+        "Remodelación Cocina 3.webp",
+        "Remodelación Cocina 4.webp",
+        "Remodelación Cocina 5.webp",
+        "Remodelación Cocina Resultado final.webp",
+        "Remodelación Cocina.webp",
+        "Remodelacion de quincho 1.webp",
+        "Remodelacion de quincho 2.webp",
+        "Remodelacion de quincho 3.webp",
+        "Remodelacion de quincho Resultado final.webp",
+        "Remodelacion de quincho.webp",
+        "Remodelación escala interior 1.webp",
+        "Remodelación escala interior 2.webp",
+        "Remodelación escala interior Resultado final.webp",
+        "Remodelación escala interior.webp",
+        "Remodelación Estacionamiento y Fachada local comercial 1.webp",
+        "Remodelación Estacionamiento y Fachada local comercial 2.webp",
+        "Remodelación Estacionamiento y Fachada local comercial 3.webp",
+        "Remodelación Estacionamiento y Fachada local comercial 4.webp",
+        "Remodelación Estacionamiento y Fachada local comercial 5.webp",
+        "Remodelación Estacionamiento y Fachada local comercial 6.webp",
+        "Remodelación Estacionamiento y Fachada local comercial 7.webp",
+        "Remodelación Estacionamiento y Fachada local comercial Resultado final.webp",
+        "Remodelación Estacionamiento y Fachada local comercial.webp",
+        "Remodelacion Exterior 1.webp",
+        "Remodelacion Exterior Resultado final.webp",
+        "Remodelacion Exterior.webp",
+        "Remodelación fachada 1.webp",
+        "Remodelación fachada 2.webp",
+        "Remodelación fachada Resultado final.webp",
+        "Remodelación fachada.webp",
+        "Remodelacion fachada y deck 1.webp",
+        "Remodelacion fachada y deck 2.webp",
+        "Remodelacion fachada y deck 3.webp",
+        "Remodelacion fachada y deck resultado final.webp",
+        "Remodelacion fachada y deck.webp",
+        "Remodelación Techumbre 1.webp",
+        "Remodelación Techumbre 2.webp",
+        "Remodelación Techumbre 3.webp",
+        "Remodelación Techumbre 4.webp",
+        "Remodelación Techumbre Resultado final.webp",
+        "remodelación Techumbre.webp",
+        "Remodelacion terraza 1.webp",
+        "Remodelacion terraza 2.webp",
+        "Remodelacion terraza 3.webp",
+        "Remodelacion terraza Resultado final.webp",
+        "Remodelacion terraza.webp",
+        "Reparacion de Portón .webp",
+        "Reparacion de Portón 1.webp",
+        "Reparacion de Portón Resultado final.webp"
       ];
 
       const categoryLabels = {
@@ -2071,8 +2171,8 @@
                 metraje: formatMetraje(project.metraje),
                 descripcion: project.descripcion || buildDescription(title, categoria),
                 materiales: splitList(project.materiales),
-                cover: photos[0] || "assets/img/service-cota-cero.png",
-                imagenes: photos.length ? photos : ["assets/img/service-cota-cero.png"],
+                cover: photos[0] || "assets/img/service-cota-cero.webp",
+                imagenes: photos.length ? photos : ["assets/img/service-cota-cero.webp"],
                 source: "google-sheets"
               };
             })
