@@ -2,28 +2,24 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "headers": [
     {
-      "comment": "Fotos de obras ejecutadas: no cambian nunca una vez publicadas.",
       "source": "/Portafolio AOconstrucciones/(.*)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     },
     {
-      "comment": "Logo, hero e imagenes de servicio: cambian de vez en cuando, cache mas corto.",
       "source": "/assets/(.*)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=2592000, stale-while-revalidate=86400" }
       ]
     },
     {
-      "comment": "CSS y JS ya se versionan con ?v= en el HTML.",
       "source": "/(css|js)/(.*)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
       ]
     },
     {
-      "comment": "El HTML siempre se revalida para que los cambios salgan al tiro.",
       "source": "/(.*).html",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
