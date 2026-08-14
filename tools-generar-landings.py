@@ -78,7 +78,7 @@ COMUNAS = [
         'slug': 'san-jose-de-maipo',
         'nombre': 'San José de Maipo',
         'titulo': 'Constructora en San José de Maipo y Cajón del Maipo',
-        'hero': 'proyecto-desde-cota-cero',
+        'hero': 'construccion-deck',
         'intro': '15 años construyendo en el Cajón del Maipo.',
         'contexto': 'Construir en cordillera no es lo mismo que construir en Santiago. '
                     'Es la zona donde más hemos trabajado.',
@@ -99,7 +99,7 @@ COMUNAS = [
         'slug': 'puente-alto',
         'nombre': 'Puente Alto',
         'titulo': 'Constructora en Puente Alto',
-        'hero': 'remodelacion-de-quincho',
+        'hero': 'construccion-deck',
         'intro': 'Ampliaciones, remodelaciones y obra nueva en Puente Alto.',
         'contexto': 'Trabajamos en condominios y sectores con reglamento, coordinando la faena '
                     'con la administración.',
@@ -119,7 +119,7 @@ COMUNAS = [
         'slug': 'la-florida',
         'nombre': 'La Florida',
         'titulo': 'Constructora en La Florida',
-        'hero': '4ta-remodelacion-interior',
+        'hero': 'construccion-deck',
         'intro': 'Remodelaciones, techumbres y ampliaciones en La Florida.',
         'contexto': 'Viviendas con años que piden renovarse: techumbres cumplidas e interiores '
                     'que ya no acomodan.',
@@ -181,9 +181,15 @@ def build(c):
     sectores = sorted({o['sector'] for o in obras_c if o['sector'] != c['nombre']})
     url = f"{SITE}/constructora-{c['slug']}.html"
 
-    # La obra del hero se elige a mano y no se repite en el carrusel.
-    hero_obra = next((o for o in obras_c if o['id'] == c.get('hero')), obras_c[0])
+    # La obra del hero se elige a mano y puede ser de otra comuna: es la foto
+    # que mejor representa el trabajo, no necesariamente la local.
+    hero_obra = next((o for o in obras if o['id'] == c.get('hero')), obras_c[0])
     resto = [o for o in obras_c if o['id'] != hero_obra['id']]
+
+    # Si el hero es de otra comuna hay que decirlo, o parecería obra de esta.
+    hero_es_local = hero_obra['comuna'] == c['nombre']
+    hero_lugar = hero_obra['sector'] if hero_es_local else \
+        f"{hero_obra['sector']}, {hero_obra['comuna']}"
 
     tarjetas = '\n'.join(f'''          <article class="local-work" role="listitem">
             <img src="{img_url(o['portada'])}" alt="{e(o['titulo'])} ejecutada por AO Construcciones en {e(o['sector'])}, {e(c['nombre'])}" loading="lazy" width="1080" height="810">
@@ -303,8 +309,8 @@ def build(c):
         </div>
 
         <figure class="local-hero__media">
-          <img src="{img_url(hero_obra['portada'])}" alt="{e(hero_obra['titulo'])} ejecutada por AO Construcciones en {e(hero_obra['sector'])}, {e(c['nombre'])}" width="1080" height="810" loading="eager" fetchpriority="high">
-          <figcaption>{icon('i-location-dot')} {e(hero_obra['sector'])}</figcaption>
+          <img src="{img_url(hero_obra['portada'])}" alt="{e(hero_obra['titulo'])} ejecutada por AO Construcciones en {e(hero_obra['sector'])}, {e(hero_obra['comuna'])}" width="1080" height="810" loading="eager" fetchpriority="high">
+          <figcaption>{icon('i-location-dot')} {e(hero_lugar)}</figcaption>
         </figure>
       </div>
       {sectores_txt}
