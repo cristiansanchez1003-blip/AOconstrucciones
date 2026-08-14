@@ -77,8 +77,8 @@
           "Thursday",
           "Friday"
         ],
-        "opens": "09:00",
-        "closes": "18:00"
+        "opens": "08:00",
+        "closes": "21:00"
       }
     ],
     "hasOfferCatalog": {
@@ -450,7 +450,7 @@
             <div class="contact__detail-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-clock"></use></svg></div>
             <div class="contact__detail-content">
               <h4>Horario</h4>
-              <p>Lunes a Viernes, 9:00 - 18:00</p>
+              <p>Lunes a Viernes, 8:00 - 21:00</p>
             </div>
           </div>
         </div>
@@ -459,52 +459,19 @@
           <div class="form-stepper">
             <div class="form-stepper__step active" id="stepper-1">
               <div class="form-stepper__dot">1</div>
-              <span class="form-stepper__label">Datos</span>
+              <span class="form-stepper__label">Proyecto</span>
             </div>
             <div class="form-stepper__line"></div>
             <div class="form-stepper__step" id="stepper-2">
               <div class="form-stepper__dot">2</div>
-              <span class="form-stepper__label">Proyecto</span>
-            </div>
-            <div class="form-stepper__line"></div>
-            <div class="form-stepper__step" id="stepper-3">
-              <div class="form-stepper__dot">3</div>
-              <span class="form-stepper__label">Detalles</span>
+              <span class="form-stepper__label">Contacto</span>
             </div>
           </div>
 
           <form id="lead-form" novalidate>
             <div class="form-step active" id="form-step-1">
-              <h3 class="form-step__title">Tus datos de contacto</h3>
-              <p class="form-step__subtitle">Para poder comunicarnos contigo y ofrecerte la mejor atención.</p>
-
-              <div class="form-group">
-                <label for="input-name">Nombre completo</label>
-                <input type="text" id="input-name" name="name" placeholder="Ej: María González" required>
-              </div>
-
-              <div class="form-group">
-                <label for="input-email">Correo electrónico</label>
-                <input type="email" id="input-email" name="email" placeholder="tu@email.com" required>
-              </div>
-
-              <div class="form-group">
-                <label for="input-phone">Teléfono</label>
-                <input type="tel" id="input-phone" name="phone" placeholder="+56 9 7992 5812">
-              </div>
-
-              <div class="form-nav">
-                <div></div>
-                <button type="button" class="form-nav__btn form-nav__btn--next" id="btn-next-1">
-                  Siguiente
-                  <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"></use></svg>
-                </button>
-              </div>
-            </div>
-
-            <div class="form-step" id="form-step-2">
-              <h3 class="form-step__title">Tipo de proyecto</h3>
-              <p class="form-step__subtitle">Selecciona el servicio que mejor se ajuste a tu necesidad.</p>
+              <h3 class="form-step__title">¿Qué necesitas?</h3>
+              <p class="form-step__subtitle">Elige una opción. Si no calza ninguna, marca "Otro" y nos cuentas.</p>
 
               <div class="form-options">
                 <div class="form-option">
@@ -526,53 +493,75 @@
               </div>
 
               <div class="form-group">
-                <label for="input-location">Ubicación del proyecto</label>
+                <label for="input-location">Comuna <span class="form-optional">(opcional)</span></label>
                 <select id="input-location" name="location">
                   <option value="" disabled selected>Selecciona una comuna</option>
+                  <option value="san-jose-de-maipo">San José de Maipo</option>
                   <option value="cajon-del-maipo">Cajón del Maipo</option>
+                  <option value="pirque">Pirque</option>
+                  <option value="puente-alto">Puente Alto</option>
                   <option value="la-florida">La Florida</option>
                   <option value="las-condes">Las Condes</option>
                   <option value="providencia">Providencia</option>
-                  <option value="puente-alto">Puente Alto</option>
                   <option value="santiago-centro">Santiago Centro</option>
                   <option value="otra">Otra comuna</option>
                 </select>
               </div>
 
+              <p class="form-feedback" id="feedback-1" role="alert" aria-live="polite"></p>
+
               <div class="form-nav">
-                <button type="button" class="form-nav__btn form-nav__btn--back" id="btn-back-2">
-                  <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-left"></use></svg>
-                  Atrás
-                </button>
-                <button type="button" class="form-nav__btn form-nav__btn--next" id="btn-next-2">
+                <div></div>
+                <button type="button" class="form-nav__btn form-nav__btn--next" id="btn-next-1">
                   Siguiente
                   <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"></use></svg>
                 </button>
               </div>
             </div>
 
-            <div class="form-step" id="form-step-3">
-              <h3 class="form-step__title">Cuéntanos más</h3>
-              <p class="form-step__subtitle">Cualquier detalle nos ayuda a preparar la mejor propuesta para ti.</p>
+            <div class="form-step" id="form-step-2">
+              <h3 class="form-step__title">¿Cómo te contactamos?</h3>
+              <p class="form-step__subtitle">Con tu nombre y teléfono basta. Te respondemos en menos de 24 horas.</p>
 
               <div class="form-group">
-                <label for="input-budget">Presupuesto estimado</label>
-                <select id="input-budget" name="budget">
-                  <option value="" disabled selected>Rango de presupuesto</option>
-                  <option value="5-15">5 - 15 millones CLP</option>
-                  <option value="15-30">15 - 30 millones CLP</option>
-                  <option value="30-60">30 - 60 millones CLP</option>
-                  <option value="60-plus">Más de 60 millones CLP</option>
-                </select>
+                <label for="input-name">Nombre</label>
+                <input type="text" id="input-name" name="name" placeholder="Ej: María González" autocomplete="name" required>
               </div>
 
               <div class="form-group">
-                <label for="input-message">Descripción del proyecto</label>
-                <textarea id="input-message" name="message" rows="4" placeholder="Cuéntanos qué quieres construir, remodelar o ampliar..."></textarea>
+                <label for="input-phone">Teléfono</label>
+                <input type="tel" id="input-phone" name="phone" placeholder="+56 9 1234 5678" autocomplete="tel" inputmode="tel" required>
               </div>
+
+              <details class="form-more">
+                <summary>Agregar más detalles <span class="form-optional">(opcional)</span></summary>
+
+                <div class="form-group">
+                  <label for="input-email">Correo electrónico</label>
+                  <input type="email" id="input-email" name="email" placeholder="tu@email.com" autocomplete="email">
+                </div>
+
+                <div class="form-group">
+                  <label for="input-budget">Presupuesto estimado</label>
+                  <select id="input-budget" name="budget">
+                    <option value="" disabled selected>Rango de presupuesto</option>
+                    <option value="5-15">5 - 15 millones CLP</option>
+                    <option value="15-30">15 - 30 millones CLP</option>
+                    <option value="30-60">30 - 60 millones CLP</option>
+                    <option value="60-plus">Más de 60 millones CLP</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="input-message">Descripción del proyecto</label>
+                  <textarea id="input-message" name="message" rows="3" placeholder="Cuéntanos qué quieres construir, remodelar o ampliar..."></textarea>
+                </div>
+              </details>
+
+              <p class="form-feedback" id="feedback-2" role="alert" aria-live="polite"></p>
 
               <div class="form-nav">
-                <button type="button" class="form-nav__btn form-nav__btn--back" id="btn-back-3">
+                <button type="button" class="form-nav__btn form-nav__btn--back" id="btn-back-2">
                   <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-left"></use></svg>
                   Atrás
                 </button>

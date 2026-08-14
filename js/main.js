@@ -245,6 +245,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Next buttons
   btnNext.forEach(btn => {
     btn.addEventListener('click', () => {
+      // Validamos el paso actual antes de avanzar. Antes se podía llegar al
+      // final con todo vacío y recién ahí te devolvían al principio.
+      if (!validateStep(currentStep)) return;
+
       if (currentStep < formSteps.length - 1) {
         updateFormStep(currentStep + 1);
       }
@@ -255,9 +259,18 @@ document.addEventListener('DOMContentLoaded', () => {
   btnBack.forEach(btn => {
     btn.addEventListener('click', () => {
       if (currentStep > 0) {
+        clearFeedback();
         updateFormStep(currentStep - 1);
       }
     });
+  });
+
+  // Al corregir un campo, borramos el mensaje de error de inmediato.
+  ['input-name', 'input-phone'].forEach(id => {
+    document.getElementById(id)?.addEventListener('input', () => showFeedback(1, ''));
+  });
+  document.querySelectorAll('input[name="service"]').forEach(radio => {
+    radio.addEventListener('change', () => showFeedback(0, ''));
   });
 
   function getSelectedLabel(name) {
@@ -268,7 +281,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function getSelectLabel(id) {
     const select = document.getElementById(id);
-    return select?.selectedOptions?.[0]?.textContent.trim() || '';
+    // La opción por defecto está deshabilitada y sin value: si no eligieron
+    // nada devolvemos vacío, no el texto del placeholder. Si no, GA4 recibiría
+    // "Selecciona una comuna" como si fuera una comuna real.
+    if (!select || !select.value) return '';
+    return select.selectedOptions?.[0]?.textContent.trim() || '';
   }
 
   function normalizePhone(phone) {
@@ -281,25 +298,68 @@ document.addEventListener('DOMContentLoaded', () => {
     field.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 
-  function validateLeadForm() {
-    const firstServiceOption = document.querySelector('input[name="service"]');
-    const requiredChecks = [
-      { field: document.getElementById('input-name'), isValid: field => Boolean(field?.value.trim()) },
-      { field: document.getElementById('input-email'), isValid: field => Boolean(field?.value.trim()) },
-      { field: document.getElementById('input-phone'), isValid: field => Boolean(field?.value.trim()) },
-      { field: firstServiceOption, isValid: () => Boolean(document.querySelector('input[name="service"]:checked')) },
-      { field: document.getElementById('input-location'), isValid: field => Boolean(field?.value.trim()) },
-      { field: document.getElementById('input-budget'), isValid: field => Boolean(field?.value.trim()) },
-      { field: document.getElementById('input-message'), isValid: field => Boolean(field?.value.trim()) }
-    ];
+  function showFeedback(step, message) {
+    const box = document.getElementById(`feedback-${step + 1}`);
+    if (box) box.textContent = message || '';
+  }
 
-    const invalidCheck = requiredChecks.find(check => !check.isValid(check.field));
+  function clearFeedback() {
+    document.querySelectorAll('.form-feedback').forEach(el => { el.textContent = ''; });
+  }
 
-    if (invalidCheck) {
-      markInvalidField(invalidCheck.field);
+  // Solo tres campos obligatorios: servicio, nombre y teléfono. El resto es
+  // opcional a propósito — cada campo extra obligatorio cuesta conversiones.
+  const stepChecks = [
+    [
+      {
+        field: () => document.querySelector('input[name="service"]'),
+        isValid: () => Boolean(document.querySelector('input[name="service"]:checked')),
+        message: 'Elige qué tipo de proyecto necesitas.'
+      }
+    ],
+    [
+      {
+        field: () => document.getElementById('input-name'),
+        isValid: () => Boolean(document.getElementById('input-name')?.value.trim()),
+        message: 'Escribe tu nombre para saber cómo llamarte.'
+      },
+      {
+        field: () => document.getElementById('input-phone'),
+        // Chile: 8 dígitos mínimo; evita "123" pero no bloquea formatos con +56, espacios o guiones.
+        isValid: () => normalizePhone(document.getElementById('input-phone')?.value || '').replace(/\D/g, '').length >= 8,
+        message: 'Necesitamos un teléfono válido para contactarte.'
+      }
+    ]
+  ];
+
+  function validateStep(step) {
+    const checks = stepChecks[step] || [];
+    const failed = checks.find(check => !check.isValid());
+
+    if (failed) {
+      showFeedback(step, failed.message);
+      markInvalidField(failed.field());
       return false;
     }
 
+    showFeedback(step, '');
+    return true;
+  }
+
+  function validateLeadForm() {
+    // Si falta algo de un paso anterior, volvemos a ese paso en vez de dejar
+    // al usuario con un error que no puede ver.
+    for (let step = 0; step < stepChecks.length; step += 1) {
+      const failed = stepChecks[step].find(check => !check.isValid());
+      if (failed) {
+        if (step !== currentStep) updateFormStep(step);
+        showFeedback(step, failed.message);
+        markInvalidField(failed.field());
+        return false;
+      }
+    }
+
+    clearFeedback();
     return true;
   }
 
@@ -357,19 +417,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const budget = getSelectLabel('input-budget');
     const message = document.getElementById('input-message').value.trim();
 
+    // Solo servicio, nombre y teléfono son obligatorios: omitimos del mensaje
+    // las líneas que el usuario dejó en blanco en vez de mandarlas vacías.
     const whatsappText = [
       '🏗️ *Nueva Cotización - AO Construcciones* 🏗️',
       '--------------------------------------------',
       `👤 *Cliente:* ${name}`,
-      `📧 *Email:* ${email}`,
       `📞 *Teléfono:* ${phone}`,
+      email && `📧 *Email:* ${email}`,
       '',
       '📍 *Detalles del Proyecto:*',
       `• Tipo de proyecto: ${projectType}`,
-      `• Ubicación: ${location}`,
-      `• Presupuesto estimado: ${budget}`,
-      `• Descripción: ${message}`
-    ].join('\n');
+      location && `• Comuna: ${location}`,
+      budget && `• Presupuesto estimado: ${budget}`,
+      message && `• Descripción: ${message}`
+    ].filter(Boolean).join('\n');
 
     const whatsappUrl =
       `https://api.whatsapp.com/send?phone=56979925812&text=${encodeURIComponent(whatsappText)}`;
@@ -381,19 +443,26 @@ document.addEventListener('DOMContentLoaded', () => {
       btnSubmit.innerHTML = 'Enviando…';
     }
 
-    const saved = await saveLead({
+    const payload = {
       access_key: WEB3FORMS_ACCESS_KEY,
       subject: `Nueva cotización de ${name} — ${projectType}`,
       from_name: 'Sitio web AO Construcciones',
-      replyto: email,
       Nombre: name,
-      Email: email,
       Teléfono: phone,
-      'Tipo de proyecto': projectType,
-      Comuna: location,
-      'Presupuesto estimado': budget,
-      Descripción: message
-    });
+      'Tipo de proyecto': projectType
+    };
+
+    // Los campos opcionales solo viajan si el usuario los completó, para que el
+    // correo no llegue lleno de líneas vacías.
+    if (email) {
+      payload.replyto = email;
+      payload.Email = email;
+    }
+    if (location) payload.Comuna = location;
+    if (budget) payload['Presupuesto estimado'] = budget;
+    if (message) payload['Descripción'] = message;
+
+    const saved = await saveLead(payload);
 
     if (btnSubmit) {
       btnSubmit.disabled = false;

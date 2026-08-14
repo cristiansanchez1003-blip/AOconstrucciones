@@ -1466,3 +1466,80 @@ body::before {
   flex: none;
   vertical-align: -0.125em;
 }
+
+/* ============================================
+   Formulario: campos opcionales y validación
+   ============================================ */
+.form-optional {
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 0.82em;
+}
+
+.form-feedback:empty {
+  display: none;
+}
+
+.form-feedback {
+  margin-top: 0.85rem;
+  padding: 0.6rem 0.8rem;
+  border-left: 3px solid var(--accent-color);
+  border-radius: var(--radius-sm);
+  background: rgba(229, 57, 53, 0.08);
+  color: var(--accent-color);
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+
+.form-more {
+  margin-top: 0.25rem;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 0.9rem;
+}
+
+.form-more > summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--text-secondary);
+  font-family: var(--font-heading);
+  font-size: 0.86rem;
+  font-weight: 600;
+  transition: color var(--transition);
+}
+
+.form-more > summary::-webkit-details-marker {
+  display: none;
+}
+
+.form-more > summary::before {
+  content: "+";
+  display: inline-grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 50%;
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+.form-more[open] > summary::before {
+  content: "−";
+}
+
+.form-more > summary:hover,
+.form-more[open] > summary {
+  color: var(--text-primary);
+}
+
+.form-more > summary:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 3px;
+}
+
+.form-more > .form-group:first-of-type {
+  margin-top: 0.9rem;
+}
