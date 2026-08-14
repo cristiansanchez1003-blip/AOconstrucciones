@@ -25,12 +25,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const navbar = document.getElementById('navbar');
   const SCROLL_THRESHOLD = 60;
 
+  // Las landings por comuna reusan este script con una cabecera más simple,
+  // así que todo lo que sea propio del home tiene que tolerar su ausencia.
   const handleNavbarScroll = () => {
-    if (window.scrollY > SCROLL_THRESHOLD) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
+    if (!navbar) return;
+    navbar.classList.toggle('scrolled', window.scrollY > SCROLL_THRESHOLD);
   };
 
   window.addEventListener('scroll', handleNavbarScroll, { passive: true });
@@ -72,9 +71,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function closeMobileMenu() {
+    if (!menuToggle || !navLinks) return;
     menuToggle.classList.remove('active');
     navLinks.classList.remove('open');
-    mobileOverlay.classList.remove('active');
+    mobileOverlay?.classList.remove('active');
     document.body.style.overflow = '';
   }
 

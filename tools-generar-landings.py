@@ -1,0 +1,516 @@
+# -*- coding: utf-8 -*-
+"""
+Genera las landings por comuna como HTML estatico.
+
+Lee las obras reales y su ubicacion desde portafolio.html, para que las fotos y
+los sectores que aparecen en cada landing sean los que de verdad se ejecutaron
+ahi. Nada se arma con JavaScript: Google recibe el contenido completo en el HTML.
+
+Uso:  python generar-landings.py
+"""
+import re, os, collections, unicodedata, urllib.parse, html, json
+
+ROOT = 'C:/Users/cristian1/Desktop/AOconstrucciones'
+PORT_DIR = 'Portafolio AOconstrucciones'
+SITE = 'https://aoconstrucciones.cl'
+
+# ---------- 1. Leer las obras reales del portafolio ----------
+src = open(os.path.join(ROOT, 'portafolio.html'), encoding='utf-8').read()
+locs = dict(re.findall(r'"([^"]+)":\s*"([^"]+)"',
+                       re.search(r'const projectLocations = \{(.*?)\};', src, re.S).group(1)))
+files = [f for f in re.findall(r'"([^"]+\.webp)"', src) if '/' not in f]
+
+
+def strip_accents(s):
+    s = unicodedata.normalize('NFD', s)
+    return ''.join(c for c in s if unicodedata.category(c) != 'Mn')
+
+
+def slug(s):
+    return re.sub(r'[^a-z0-9]+', '-', strip_accents(s).lower()).strip('-')
+
+
+def base_name(f):
+    b = re.sub(r'\.[^.]+$', '', f)
+    b = re.sub(r'\s+', ' ', b).strip()
+    b = re.sub(r'\s+resultado\s+final$', '', b, flags=re.I)
+    return re.sub(r'\s+\d+$', '', b).strip()
+
+
+def humanize(b):
+    t = b[0].upper() + b[1:]
+    for pat, rep in [(r'\bremodelacion\b', 'Remodelación'), (r'\bRemodelacion\b', 'Remodelación'),
+                     (r'\bconstruccion\b', 'Construcción'), (r'\bConstruccion\b', 'Construcción'),
+                     (r'\breparacion\b', 'Reparación'), (r'\bReparacion\b', 'Reparación'),
+                     (r'\bporton\b', 'Portón'), (r'\barbol\b', 'árbol'),
+                     (r'^2da\b', 'Segunda'), (r'^3ra\b', 'Tercera'), (r'^4ta\b', 'Cuarta')]:
+        t = re.sub(pat, rep, t)
+    return t.strip()
+
+
+groups = collections.defaultdict(list)
+for f in files:
+    groups[slug(base_name(f))].append(f)
+
+obras = []
+for pid, fs in groups.items():
+    loc = locs.get(pid)
+    if not loc:
+        continue
+    portada = next((x for x in fs if re.search(r'\sresultado\s+final\.', x, re.I)), fs[0])
+    sector, _, com = loc.partition(',')
+    obras.append({
+        'id': pid,
+        'titulo': humanize(base_name(fs[0])),
+        'sector': sector.strip(),
+        'comuna': (com.strip() or sector.strip()),
+        'portada': f'{PORT_DIR}/{portada}',
+        'fotos': len(fs),
+    })
+
+por_comuna = collections.defaultdict(list)
+for o in obras:
+    por_comuna[o['comuna']].append(o)
+
+# ---------- 2. Definicion de cada landing ----------
+COMUNAS = [
+    {
+        'slug': 'san-jose-de-maipo',
+        'nombre': 'San José de Maipo',
+        'titulo': 'Constructora en San José de Maipo y Cajón del Maipo',
+        'intro': 'Llevamos 15 años construyendo en el Cajón del Maipo. Conocemos el terreno, '
+                 'el clima de cordillera y las exigencias municipales de la comuna.',
+        'contexto': 'Construir en cordillera no es lo mismo que construir en Santiago. Las '
+                    'heladas, la pendiente del terreno y los accesos complicados obligan a '
+                    'fundaciones más profundas, aislación térmica reforzada y una logística de '
+                    'materiales pensada de antemano. Es donde más obras hemos ejecutado.',
+        'faq': [
+            ('¿Trabajan en todo el Cajón del Maipo?',
+             'Sí. Hemos ejecutado obras en Las Vertientes, El Manzano, El Canelo, Melocotón y '
+             'San Gabriel. Subimos hasta donde llegue el camino.'),
+            ('¿Cuánto demora una ampliación en la zona?',
+             'Depende del acceso y de la época del año. Una ampliación de 30 m² toma entre 6 y '
+             '10 semanas; en invierno los plazos se alargan por las lluvias y las heladas.'),
+            ('¿Se encargan de los permisos municipales?',
+             'Sí, gestionamos la tramitación en la Dirección de Obras de San José de Maipo como '
+             'parte del proyecto.'),
+        ],
+    },
+    {
+        'slug': 'puente-alto',
+        'nombre': 'Puente Alto',
+        'titulo': 'Constructora en Puente Alto',
+        'intro': 'Ampliaciones, remodelaciones y obra nueva en Puente Alto, con experiencia en '
+                 'condominios y viviendas del sector oriente de la comuna.',
+        'contexto': 'En Puente Alto trabajamos principalmente en condominios y casas donde hay '
+                    'reglamento de copropiedad de por medio. Eso exige planificar horarios de '
+                    'faena, accesos y manejo de escombros para no entorpecer a los vecinos. Lo '
+                    'coordinamos con la administración antes de partir.',
+        'faq': [
+            ('¿Trabajan en condominios con reglamento?',
+             'Sí. Hemos ejecutado obras en Hacienda El Peñón y en el Condominio La Vizcachas, '
+             'coordinando permisos y horarios con la administración.'),
+            ('¿Hacen ampliaciones de segundo piso?',
+             'Sí, previo estudio de la estructura existente para confirmar que soporta la carga.'),
+            ('¿Cuánto cuesta remodelar una cocina en Puente Alto?',
+             'Depende de la superficie y las terminaciones. Una remodelación completa de cocina '
+             'parte alrededor de los 5 millones. Te damos el presupuesto exacto tras visitar.'),
+        ],
+    },
+    {
+        'slug': 'la-florida',
+        'nombre': 'La Florida',
+        'titulo': 'Constructora en La Florida',
+        'intro': 'Remodelaciones interiores, techumbres y ampliaciones en La Florida, con '
+                 'atención directa del dueño de la empresa.',
+        'contexto': 'La Florida concentra viviendas de 30 a 50 años que hoy necesitan renovación: '
+                    'techumbres cumplidas, instalaciones antiguas y distribuciones que ya no '
+                    'acomodan a la familia. Ahí es donde más nos buscan en la comuna.',
+        'faq': [
+            ('¿Reparan techumbres con filtraciones?',
+             'Sí, es de los trabajos que más hacemos en la comuna. Evaluamos si conviene reparar '
+             'el sector afectado o renovar la techumbre completa.'),
+            ('¿Atienden todo La Florida?',
+             'Sí, incluido el sector Departamental, Vicuña Mackenna y Rojas Magallanes.'),
+            ('¿Dan garantía por el trabajo?',
+             'Sí. Entregamos garantía por escrito y hacemos seguimiento posterior a la entrega.'),
+        ],
+    },
+]
+
+SERVICIOS = [
+    ('Cota Cero', 'i-building',
+     'Obra nueva completa: fundaciones, estructura y terminaciones hasta la entrega llave en mano.'),
+    ('Ampliaciones', 'i-expand',
+     'Más metros cuadrados sin romper el diseño original de tu casa, cuidando luz y aislación.'),
+    ('Remodelaciones', 'i-paint-roller',
+     'Cocinas, baños, terrazas e interiores renovados con materiales nobles y buena terminación.'),
+]
+
+SPRITE_IDS = ['i-arrow-right', 'i-arrow-left', 'i-phone', 'i-location-dot', 'i-clock',
+              'i-circle-check', 'i-shield-halved', 'i-building', 'i-expand', 'i-paint-roller',
+              'i-ellipsis', 'i-paper-plane', 'i-whatsapp', 'i-envelope']
+
+# Reutilizamos el sprite ya definido en index.html para no duplicar los trazos.
+idx = open(os.path.join(ROOT, 'index.html'), encoding='utf-8').read()
+sprite_full = re.search(r'(<svg class="icon-sprite".*?</svg>)', idx, re.S).group(1)
+symbols = dict(re.findall(r'(<symbol id="(i-[a-z-]+)".*?</symbol>)', sprite_full, re.S))
+sprite = ('  <svg class="icon-sprite" aria-hidden="true" focusable="false"><defs>\n'
+          + '\n'.join('    ' + s for s, n in
+                      sorted(((s, n) for s, n in symbols.items() if n in SPRITE_IDS), key=lambda x: x[1]))
+          + '\n  </defs></svg>')
+
+WA = ('https://wa.me/56979925812?text=Hola%2C%20vi%20su%20sitio%20web%20y%20'
+      'quiero%20cotizar%20un%20proyecto')
+
+
+def icon(name):
+    return f'<svg class="icon" aria-hidden="true" focusable="false"><use href="#{name}"></use></svg>'
+
+
+def img_url(path):
+    return urllib.parse.quote(path)
+
+
+def e(s):
+    return html.escape(s, quote=False)
+
+
+# ---------- 3. Plantilla ----------
+def build(c):
+    obras_c = sorted(por_comuna.get(c['nombre'], []), key=lambda o: -o['fotos'])
+    sectores = sorted({o['sector'] for o in obras_c if o['sector'] != c['nombre']})
+    url = f"{SITE}/constructora-{c['slug']}.html"
+
+    tarjetas = '\n'.join(f'''        <article class="local-work">
+          <img src="{img_url(o['portada'])}" alt="{e(o['titulo'])} ejecutada por AO Construcciones en {e(o['sector'])}, {e(c['nombre'])}" loading="lazy" width="1080" height="810">
+          <div class="local-work__body">
+            <span class="local-work__place">{icon('i-location-dot')} {e(o['sector'])}</span>
+            <h3>{e(o['titulo'])}</h3>
+            <p>{o['fotos']} fotos del proceso y el resultado final.</p>
+          </div>
+        </article>''' for o in obras_c)
+
+    servicios = '\n'.join(f'''          <article class="local-service">
+            <span class="local-service__icon">{icon(ic)}</span>
+            <h3>{e(nom)}</h3>
+            <p>{e(desc)}</p>
+          </article>''' for nom, ic, desc in SERVICIOS)
+
+    faqs = '\n'.join(f'''          <details class="faq-item">
+            <summary>{e(q)}</summary>
+            <p>{e(a)}</p>
+          </details>''' for q, a in c['faq'])
+
+    sectores_txt = ''
+    if sectores:
+        lista = ', '.join(sectores[:-1]) + ' y ' + sectores[-1] if len(sectores) > 1 else sectores[0]
+        sectores_txt = f'<p class="local-hero__sectors">{icon("i-location-dot")} Obras ejecutadas en {e(lista)}.</p>'
+
+    ld = {
+        "@context": "https://schema.org",
+        "@type": "GeneralContractor",
+        "name": "AO Construcciones",
+        "description": f"Constructora en {c['nombre']}: ampliaciones, remodelaciones y "
+                       f"construcción desde cota cero.",
+        "telephone": "+56979925812",
+        "email": "construyeao@gmail.com",
+        "url": url,
+        "image": f"{SITE}/assets/img/ao-construcciones-logo-portfolio-transparent.webp",
+        "priceRange": "$$",
+        "address": {"@type": "PostalAddress", "addressLocality": "San José de Maipo",
+                    "addressRegion": "Región Metropolitana", "postalCode": "9460000",
+                    "addressCountry": "CL"},
+        "areaServed": {"@type": "City", "name": c['nombre'],
+                       "addressRegion": "Región Metropolitana", "addressCountry": "CL"},
+        "openingHoursSpecification": [{
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday",
+                          "Saturday", "Sunday"],
+            "opens": "08:00", "closes": "21:00"}],
+    }
+    faq_ld = {"@context": "https://schema.org", "@type": "FAQPage",
+              "mainEntity": [{"@type": "Question", "name": q,
+                              "acceptedAnswer": {"@type": "Answer", "text": a}}
+                             for q, a in c['faq']]}
+
+    return f'''<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{e(c['titulo'])}. Ampliaciones, remodelaciones y obra nueva con {len(obras_c)} proyectos ejecutados en la comuna. Cotización sin costo.">
+  <title>{e(c['titulo'])} | AO Construcciones</title>
+  <link rel="canonical" href="{url}">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="assets/img/favicon.png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{e(c['titulo'])} | AO Construcciones">
+  <meta property="og:description" content="{e(c['intro'])}">
+  <meta property="og:url" content="{url}">
+  <meta property="og:image" content="{SITE}/{img_url(obras_c[0]['portada']) if obras_c else 'assets/img/hero-portada-casa.webp'}">
+  <meta property="og:locale" content="es_CL">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=industrial-premium">
+
+  <script src="js/tracking.js"></script>
+
+  <script type="application/ld+json">
+{json.dumps(ld, ensure_ascii=False, indent=2)}
+  </script>
+  <script type="application/ld+json">
+{json.dumps(faq_ld, ensure_ascii=False, indent=2)}
+  </script>
+</head>
+<body>
+{sprite}
+
+  <header class="navbar" id="navbar" role="banner">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo" aria-label="Ir al inicio de AO Construcciones">
+        <img src="assets/img/ao-construcciones-logo-portfolio-transparent.webp" alt="AO Construcciones" width="512" height="186">
+      </a>
+      <a href="tel:+56979925812" class="navbar__cta" id="landing-phone">
+        {icon('i-phone')}
+        +56 9 7992 5812
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="local-hero">
+      <div class="container">
+        <p class="section-tag">{e(c['nombre'])} · Región Metropolitana</p>
+        <h1>{e(c['titulo'])}</h1>
+        <p class="local-hero__intro">{e(c['intro'])}</p>
+        {sectores_txt}
+        <div class="local-hero__actions">
+          <a href="#cotizar" class="btn-primary">Solicita tu cotización {icon('i-arrow-right')}</a>
+          <a href="{WA}" target="_blank" rel="noopener noreferrer" class="btn-secondary">{icon('i-whatsapp')} Escribir por WhatsApp</a>
+        </div>
+        <ul class="local-hero__trust">
+          <li>{icon('i-shield-halved')} 15 años de experiencia</li>
+          <li>{icon('i-circle-check')} {len(obras_c)} obras en {e(c['nombre'])}</li>
+          <li>{icon('i-clock')} Todos los días, 8:00 – 21:00</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="local-section">
+      <div class="container">
+        <h2>Obras que hemos ejecutado en {e(c['nombre'])}</h2>
+        <p class="local-section__lead">{e(c['contexto'])}</p>
+      </div>
+      <div class="container local-works">
+{tarjetas}
+      </div>
+      <div class="container local-section__more">
+        <a href="portafolio.html" class="btn-secondary">Ver el portafolio completo {icon('i-arrow-right')}</a>
+      </div>
+    </section>
+
+    <section class="local-section local-section--alt">
+      <div class="container">
+        <h2>Qué hacemos en {e(c['nombre'])}</h2>
+        <div class="local-services">
+{servicios}
+        </div>
+      </div>
+    </section>
+
+    <section class="local-section" id="cotizar">
+      <div class="container local-form">
+        <div class="local-form__intro">
+          <h2>Cotiza tu proyecto en {e(c['nombre'])}</h2>
+          <p>Cuéntanos qué necesitas y te respondemos en menos de 24 horas. Solo te pedimos
+             tu nombre y un teléfono.</p>
+          <ul class="local-form__points">
+            <li>{icon('i-circle-check')} Visita y presupuesto sin costo</li>
+            <li>{icon('i-circle-check')} Trato directo con el dueño de la empresa</li>
+            <li>{icon('i-circle-check')} Garantía por escrito</li>
+          </ul>
+          <p class="local-form__contact">
+            <a href="tel:+56979925812">{icon('i-phone')} +56 9 7992 5812</a>
+            <a href="mailto:construyeao@gmail.com">{icon('i-envelope')} construyeao@gmail.com</a>
+          </p>
+        </div>
+
+        <div class="contact__form-card">
+          <div class="form-stepper">
+            <div class="form-stepper__step active" id="stepper-1">
+              <div class="form-stepper__dot">1</div>
+              <span class="form-stepper__label">Proyecto</span>
+            </div>
+            <div class="form-stepper__line"></div>
+            <div class="form-stepper__step" id="stepper-2">
+              <div class="form-stepper__dot">2</div>
+              <span class="form-stepper__label">Contacto</span>
+            </div>
+          </div>
+
+          <form id="lead-form" novalidate>
+            <div class="form-step active" id="form-step-1">
+              <h3 class="form-step__title">¿Qué necesitas?</h3>
+              <p class="form-step__subtitle">Elige una opción. Si no calza ninguna, marca "Otro".</p>
+
+              <div class="form-options">
+                <div class="form-option">
+                  <input type="radio" id="opt-cota" name="service" value="cota-cero">
+                  <label for="opt-cota">{icon('i-building')} Desde Cota Cero</label>
+                </div>
+                <div class="form-option">
+                  <input type="radio" id="opt-remodel" name="service" value="remodelacion">
+                  <label for="opt-remodel">{icon('i-paint-roller')} Remodelación</label>
+                </div>
+                <div class="form-option">
+                  <input type="radio" id="opt-ampliacion" name="service" value="ampliacion">
+                  <label for="opt-ampliacion">{icon('i-expand')} Ampliación</label>
+                </div>
+                <div class="form-option">
+                  <input type="radio" id="opt-otro" name="service" value="otro">
+                  <label for="opt-otro">{icon('i-ellipsis')} Otro</label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="input-location">Comuna <span class="form-optional">(opcional)</span></label>
+                <select id="input-location" name="location">
+                  <option value="" disabled>Selecciona una comuna</option>
+                  <option value="san-jose-de-maipo"{' selected' if c['slug'] == 'san-jose-de-maipo' else ''}>San José de Maipo</option>
+                  <option value="cajon-del-maipo">Cajón del Maipo</option>
+                  <option value="pirque">Pirque</option>
+                  <option value="puente-alto"{' selected' if c['slug'] == 'puente-alto' else ''}>Puente Alto</option>
+                  <option value="la-florida"{' selected' if c['slug'] == 'la-florida' else ''}>La Florida</option>
+                  <option value="otra">Otra comuna</option>
+                </select>
+              </div>
+
+              <p class="form-feedback" id="feedback-1" role="alert" aria-live="polite"></p>
+
+              <div class="form-nav">
+                <div></div>
+                <button type="button" class="form-nav__btn form-nav__btn--next" id="btn-next-1">
+                  Siguiente {icon('i-arrow-right')}
+                </button>
+              </div>
+            </div>
+
+            <div class="form-step" id="form-step-2">
+              <h3 class="form-step__title">¿Cómo te contactamos?</h3>
+              <p class="form-step__subtitle">Con tu nombre y teléfono basta.</p>
+
+              <div class="form-group">
+                <label for="input-name">Nombre</label>
+                <input type="text" id="input-name" name="name" placeholder="Ej: María González" autocomplete="name" required>
+              </div>
+
+              <div class="form-group">
+                <label for="input-phone">Teléfono</label>
+                <input type="tel" id="input-phone" name="phone" placeholder="+56 9 1234 5678" autocomplete="tel" inputmode="tel" required>
+              </div>
+
+              <details class="form-more">
+                <summary>Agregar más detalles <span class="form-optional">(opcional)</span></summary>
+                <div class="form-group">
+                  <label for="input-email">Correo electrónico</label>
+                  <input type="email" id="input-email" name="email" placeholder="tu@email.com" autocomplete="email">
+                </div>
+                <div class="form-group">
+                  <label for="input-budget">Presupuesto estimado</label>
+                  <select id="input-budget" name="budget">
+                    <option value="" disabled selected>Rango de presupuesto</option>
+                    <option value="5-15">5 - 15 millones CLP</option>
+                    <option value="15-30">15 - 30 millones CLP</option>
+                    <option value="30-60">30 - 60 millones CLP</option>
+                    <option value="60-plus">Más de 60 millones CLP</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="input-message">Descripción del proyecto</label>
+                  <textarea id="input-message" name="message" rows="3" placeholder="Cuéntanos qué quieres construir, remodelar o ampliar..."></textarea>
+                </div>
+              </details>
+
+              <p class="form-feedback" id="feedback-2" role="alert" aria-live="polite"></p>
+
+              <div class="form-nav">
+                <button type="button" class="form-nav__btn form-nav__btn--back" id="btn-back-2">
+                  {icon('i-arrow-left')} Atrás
+                </button>
+                <button type="submit" class="form-nav__btn form-nav__btn--submit" id="btn-submit">
+                  Enviar Solicitud {icon('i-paper-plane')}
+                </button>
+              </div>
+
+              <p class="form-privacy">
+                Al enviar aceptas nuestra <a href="privacidad.html">política de privacidad</a>.
+              </p>
+            </div>
+          </form>
+
+          <div class="form-success">
+            <div class="form-success__icon">{icon('i-circle-check')}</div>
+            <h3 class="form-success__title">¡Solicitud enviada!</h3>
+            <p class="form-success__text">Gracias por confiar en AO Construcciones.<br>Te contactaremos en menos de 24 horas.</p>
+            <a href="{WA}" id="success-whatsapp" class="form-success__whatsapp" target="_blank" rel="noopener noreferrer">
+              {icon('i-whatsapp')} Continuar por WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="local-section local-section--alt">
+      <div class="container local-faq">
+        <h2>Preguntas frecuentes sobre construir en {e(c['nombre'])}</h2>
+{faqs}
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__bottom">
+        <div>
+          <p>&copy; 2026 AO Construcciones. Todos los derechos reservados.</p>
+          <p class="footer__credit">
+            <a href="index.html">Inicio</a> ·
+            <a href="portafolio.html">Portafolio</a> ·
+            <a href="privacidad.html">Privacidad</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a id="whatsapp-float" class="whatsapp-btn" href="{WA}" target="_blank" rel="noopener noreferrer"
+     aria-label="Escríbenos por WhatsApp para cotizar tu proyecto">
+    {icon('i-whatsapp')}
+  </a>
+
+  <script src="js/main.js?v=landing"></script>
+</body>
+</html>
+'''
+
+
+# ---------- 4. Escribir ----------
+generadas = []
+for c in COMUNAS:
+    out = os.path.join(ROOT, f"constructora-{c['slug']}.html")
+    open(out, 'w', encoding='utf-8').write(build(c))
+    n = len(por_comuna.get(c['nombre'], []))
+    generadas.append((f"constructora-{c['slug']}.html", c['nombre'], n))
+
+print('LANDINGS GENERADAS')
+for f, nom, n in generadas:
+    print(f'  {f:42} {nom:20} {n} obras reales')
+
+print()
+print('Comunas objetivo sin obras registradas:')
+for objetivo in ['Pirque']:
+    print(f'  - {objetivo}: {len(por_comuna.get(objetivo, []))} obras  -> sin evidencia local')
