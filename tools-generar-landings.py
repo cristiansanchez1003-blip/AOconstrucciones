@@ -80,20 +80,21 @@ COMUNAS = [
         'titulo': 'Constructora en San José de Maipo y Cajón del Maipo',
         'intro': 'Llevamos 15 años construyendo en el Cajón del Maipo. Conocemos el terreno, '
                  'el clima de cordillera y las exigencias municipales de la comuna.',
-        'contexto': 'Construir en cordillera no es lo mismo que construir en Santiago. Las '
-                    'heladas, la pendiente del terreno y los accesos complicados obligan a '
-                    'fundaciones más profundas, aislación térmica reforzada y una logística de '
-                    'materiales pensada de antemano. Es donde más obras hemos ejecutado.',
+        'contexto': 'Construir en cordillera no es lo mismo que construir en Santiago. La '
+                    'pendiente del terreno, las heladas y los accesos complicados cambian cómo '
+                    'se plantea una obra desde el primer día. Es la zona donde más hemos '
+                    'trabajado: 15 de nuestras obras registradas están aquí.',
         'faq': [
             ('¿Trabajan en todo el Cajón del Maipo?',
-             'Sí. Hemos ejecutado obras en Las Vertientes, El Manzano, El Canelo, Melocotón y '
-             'San Gabriel. Subimos hasta donde llegue el camino.'),
-            ('¿Cuánto demora una ampliación en la zona?',
-             'Depende del acceso y de la época del año. Una ampliación de 30 m² toma entre 6 y '
-             '10 semanas; en invierno los plazos se alargan por las lluvias y las heladas.'),
-            ('¿Se encargan de los permisos municipales?',
-             'Sí, gestionamos la tramitación en la Dirección de Obras de San José de Maipo como '
-             'parte del proyecto.'),
+             'Sí. Tenemos obras ejecutadas en Las Vertientes, El Manzano, El Canelo, Melocotón y '
+             'San Gabriel. Puedes verlas todas en nuestro portafolio.'),
+            ('¿Cómo se hace el presupuesto?',
+             'Andrés, dueño de la empresa, va en persona a ver el proyecto. No damos precios por '
+             'teléfono ni por metro cuadrado: cada obra depende del terreno, del acceso y de lo '
+             'que quieras lograr. La visita no tiene costo.'),
+            ('¿Qué tipo de obras hacen en la zona?',
+             'Construcción desde cota cero, ampliaciones, remodelaciones interiores, techumbres, '
+             'terrazas, decks y quinchos. En el portafolio están todas con fotos del proceso.'),
         ],
     },
     {
@@ -102,19 +103,19 @@ COMUNAS = [
         'titulo': 'Constructora en Puente Alto',
         'intro': 'Ampliaciones, remodelaciones y obra nueva en Puente Alto, con experiencia en '
                  'condominios y viviendas del sector oriente de la comuna.',
-        'contexto': 'En Puente Alto trabajamos principalmente en condominios y casas donde hay '
-                    'reglamento de copropiedad de por medio. Eso exige planificar horarios de '
-                    'faena, accesos y manejo de escombros para no entorpecer a los vecinos. Lo '
-                    'coordinamos con la administración antes de partir.',
+        'contexto': 'Nuestras obras en Puente Alto han sido en condominios y sectores con '
+                    'reglamento de copropiedad, donde hay que coordinar accesos, horarios de '
+                    'faena y retiro de escombros para no entorpecer a los vecinos.',
         'faq': [
-            ('¿Trabajan en condominios con reglamento?',
-             'Sí. Hemos ejecutado obras en Hacienda El Peñón y en el Condominio La Vizcachas, '
-             'coordinando permisos y horarios con la administración.'),
-            ('¿Hacen ampliaciones de segundo piso?',
-             'Sí, previo estudio de la estructura existente para confirmar que soporta la carga.'),
-            ('¿Cuánto cuesta remodelar una cocina en Puente Alto?',
-             'Depende de la superficie y las terminaciones. Una remodelación completa de cocina '
-             'parte alrededor de los 5 millones. Te damos el presupuesto exacto tras visitar.'),
+            ('¿Trabajan en condominios?',
+             'Sí. Tenemos obras ejecutadas en Hacienda El Peñón y en el Condominio La Vizcachas. '
+             'Estamos acostumbrados a coordinar la faena con la administración.'),
+            ('¿Cómo se hace el presupuesto?',
+             'Andrés, dueño de la empresa, va en persona a ver el proyecto. No damos precios por '
+             'teléfono: cada obra depende de lo que haya en terreno. La visita no tiene costo.'),
+            ('¿Qué tipo de obras hacen en Puente Alto?',
+             'Remodelaciones interiores, cocinas, techumbres, quinchos y escaleras, entre otras. '
+             'Las obras de la comuna están en el portafolio con fotos del resultado.'),
         ],
     },
     {
@@ -123,17 +124,19 @@ COMUNAS = [
         'titulo': 'Constructora en La Florida',
         'intro': 'Remodelaciones interiores, techumbres y ampliaciones en La Florida, con '
                  'atención directa del dueño de la empresa.',
-        'contexto': 'La Florida concentra viviendas de 30 a 50 años que hoy necesitan renovación: '
-                    'techumbres cumplidas, instalaciones antiguas y distribuciones que ya no '
-                    'acomodan a la familia. Ahí es donde más nos buscan en la comuna.',
+        'contexto': 'Buena parte de La Florida son viviendas ya con años, donde lo que se pide '
+                    'es renovar: techumbres cumplidas, interiores que quedaron chicos o '
+                    'distribuciones que ya no acomodan a la familia.',
         'faq': [
-            ('¿Reparan techumbres con filtraciones?',
-             'Sí, es de los trabajos que más hacemos en la comuna. Evaluamos si conviene reparar '
-             'el sector afectado o renovar la techumbre completa.'),
-            ('¿Atienden todo La Florida?',
-             'Sí, incluido el sector Departamental, Vicuña Mackenna y Rojas Magallanes.'),
-            ('¿Dan garantía por el trabajo?',
-             'Sí. Entregamos garantía por escrito y hacemos seguimiento posterior a la entrega.'),
+            ('¿Reparan o cambian techumbres?',
+             'Sí. Vamos a ver el estado en terreno y te decimos si conviene intervenir solo el '
+             'sector afectado o renovar la techumbre completa.'),
+            ('¿Cómo se hace el presupuesto?',
+             'Andrés, dueño de la empresa, va en persona a ver el proyecto. No damos precios por '
+             'teléfono: cada obra depende de lo que haya en terreno. La visita no tiene costo.'),
+            ('¿Qué tipo de obras hacen en La Florida?',
+             'Remodelaciones interiores y trabajos de techumbre, entre otros. Puedes ver las '
+             'obras de la comuna en el portafolio.'),
         ],
     },
 ]
@@ -326,12 +329,12 @@ def build(c):
       <div class="container local-form">
         <div class="local-form__intro">
           <h2>Cotiza tu proyecto en {e(c['nombre'])}</h2>
-          <p>Cuéntanos qué necesitas y te respondemos en menos de 24 horas. Solo te pedimos
-             tu nombre y un teléfono.</p>
+          <p>Cuéntanos qué necesitas y te contactamos para coordinar la visita. Solo te
+             pedimos tu nombre y un teléfono.</p>
           <ul class="local-form__points">
-            <li>{icon('i-circle-check')} Visita y presupuesto sin costo</li>
-            <li>{icon('i-circle-check')} Trato directo con el dueño de la empresa</li>
-            <li>{icon('i-circle-check')} Garantía por escrito</li>
+            <li>{icon('i-circle-check')} Cotización sin costo</li>
+            <li>{icon('i-circle-check')} El presupuesto lo hace el dueño, en terreno</li>
+            <li>{icon('i-circle-check')} 15 años de experiencia</li>
           </ul>
           <p class="local-form__contact">
             <a href="tel:+56979925812">{icon('i-phone')} +56 9 7992 5812</a>
@@ -455,7 +458,7 @@ def build(c):
           <div class="form-success">
             <div class="form-success__icon">{icon('i-circle-check')}</div>
             <h3 class="form-success__title">¡Solicitud enviada!</h3>
-            <p class="form-success__text">Gracias por confiar en AO Construcciones.<br>Te contactaremos en menos de 24 horas.</p>
+            <p class="form-success__text">Gracias por confiar en AO Construcciones.<br>Te contactaremos a la brevedad.</p>
             <a href="{WA}" id="success-whatsapp" class="form-success__whatsapp" target="_blank" rel="noopener noreferrer">
               {icon('i-whatsapp')} Continuar por WhatsApp
             </a>
