@@ -78,12 +78,10 @@ COMUNAS = [
         'slug': 'san-jose-de-maipo',
         'nombre': 'San José de Maipo',
         'titulo': 'Constructora en San José de Maipo y Cajón del Maipo',
-        'intro': 'Llevamos 15 años construyendo en el Cajón del Maipo. Conocemos el terreno, '
-                 'el clima de cordillera y las exigencias municipales de la comuna.',
-        'contexto': 'Construir en cordillera no es lo mismo que construir en Santiago. La '
-                    'pendiente del terreno, las heladas y los accesos complicados cambian cómo '
-                    'se plantea una obra desde el primer día. Es la zona donde más hemos '
-                    'trabajado: 15 de nuestras obras registradas están aquí.',
+        'hero': 'proyecto-desde-cota-cero',
+        'intro': '15 años construyendo en el Cajón del Maipo.',
+        'contexto': 'Construir en cordillera no es lo mismo que construir en Santiago. '
+                    'Es la zona donde más hemos trabajado.',
         'faq': [
             ('¿Trabajan en todo el Cajón del Maipo?',
              'Sí. Tenemos obras ejecutadas en Las Vertientes, El Manzano, El Canelo, Melocotón y '
@@ -101,11 +99,10 @@ COMUNAS = [
         'slug': 'puente-alto',
         'nombre': 'Puente Alto',
         'titulo': 'Constructora en Puente Alto',
-        'intro': 'Ampliaciones, remodelaciones y obra nueva en Puente Alto, con experiencia en '
-                 'condominios y viviendas del sector oriente de la comuna.',
-        'contexto': 'Nuestras obras en Puente Alto han sido en condominios y sectores con '
-                    'reglamento de copropiedad, donde hay que coordinar accesos, horarios de '
-                    'faena y retiro de escombros para no entorpecer a los vecinos.',
+        'hero': 'remodelacion-de-quincho',
+        'intro': 'Ampliaciones, remodelaciones y obra nueva en Puente Alto.',
+        'contexto': 'Trabajamos en condominios y sectores con reglamento, coordinando la faena '
+                    'con la administración.',
         'faq': [
             ('¿Trabajan en condominios?',
              'Sí. Tenemos obras ejecutadas en Hacienda El Peñón y en el Condominio La Vizcachas. '
@@ -122,11 +119,10 @@ COMUNAS = [
         'slug': 'la-florida',
         'nombre': 'La Florida',
         'titulo': 'Constructora en La Florida',
-        'intro': 'Remodelaciones interiores, techumbres y ampliaciones en La Florida, con '
-                 'atención directa del dueño de la empresa.',
-        'contexto': 'Buena parte de La Florida son viviendas ya con años, donde lo que se pide '
-                    'es renovar: techumbres cumplidas, interiores que quedaron chicos o '
-                    'distribuciones que ya no acomodan a la familia.',
+        'hero': '4ta-remodelacion-interior',
+        'intro': 'Remodelaciones, techumbres y ampliaciones en La Florida.',
+        'contexto': 'Viviendas con años que piden renovarse: techumbres cumplidas e interiores '
+                    'que ya no acomodan.',
         'faq': [
             ('¿Reparan o cambian techumbres?',
              'Sí. Vamos a ver el estado en terreno y te decimos si conviene intervenir solo el '
@@ -185,14 +181,17 @@ def build(c):
     sectores = sorted({o['sector'] for o in obras_c if o['sector'] != c['nombre']})
     url = f"{SITE}/constructora-{c['slug']}.html"
 
-    tarjetas = '\n'.join(f'''        <article class="local-work">
-          <img src="{img_url(o['portada'])}" alt="{e(o['titulo'])} ejecutada por AO Construcciones en {e(o['sector'])}, {e(c['nombre'])}" loading="lazy" width="1080" height="810">
-          <div class="local-work__body">
-            <span class="local-work__place">{icon('i-location-dot')} {e(o['sector'])}</span>
-            <h3>{e(o['titulo'])}</h3>
-            <p>{o['fotos']} fotos del proceso y el resultado final.</p>
-          </div>
-        </article>''' for o in obras_c)
+    # La obra del hero se elige a mano y no se repite en el carrusel.
+    hero_obra = next((o for o in obras_c if o['id'] == c.get('hero')), obras_c[0])
+    resto = [o for o in obras_c if o['id'] != hero_obra['id']]
+
+    tarjetas = '\n'.join(f'''          <article class="local-work" role="listitem">
+            <img src="{img_url(o['portada'])}" alt="{e(o['titulo'])} ejecutada por AO Construcciones en {e(o['sector'])}, {e(c['nombre'])}" loading="lazy" width="1080" height="810">
+            <figcaption class="local-work__caption">
+              <span class="local-work__place">{icon('i-location-dot')} {e(o['sector'])}</span>
+              <h3>{e(o['titulo'])}</h3>
+            </figcaption>
+          </article>''' for o in resto)
 
     servicios = '\n'.join(f'''          <article class="local-service">
             <span class="local-service__icon">{icon(ic)}</span>
@@ -207,8 +206,9 @@ def build(c):
 
     sectores_txt = ''
     if sectores:
-        lista = ', '.join(sectores[:-1]) + ' y ' + sectores[-1] if len(sectores) > 1 else sectores[0]
-        sectores_txt = f'<p class="local-hero__sectors">{icon("i-location-dot")} Obras ejecutadas en {e(lista)}.</p>'
+        chips = ''.join(f'<li>{e(s)}</li>' for s in sectores)
+        sectores_txt = (f'<div class="container"><ul class="local-sectors" '
+                        f'aria-label="Sectores donde hemos trabajado">{chips}</ul></div>')
 
     ld = {
         "@context": "https://schema.org",
@@ -286,33 +286,42 @@ def build(c):
 
   <main>
     <section class="local-hero">
-      <div class="container">
-        <p class="section-tag">{e(c['nombre'])} · Región Metropolitana</p>
-        <h1>{e(c['titulo'])}</h1>
-        <p class="local-hero__intro">{e(c['intro'])}</p>
-        {sectores_txt}
-        <div class="local-hero__actions">
-          <a href="#cotizar" class="btn-primary">Solicita tu cotización {icon('i-arrow-right')}</a>
-          <a href="{WA}" target="_blank" rel="noopener noreferrer" class="btn-secondary">{icon('i-whatsapp')} Escribir por WhatsApp</a>
+      <div class="container local-hero__grid">
+        <div class="local-hero__text">
+          <p class="section-tag">{e(c['nombre'])} · Región Metropolitana</p>
+          <h1>{e(c['titulo'])}</h1>
+          <p class="local-hero__intro">{e(c['intro'])}</p>
+          <div class="local-hero__actions">
+            <a href="#cotizar" class="btn-primary">Cotiza tu proyecto {icon('i-arrow-right')}</a>
+            <a href="{WA}" target="_blank" rel="noopener noreferrer" class="btn-secondary">{icon('i-whatsapp')} WhatsApp</a>
+          </div>
+          <ul class="local-hero__trust">
+            <li><strong>15</strong><span>años de experiencia</span></li>
+            <li><strong>200+</strong><span>obras ejecutadas</span></li>
+            <li><strong>{len(obras_c)}</strong><span>en {e(c['nombre'])}</span></li>
+          </ul>
         </div>
-        <ul class="local-hero__trust">
-          <li>{icon('i-shield-halved')} 15 años de experiencia</li>
-          <li>{icon('i-circle-check')} {len(obras_c)} obras en {e(c['nombre'])}</li>
-          <li>{icon('i-clock')} Todos los días, 8:00 – 21:00</li>
-        </ul>
+
+        <figure class="local-hero__media">
+          <img src="{img_url(hero_obra['portada'])}" alt="{e(hero_obra['titulo'])} ejecutada por AO Construcciones en {e(hero_obra['sector'])}, {e(c['nombre'])}" width="1080" height="810" loading="eager" fetchpriority="high">
+          <figcaption>{icon('i-location-dot')} {e(hero_obra['sector'])}</figcaption>
+        </figure>
       </div>
+      {sectores_txt}
     </section>
 
     <section class="local-section">
-      <div class="container">
-        <h2>Obras que hemos ejecutado en {e(c['nombre'])}</h2>
+      <div class="container local-section__head">
+        <h2>Obras en {e(c['nombre'])}</h2>
         <p class="local-section__lead">{e(c['contexto'])}</p>
       </div>
-      <div class="container local-works">
+      <div class="local-works-wrap">
+        <div class="local-works" role="list" aria-label="Obras ejecutadas en {e(c['nombre'])}">
 {tarjetas}
+        </div>
       </div>
       <div class="container local-section__more">
-        <a href="portafolio.html" class="btn-secondary">Ver el portafolio completo {icon('i-arrow-right')}</a>
+        <a href="portafolio.html" class="btn-secondary">Ver portafolio completo {icon('i-arrow-right')}</a>
       </div>
     </section>
 
@@ -334,7 +343,7 @@ def build(c):
           <ul class="local-form__points">
             <li>{icon('i-circle-check')} Cotización sin costo</li>
             <li>{icon('i-circle-check')} El presupuesto lo hace el dueño, en terreno</li>
-            <li>{icon('i-circle-check')} 15 años de experiencia</li>
+            <li>{icon('i-clock')} Atendemos todos los días, 8:00 – 21:00</li>
           </ul>
           <p class="local-form__contact">
             <a href="tel:+56979925812">{icon('i-phone')} +56 9 7992 5812</a>
