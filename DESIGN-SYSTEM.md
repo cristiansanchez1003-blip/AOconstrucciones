@@ -247,5 +247,12 @@ servicio) y un `FAQPage`.
 - Datos de negocio verificados: **15 años de experiencia**, **200+ obras
   ejecutadas** (confirmado por Andrés), atención **todos los días de 8:00 a
   21:00**, **+56 9 7992 5812**, **construyeao@gmail.com**.
-- Obras con registro fotográfico por comuna: San José de Maipo **15**,
-  Puente Alto **4**, La Florida **2**, La Granja **1**, Pirque **0**.
+- **Nunca publicar el número de obras por comuna.** El portafolio tiene 15 obras
+  con fotos de San José de Maipo, 4 de Puente Alto y 2 de La Florida, pero esos
+  son los proyectos que alcanzaron a quedar fotografiados y publicados, **no el
+  total ejecutado en cada comuna**. Mostrar "15 en San José de Maipo" junto a
+  "200+ obras" hace parecer que hay poca experiencia local, que es exactamente
+  lo contrario de lo que la página debe transmitir. Esas cifras sirven solo para
+  decidir internamente qué fotos mostrar.
+- Los **sectores** sí se pueden nombrar (El Manzano, Las Vertientes, Hacienda El
+  Peñón…), porque afirman dónde se ha trabajado sin afirmar cuánto.

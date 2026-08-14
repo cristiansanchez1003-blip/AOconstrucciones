@@ -242,7 +242,7 @@ def build(c):
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="{e(c['titulo'])}. Ampliaciones, remodelaciones y obra nueva con {len(obras_c)} proyectos ejecutados en la comuna. Cotización sin costo.">
+  <meta name="description" content="{e(c['titulo'])}. Ampliaciones, remodelaciones y construcción desde cota cero. 15 años de experiencia y más de 200 obras ejecutadas. Cotización sin costo.">
   <title>{e(c['titulo'])} | AO Construcciones</title>
   <link rel="canonical" href="{url}">
   <link rel="icon" href="favicon.ico" sizes="any">
@@ -298,7 +298,7 @@ def build(c):
           <ul class="local-hero__trust">
             <li><strong>15</strong><span>años de experiencia</span></li>
             <li><strong>200+</strong><span>obras ejecutadas</span></li>
-            <li><strong>{len(obras_c)}</strong><span>en {e(c['nombre'])}</span></li>
+            <li><strong>8–21</strong><span>todos los días</span></li>
           </ul>
         </div>
 
@@ -314,6 +314,7 @@ def build(c):
       <div class="container local-section__head">
         <h2>Obras en {e(c['nombre'])}</h2>
         <p class="local-section__lead">{e(c['contexto'])}</p>
+        <p class="local-section__note">Algunas de las obras que tenemos registradas en fotos.</p>
       </div>
       <div class="local-works-wrap">
         <div class="local-works" role="list" aria-label="Obras ejecutadas en {e(c['nombre'])}">
