@@ -186,7 +186,60 @@ git add -A && git commit && git push
 
 ---
 
-## 9. Próximo correo a Andrés
+## 9. Recursos del anuncio — listos para pegar
+
+**No se pueden crear antes de la campaña.** Google Ads no muestra la sección de
+recursos mientras la cuenta no tenga ninguna campaña: el menú `Campañas` solo
+ofrece Campañas, Experimentos y Grupos de campañas, y `/aw/assets` y
+`/aw/extensions` devuelven 404. Se cargan durante la creación de la campaña o
+justo después.
+
+Contenido ya redactado, respetando la regla de no prometer precios ni plazos:
+
+### Enlaces de sitio
+
+| Texto | Descripción 1 | Descripción 2 | URL |
+|---|---|---|---|
+| Ver obras ejecutadas | Fotos reales del proceso | Y del resultado final | /portafolio.html |
+| Cotiza tu proyecto | Cuéntanos qué necesitas | Solo nombre y teléfono | /#contacto |
+| Constructora en Puente Alto | Obras en Hacienda El Peñón | Y Condominio La Vizcachas | /constructora-puente-alto.html |
+| Constructora en La Florida | Remodelaciones y techumbres | Atención directa del dueño | /constructora-la-florida.html |
+| Cajón del Maipo | 15 obras en la zona | Las Vertientes, El Manzano | /constructora-san-jose-de-maipo.html |
+
+### Textos destacados
+
+```
+Cotización sin costo
+El dueño visita en terreno
+15 años de experiencia
+200+ obras ejecutadas
+Atención todos los días
+Trato directo, sin intermediarios
+```
+
+### Fragmentos estructurados
+
+Encabezado **Servicios**:
+```
+Ampliaciones · Remodelaciones · Techumbres · Terrazas · Quinchos · Obra nueva
+```
+
+### Recurso de llamada
+
+Número **+56 9 7992 5812**, horario 8:00 a 21:00 todos los días.
+Activar **informes de llamadas** para que las llamadas desde el anuncio cuenten
+como conversión, con duración mínima de 60 segundos para filtrar toques
+accidentales. **Verificar si Google ofrece números de desvío en Chile** — la
+disponibilidad varía por país y Ads lo avisa al configurarlo.
+
+### Recurso de ubicación
+
+Vincular el **Perfil de Empresa de Google**. Es de los que más rinde para una
+constructora local.
+
+---
+
+## 10. Próximo correo a Andrés
 
 Se envía **cuando las campañas estén corriendo**, no antes. Debe incluir:
 
