@@ -493,7 +493,22 @@ por comuna, que es lo que la estrategia §6 dice explícitamente que no hay que 
 
 ## 8-bis. Estado de la carga al 15 de agosto de 2026
 
-La campaña existe como **borrador**, no publicada. Nada activo, CLP 0/día.
+**La campaña está publicada y pausada.**
+
+```
+Nombre        AO - Busqueda - Zona Sur
+ID            24141314300
+Estado        Paused
+Cuenta        CLP 0/día · 0 impresiones · 0 clics · CLP 0 gastado
+```
+
+Al publicar, Google la dejó **activa** (`Eligible (Learning)`) y se pausó
+enseguida. No alcanzó a gastar nada: las keywords quedan en revisión al crear una
+campaña en cuenta nueva, así que no hay entrega inmediata.
+
+> **Al publicar, Google ofrece "Set up with a Google Tag". Rechazar.** El sitio ya
+> tiene GTM-TWJVTWLD con GA4 y las conversiones importadas. Instalar otro tag
+> duplicaría la medición y ensuciaría los datos que costó dejar limpios.
 
 **Verificado en la interfaz, correcto:**
 
@@ -526,18 +541,26 @@ Conviene confirmarlo una vez más después de publicar.
 
 **Pendiente, en este orden:**
 
-1. **Publicar el borrador.** El botón `Publish campaign` está en el paso Review.
-   ⚠️ Ojo: la pantalla de Review se queda pegada en *"Checking for errors…"* y no
-   dibuja el botón. Si pasa, recargar la página. Es el último paso que falta;
-   todo lo demás ya está configurado.
-2. **Pausar la campaña** apenas se publique.
-3. **Borrar el borrador `Campaign #1`** (CLP 1.000/día), basura de un intento
-   previo. No gasta nada, pero ensucia.
-4. **Borrar el grupo `Ad group 1`**, temporal, con 3 keywords y 3 títulos del
+1. **Borrar el borrador `Campaign #1`** (CLP 1.000/día), basura de un intento
+   previo. No gasta nada, pero ensucia la cuenta.
+2. **Borrar el grupo `Ad group 1`**, temporal, con 3 keywords y 3 títulos del
    Grupo A. Se creó solo para poder cerrar el asistente, que no deja avanzar sin
-   al menos un grupo y un anuncio.
-5. **Subir los 4 CSV** de `ads-csv/`, generados con `tools-generar-csv-ads.py`.
-6. **Cargar los recursos** de la §6.
+   al menos un grupo y un anuncio. **Borrarlo recién después de subir los CSV**,
+   porque una campaña sin ningún grupo puede dar problemas.
+3. **Subir los 4 CSV** de `ads-csv/`, generados con `tools-generar-csv-ads.py`.
+4. **Cargar los recursos** de la §6.
+5. **Verificar** con la §10.
+6. **Encender la campaña.** Ese botón lo aprieta Cristian, no antes de que la
+   §10 esté completa.
+
+### Cómo llegar al botón de publicar, si hay que repetirlo
+
+La pantalla de Review se queda pegada en *"Checking for errors…"* y no dibuja
+`Publish campaign` si se llega por URL directa. Lo que sí funciona:
+
+1. Campañas → pestaña `Drafts` → `Finish` en el borrador.
+2. Navegar por el rail lateral hasta **Budget**.
+3. Apretar **Next** desde Budget. Ahí el resumen carga completo y aparece el botón.
 
 > **Ojo con las "Recommendations" del resumen.** Traen un botón `Apply all` que
 > agrega keywords elegidas por Google, saltándose la lista curada y las
