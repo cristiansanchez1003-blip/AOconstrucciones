@@ -511,20 +511,37 @@ La campaña existe como **borrador**, no publicada. Nada activo, CLP 0/día.
 | Rotación | Optimizar |
 | Inicio | 15 ago 2026, sin término |
 
+**También verificado, y ya correcto — no hay que tocarlo:**
+
+| Ajuste | Estado |
+|---|---|
+| **AI Max** | **Apagado**, a nivel de campaña y de grupo |
+| **Text customization** | **Apagada** |
+| **Final URL expansion** | **Apagada** |
+
+Las dos últimas figuraban encendidas al leer el resumen a medio cargar. Con la
+configuración ya recorrida, la pantalla de AI Max las reporta apagadas:
+*"Asset optimization: Text customization and Final URL expansion turned off"*.
+Conviene confirmarlo una vez más después de publicar.
+
 **Pendiente, en este orden:**
 
-1. **Publicar el borrador** y pausar la campaña enseguida.
-2. **Borrar el borrador `Campaign #1`** (CLP 1.000/día), basura de un intento previo.
-3. **Apagar `Text customization` y `Final URL expansion`.** Vienen encendidas por
-   defecto y viven en la configuración del anuncio, no de la campaña. La primera
-   deja que Google reescriba los anuncios —puede reintroducir "cota cero" o
-   inventar promesas, rompiendo las reglas de contenido—. La segunda manda el
-   tráfico a cualquier página del sitio, pasando por encima de las URLs por
-   keyword de la §7.
-4. **Borrar el grupo `Ad group 1`**, temporal, con 3 keywords y 3 títulos. Se creó
-   solo para poder cerrar el asistente.
+1. **Publicar el borrador.** El botón `Publish campaign` está en el paso Review.
+   ⚠️ Ojo: la pantalla de Review se queda pegada en *"Checking for errors…"* y no
+   dibuja el botón. Si pasa, recargar la página. Es el último paso que falta;
+   todo lo demás ya está configurado.
+2. **Pausar la campaña** apenas se publique.
+3. **Borrar el borrador `Campaign #1`** (CLP 1.000/día), basura de un intento
+   previo. No gasta nada, pero ensucia.
+4. **Borrar el grupo `Ad group 1`**, temporal, con 3 keywords y 3 títulos del
+   Grupo A. Se creó solo para poder cerrar el asistente, que no deja avanzar sin
+   al menos un grupo y un anuncio.
 5. **Subir los 4 CSV** de `ads-csv/`, generados con `tools-generar-csv-ads.py`.
 6. **Cargar los recursos** de la §6.
+
+> **Ojo con las "Recommendations" del resumen.** Traen un botón `Apply all` que
+> agrega keywords elegidas por Google, saltándose la lista curada y las
+> concordancias decididas. **No aplicarlas.**
 
 ---
 
