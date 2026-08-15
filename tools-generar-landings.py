@@ -91,8 +91,10 @@ COMUNAS = [
              'teléfono ni por metro cuadrado: cada obra depende del terreno, del acceso y de lo '
              'que quieras lograr. La visita no tiene costo.'),
             ('¿Qué tipo de obras hacen en la zona?',
-             'Construcción desde cota cero, ampliaciones, remodelaciones interiores, techumbres, '
-             'terrazas, decks y quinchos. En el portafolio están todas con fotos del proceso.'),
+             'Construcción de casas desde cero, ampliaciones, remodelaciones interiores y '
+             'exteriores, techumbres, terrazas, decks, quinchos, cobertizos, portones, '
+             'quebravistas, piso vinílico y pintura de fachadas. En el portafolio están las '
+             'obras con fotos del proceso.'),
         ],
     },
     {
@@ -111,7 +113,8 @@ COMUNAS = [
              'Andrés, dueño de la empresa, va en persona a ver el proyecto. No damos precios por '
              'teléfono: cada obra depende de lo que haya en terreno. La visita no tiene costo.'),
             ('¿Qué tipo de obras hacen en Puente Alto?',
-             'Remodelaciones interiores, cocinas, techumbres, quinchos y escaleras, entre otras. '
+             'Remodelaciones interiores, cocinas, techumbres, quinchos, cobertizos, portones, '
+             'quebravistas, piso vinílico, pintura de fachadas y escaleras, entre otras. '
              'Las obras de la comuna están en el portafolio con fotos del resultado.'),
         ],
     },
@@ -131,8 +134,9 @@ COMUNAS = [
              'Andrés, dueño de la empresa, va en persona a ver el proyecto. No damos precios por '
              'teléfono: cada obra depende de lo que haya en terreno. La visita no tiene costo.'),
             ('¿Qué tipo de obras hacen en La Florida?',
-             'Remodelaciones interiores y trabajos de techumbre, entre otros. Puedes ver las '
-             'obras de la comuna en el portafolio.'),
+             'Remodelaciones interiores y exteriores, techumbres, piso vinílico, pintura de '
+             'fachadas, portones y quebravistas, entre otros. Puedes ver las obras de la '
+             'comuna en el portafolio.'),
         ],
     },
 ]
@@ -221,7 +225,7 @@ def build(c):
         "@type": "GeneralContractor",
         "name": "AO Construcciones",
         "description": f"Constructora en {c['nombre']}: ampliaciones, remodelaciones y "
-                       f"construcción desde cota cero.",
+                       f"construcción de casas desde cero.",
         "telephone": "+56979925812",
         "email": "construyeao@gmail.com",
         "url": url,
@@ -248,7 +252,7 @@ def build(c):
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="{e(c['titulo'])}. Ampliaciones, remodelaciones y construcción desde cota cero. 15 años de experiencia y más de 200 obras ejecutadas. Cotización sin costo.">
+  <meta name="description" content="{e(c['titulo'])}. Ampliaciones, remodelaciones y construcción de casas desde cero. 15 años de experiencia y más de 200 obras ejecutadas. Cotización sin costo.">
   <title>{e(c['titulo'])} | AO Construcciones</title>
   <link rel="canonical" href="{url}">
   <link rel="icon" href="favicon.ico" sizes="any">
@@ -339,6 +343,7 @@ def build(c):
     <section class="local-section local-section--alt">
       <div class="container">
         <h2>Qué hacemos en {e(c['nombre'])}</h2>
+        <p class="local-section__lead">También hacemos techumbres, quinchos, cobertizos, portones, quebravistas, decks, terrazas, cierres perimetrales, instalación de piso vinílico y proyectos de pintura y fachadas.</p>
         <div class="local-services">
 {servicios}
         </div>

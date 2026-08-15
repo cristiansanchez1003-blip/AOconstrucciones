@@ -4,7 +4,7 @@ Documento vivo. Recoge decisiones, IDs y pendientes que **no** se pueden deducir
 leyendo el código ni el historial de git. Si retomas este proyecto en una sesión
 nueva, empieza por acá.
 
-**Última actualización:** 14 de agosto de 2026
+**Última actualización:** 15 de agosto de 2026
 
 ---
 
@@ -26,6 +26,7 @@ desde la rama `main` de GitHub.
 
 | | |
 |---|---|
+| Dueño | Andrés Oces |
 | Razón social | INGENIERÍA EN PROYECTOS DE OBRAS CIVILES SUSTENTABLES Y EDIFICACIÓN AO |
 | RUT | 78.154.344-6 |
 | Teléfono | +56 9 7992 5812 |
@@ -34,9 +35,26 @@ desde la rama `main` de GitHub.
 | Trayectoria | 15 años · 200+ obras ejecutadas |
 | Zona de servicio | San José de Maipo / Cajón del Maipo, Pirque, Puente Alto, La Florida |
 
-**Servicios:** obra nueva desde cero, ampliaciones, remodelaciones interiores
-(cocinas, baños, escaleras), techumbres, terrazas, decks, quinchos, cierres
-perimetrales.
+**Servicios** — lista completa enviada por Andrés el 15 de agosto de 2026:
+
+1. Proyectos desde cota cero (obra nueva)
+2. Ampliaciones
+3. Remodelaciones interiores y exteriores
+4. Fabricación de quinchos
+5. Montaje de cobertizos
+6. Fabricación de portones
+7. Fabricación y reparación de techumbre
+8. Instalación de quebravistas
+9. Fabricación de deck
+10. Instalación de piso vinílico
+11. Proyectos de pintura y fachadas
+
+Además: cierres perimetrales, terrazas, y **instalación** de casas prefabricadas
+(no las fabrica).
+
+> **Cinco de estos no existen en el sitio:** cobertizos, portones, quebravistas,
+> piso vinílico y pintura/fachadas. No están en el home, ni en las landings, ni
+> en el portafolio, ni en los grupos de la campaña. Es contenido nuevo por crear.
 
 ---
 
@@ -48,7 +66,12 @@ Google Analytics 4     G-S4RFL0C3L1      propiedad "AO construcciones" (54990099
 Google Ads             365-657-1293      dentro del MCC Espíritu Digital (534-787-9097)
 Search Console         verificado por archivo HTML, sitemap enviado
 Cuenta Google          espiritudigital.chile@gmail.com  (authuser=3)
+Perfil de Empresa      https://share.google/K1ZzYydFXDxCS9WZD
+Link de reseñas        https://g.page/r/CbLqUGAYENtCEAI/review
 ```
+
+El link de reseñas es el que hay que pasarle a Andrés para que lo mande a sus
+clientes. Es el pendiente 5 y el mayor factor de conversión que falta.
 
 **Archivo `google7b6f7779de1d8a12.html` en la raíz: no borrar.** Es la
 verificación de Search Console.
@@ -68,6 +91,11 @@ verificación de Search Console.
    Los **sectores** sí se pueden nombrar.
 3. **"Cota cero" no se usa en publicidad.** Es jerga del rubro; la gente no busca
    así. Internamente sí es el nombre del servicio.
+   El 15 de agosto de 2026 se sacó de todo lo que Google lee como descripción:
+   las 4 meta descriptions, los `description` de JSON-LD y la respuesta del
+   FAQPage. Se reemplazó por **"construcción de casas desde cero"**. Sigue en
+   los títulos de tarjeta, en las categorías del portafolio y en los `id`/`value`
+   del formulario, que son nombres internos y no se tocan.
 4. La marca de agua de las fotos dice "CONSTRUCCIONES AO" con el logotipo
    apilado. **Es el logo actual, no un error.** Se deja tal cual.
 
@@ -113,12 +141,15 @@ verificación de Search Console.
 
 ### Bloqueante para lanzar campañas
 1. **Key de Web3Forms** — va en `js/main.js` línea 17. Mientras diga
-   `'PENDIENTE'`, si WhatsApp falla el lead se pierde.
-2. **Confirmar facturación en Google Ads.**
+   `'PENDIENTE'`, si WhatsApp falla el lead se pierde. **Decisión del 15 de
+   agosto de 2026: se lanza sin ella.** El formulario ya deriva a WhatsApp y eso
+   se mide; el riesgo se limita al caso de que WhatsApp falle. Se le pide a
+   Andrés en el correo grande, cuando las campañas ya estén corriendo.
+2. ~~Confirmar facturación en Google Ads.~~ **Confirmada** (15 de agosto de 2026).
 
 ### Alto impacto
-3. **Open Graph en home, portafolio y privacidad.** Solo lo tienen las landings.
-   El home es la página que más se comparte por WhatsApp y no muestra nada.
+3. ~~Open Graph en home, portafolio y privacidad.~~ **Hecho**, commit `e7a2779`.
+   Las 6 páginas tienen `og:title`.
 4. **Recursos del anuncio**: enlaces de sitio, textos destacados, fragmentos
    estructurados, recurso de llamada, recurso de ubicación vinculado al Perfil
    de Empresa.
@@ -146,8 +177,21 @@ verificación de Search Console.
 
 **Geografía de la campaña.** Cristian decidió **no ampliar** más allá de la zona
 donde Andrés efectivamente trabaja, aunque el volumen de búsqueda local sea bajo.
-La estrategia es compensar con especificidad: cola larga con intención
-inequívoca. Ver `investigacion-keywords.md`.
+Ver `estrategia-google-ads.md`, que documenta el costo de esa restricción: abrir
+a toda la Región Metropolitana multiplicaría el volumen por ~17.
+
+**El mecanismo de la cola larga cambió.** La idea original era concordancia
+exacta con cola larga fina. La investigación la descartó: con 10 búsquedas
+mensuales por término, la exacta deja la campaña en cero impresiones. La
+especificidad viene de **concordancia de frase + negativas agresivas +
+segmentación geográfica estricta**. La exacta queda solo para términos con
+volumen probado.
+
+**Se espera no gastar todo el presupuesto.** Con este volumen es esperable gastar
+$60.000–$100.000 de los $150.000. **Eso no se arregla ampliando comunas.** Si
+sobra de forma sostenida, se baja la inversión a $100.000 y la diferencia se
+convierte en más servicio. Hay que avisarle esto a Andrés **antes** de lanzar,
+no cuando pregunte.
 
 **Presupuesto.** $150.000 CLP mensuales ≈ $4.930 diarios. Una sola campaña de
 Búsqueda, sin Display ni Performance Max.
@@ -173,7 +217,10 @@ porque lee el HTML crudo. Por eso se verificó con archivo HTML.
 ```
 tools-generar-landings.py    regenera las 3 landings desde los datos del portafolio
 tools-versionar-assets.py    sella CSS y JS con hash de contenido en todos los HTML
+tools-validar-anuncios.py    revisa límites de Google Ads en los textos y recursos
 DESIGN-SYSTEM.md             tokens, componentes, IDs que espera main.js, reglas
+estrategia-google-ads.md     documento maestro de campaña: keywords, negativas, pujas
+PLAN-CAMPANA.md              lo que le falta a la estrategia para poder cargarla
 ```
 
 Flujo al tocar el diseño:
@@ -251,3 +298,25 @@ Se envía **cuando las campañas estén corriendo**, no antes. Debe incluir:
    de proceso o demolición.
 4. **Cuántas obras reales tiene por comuna**, para poder publicar esa cifra sin
    inventarla.
+5. El **link de reseñas** (`https://g.page/r/CbLqUGAYENtCEAI/review`) para que se
+   lo mande a los clientes con los que quedó bien.
+6. Avisarle que **el presupuesto probablemente no se gaste completo** — es
+   esperable gastar $60.000–$100.000 de los $150.000. Anticiparlo, porque la
+   reacción natural va a ser pedir ampliar comunas, y eso está descartado.
+
+**No pedirle el ticket promedio.** Se le pidió el 15 de agosto de 2026 y **no
+quiso darlo**; mandó solo los servicios ordenados por margen. No insistir. Ver
+`PLAN-CAMPANA.md` §2 para cómo se resuelve el valor por conversión sin el monto.
+
+### Respondido por Andrés el 15 de agosto de 2026
+
+Los tres datos que `estrategia-google-ads.md` §14 marcaba como bloqueantes ya
+están:
+
+- **Quién contesta el WhatsApp:** Andrés mismo, dentro del horario de atención,
+  rápido y bien. **El riesgo 10.5 de la estrategia queda cerrado** — era el más
+  grande del proyecto.
+- **Prefabricadas:** no las fabrica, pero **sí las instala**. Ver `PLAN-CAMPANA.md`
+  §5 para cómo se resolvió en las negativas.
+- **Oficios que no ofrece:** quedan los del bloque 5.11 menos `pintor`, porque sí
+  hace pintura y fachadas.
