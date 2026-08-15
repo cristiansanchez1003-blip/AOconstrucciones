@@ -258,8 +258,12 @@ def build(c):
   <meta property="og:title" content="{e(c['titulo'])} | AO Construcciones">
   <meta property="og:description" content="{e(c['intro'])}">
   <meta property="og:url" content="{url}">
-  <meta property="og:image" content="{SITE}/{img_url(obras_c[0]['portada']) if obras_c else 'assets/img/hero-portada-casa.webp'}">
+  <meta property="og:image" content="{SITE}/assets/img/og-aoconstrucciones.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="AO Construcciones">
   <meta property="og:locale" content="es_CL">
+  <meta name="twitter:card" content="summary_large_image">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
