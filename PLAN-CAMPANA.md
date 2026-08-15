@@ -10,58 +10,79 @@ respuestas de Andrés
 
 ---
 
-## 1. Problema en la estrategia de puja
+## 1. Puja: qué se puede y qué no
+
+> **Corregido el 15 de agosto de 2026, verificado en la interfaz.** Una versión
+> anterior de este documento recomendaba **CPC manual con puja por grupo**. Eso
+> **no es posible**: Google eliminó el CPC manual del flujo de creación. Las
+> únicas opciones que ofrece son Maximizar conversiones, CPA objetivo, Maximizar
+> valor de conversión, ROAS objetivo, Clics e Impresiones.
 
 La estrategia §7 pide **Maximizar clics con límite de CPC $700**, y aparte un
 **tope de $500 solo para el Grupo F**. Esas dos cosas no se pueden tener a la vez.
 
-Con Maximizar clics, el límite de CPC se define **a nivel de campaña** o de la
-estrategia de portafolio. Las pujas por grupo de anuncios quedan guardadas pero
-**no se usan**: Google fija la puja de cada subasta por su cuenta. No hay forma
-de darle a un grupo un techo distinto.
+Con Maximizar clics, el límite de CPC se define **a nivel de campaña**. Las pujas
+por grupo quedan guardadas pero **no se usan**: Google fija la puja de cada
+subasta por su cuenta. No hay forma de darle a un grupo un techo distinto, y sin
+CPC manual tampoco hay forma de esquivarlo.
 
-Esto importaba poco cuando todos los grupos valían lo mismo. Ahora que Andrés
-mandó los servicios **ordenados por margen**, importa mucho: un lead de obra
-nueva no vale lo mismo que uno de piso vinílico, y con un techo único se paga lo
-mismo por los dos.
+**Lo que queda configurado:** Clics, con límite de CPC de **CLP 700** para toda
+la campaña. Es la Fase 1 de la estrategia §7, tal cual.
 
-### Solución: CPC manual con puja por grupo
+### Qué se pierde y por qué importa poco por ahora
 
-Para arrancar, **CPC manual sin optimizador de CPC**, con puja máxima por grupo.
-Es lo que corresponde a una cuenta sin historial de conversiones: el algoritmo no
-tiene con qué aprender, así que se le dice explícitamente cuánto vale cada cosa.
+El orden de margen que mandó Andrés no se puede expresar en las pujas. Un lead de
+obra nueva y uno de piso vinílico se pagan igual.
 
-Se migra a Maximizar conversiones al acumular 15–20 conversiones, tal como dice
-la estrategia §7 fase 2. Ahí el margen se expresa con valores de conversión, no
-con pujas.
+En la práctica el costo es bajo: Google estima **CPC de CLP 128 a 302** para esta
+campaña, muy por debajo del techo de 700. Un tope que casi nunca se toca no
+diferencia nada aunque se pudiera fijar por grupo.
+
+**Dónde sí se va a expresar el margen:** en la Fase 2, al migrar a Maximizar
+conversiones con **valores de conversión relativos** derivados del orden de
+Andrés. Ver §2. Ese es el mecanismo correcto y no depende del CPC manual.
 
 ---
 
-## 2. Pujas por grupo
+## 2. El orden de margen y dónde se usa
 
-El orden de margen que mandó Andrés (a–k, de mayor a menor) cruzado con el
-volumen y las pujas observadas en el Planificador.
+Orden que mandó Andrés el 15 de agosto de 2026, de mayor a menor margen:
 
-**El criterio:** el margen define **cuánto se está dispuesto a pagar**; el volumen
-define **de dónde van a llegar los clics**. No son lo mismo y no se contradicen.
-
-| Grupo | Servicios (puesto en la lista de margen) | Puja máx. |
+| # | Servicio | Grupo |
 |---|---|---|
-| **D — Obra nueva** | Cota cero (1º) | **$900** |
-| **A — Ampliaciones** | Ampliaciones (2º) | **$800** |
-| **B — Remodelaciones** | Remodelaciones int/ext (3º), piso vinílico (10º), pintura y fachadas (11º) | **$700** |
-| **E — Exteriores** | Quinchos (4º), cobertizos (5º), portones (6º), quebravistas (8º), deck (9º) | **$600** |
-| **C — Techumbres** | Techumbre (7º) | **$450** |
-| **F — Genérico local** | Todos | **$500** |
+| 1 | Proyectos desde cota cero | D — Obra nueva |
+| 2 | Ampliaciones | A — Ampliaciones |
+| 3 | Remodelaciones interiores y exteriores | B — Remodelaciones |
+| 4 | Fabricación de quinchos | E — Exteriores |
+| 5 | Montaje de cobertizos | E — Exteriores |
+| 6 | Fabricación de portones | E — Exteriores |
+| 7 | Fabricación y reparación de techumbre | C — Techumbres |
+| 8 | Instalación de quebravistas | E — Exteriores |
+| 9 | Fabricación de deck | E — Exteriores |
+| 10 | Instalación de piso vinílico | B — Remodelaciones |
+| 11 | Proyectos de pintura y fachadas | B — Remodelaciones |
 
-**Sobre el Grupo C.** La estrategia lo marca como prioritario y sigue siéndolo,
-aunque el margen lo deje séptimo. Las pujas observadas ahí son de $24 a $311, así
-que un techo de $450 ya está muy por encima del mercado: va a ganar impresiones
-barato igual. Sigue siendo el motor de volumen y de aprendizaje de la cuenta, solo
-que ahora no se le paga como si fuera obra nueva.
+**No se puede usar en las pujas** — ver §1. Se usa en dos lugares:
 
-**Sobre el Grupo F.** Se mantiene en $500 como pide la estrategia §10.2. Es el de
-mayor volumen y el de mayor riesgo de la cuenta.
+**Ahora, en la lectura de resultados.** Al revisar el informe de términos de
+búsqueda y decidir qué pausar, un lead de obra nueva vale más que uno de pintura
+aunque hayan costado lo mismo. El orden es el criterio para decidir.
+
+**En la Fase 2, en los valores de conversión.** Al migrar a Maximizar
+conversiones, se asignan valores relativos en GA4 siguiendo este orden. A Smart
+Bidding le sirve la **proporción** entre conversiones, no el monto absoluto — por
+eso funciona aunque Andrés no haya querido dar el ticket promedio.
+
+**Sobre el Grupo C.** La estrategia lo marca como prioritario y sigue siéndolo
+aunque el margen lo deje séptimo: tiene el volumen creciente (+350% interanual) y
+las pujas más baratas de la investigación ($24–$311). Es el motor de volumen y de
+aprendizaje de la cuenta. Que deje menos por obra no lo hace menos importante
+para juntar los primeros datos.
+
+**Sobre el Grupo F.** La estrategia §10.2 pide un tope de $500 que **no se puede
+aplicar** por grupo. Queda bajo el techo único de $700, así que hay que vigilarlo
+con el informe de términos de búsqueda en vez de con la puja. Es el de mayor
+volumen y mayor riesgo de la cuenta.
 
 ### Valor por conversión: no va a haber monto
 
@@ -467,6 +488,43 @@ por comuna, que es lo que la estrategia §6 dice explícitamente que no hay que 
 | **Web3Forms** | La estrategia lo marca bloqueante en §13. **Se lanza igual sin él.** El formulario ya deriva a WhatsApp y eso se mide. |
 | **Ajuste móvil +15%** | **No cargarlo el día 1.** Se aplica cuando los datos confirmen que el tráfico es móvil. |
 | **Riesgo 10.5 — respuesta al WhatsApp** | **Cerrado.** Contesta Andrés, dentro del horario, rápido. Era el riesgo más grande del proyecto. |
+
+---
+
+## 8-bis. Estado de la carga al 15 de agosto de 2026
+
+La campaña existe como **borrador**, no publicada. Nada activo, CLP 0/día.
+
+**Verificado en la interfaz, correcto:**
+
+| Ajuste | Estado |
+|---|---|
+| Nombre | `AO - Busqueda - Zona Sur` |
+| Tipo | Búsqueda |
+| Search Partners | Desmarcado |
+| Display | Desmarcado |
+| Ubicaciones | Las 4 comunas |
+| **Opción de ubicación** | **Presence: people in or regularly in** |
+| Presupuesto | CLP 4.930/día |
+| Puja | Clics, tope CLP 700 |
+| Horario | All day (24/7) |
+| Rotación | Optimizar |
+| Inicio | 15 ago 2026, sin término |
+
+**Pendiente, en este orden:**
+
+1. **Publicar el borrador** y pausar la campaña enseguida.
+2. **Borrar el borrador `Campaign #1`** (CLP 1.000/día), basura de un intento previo.
+3. **Apagar `Text customization` y `Final URL expansion`.** Vienen encendidas por
+   defecto y viven en la configuración del anuncio, no de la campaña. La primera
+   deja que Google reescriba los anuncios —puede reintroducir "cota cero" o
+   inventar promesas, rompiendo las reglas de contenido—. La segunda manda el
+   tráfico a cualquier página del sitio, pasando por encima de las URLs por
+   keyword de la §7.
+4. **Borrar el grupo `Ad group 1`**, temporal, con 3 keywords y 3 títulos. Se creó
+   solo para poder cerrar el asistente.
+5. **Subir los 4 CSV** de `ads-csv/`, generados con `tools-generar-csv-ads.py`.
+6. **Cargar los recursos** de la §6.
 
 ---
 
