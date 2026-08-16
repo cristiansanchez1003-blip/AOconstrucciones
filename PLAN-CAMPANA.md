@@ -608,20 +608,96 @@ directo desde una planilla, valida offline y publica todo de una vez.
 
 ---
 
-## 9. Orden de carga
+## 9. Paso a paso de lo que falta
 
-1. Crear la campaña — Búsqueda, sin socios de búsqueda ni Display.
-2. **Ubicación en "Presencia: personas EN tus ubicaciones".** Es el cambio manual
-   más importante de toda la cuenta; el default de Google es "presencia o interés".
-3. Las 4 comunas. Presupuesto diario **$4.930**. **CPC manual.**
-4. Los 6 grupos con sus keywords y concordancias (estrategia §4 + §4 de acá).
-5. **Puja máxima por grupo según §2.**
-6. Todas las negativas de la estrategia §5, en amplia, a nivel de campaña, con las
-   correcciones de la §5 de acá.
-7. Los RSA de la §3.
-8. URLs a nivel de keyword de la §7.
-9. Recursos de la §6.
-10. Activar informes de llamadas, duración mínima 60 s.
+La campaña ya existe, publicada y pausada, con toda su configuración correcta
+(§8-bis). Lo que falta es llenarla y encenderla.
+
+Antes de empezar, regenerar los archivos:
+
+```bash
+python tools-generar-csv-ads.py
+```
+
+Deja dos carpetas con los mismos datos en formatos distintos:
+`ads-csv/` para la carga web y `ads-csv-editor/` para Google Ads Editor.
+
+---
+
+### Paso 1 — Cargar los 6 grupos, keywords, anuncios y negativas
+
+**Recomendado: Google Ads Editor.** Es gratis, es de Google y está hecho para
+esto. Evita el problema de esquema de columnas que dejó trabada la carga web
+(§8-ter).
+
+1. Bajar e instalar desde `ads.google.com/intl/es/home/tools/ads-editor/`.
+2. Abrir, iniciar sesión con **espiritudigital.chile@gmail.com**, y descargar la
+   cuenta **AO Construcciones (365-657-1293)**.
+3. Seleccionar la campaña `AO - Busqueda - Zona Sur`.
+4. **Grupos de anuncios:** ir a *Grupos de anuncios* → *Hacer varios cambios* →
+   pegar el contenido de `ads-csv-editor/1-grupos.csv`.
+5. **Keywords:** *Palabras clave* → *Hacer varios cambios* → pegar
+   `ads-csv-editor/2-keywords.csv`.
+6. **Negativas:** *Palabras clave negativas de campaña* → *Hacer varios cambios*
+   → pegar `ads-csv-editor/3-negativas.csv`.
+7. **Anuncios:** *Anuncios* → *Anuncios de búsqueda responsivos* → *Hacer varios
+   cambios* → pegar `ads-csv-editor/4-anuncios.csv`.
+8. Revisar los errores que marque Editor y corregir.
+9. **Publicar** con el botón *Publicar*.
+
+**Alternativa: carga web.** Tools → Bulk actions → Uploads, con los archivos de
+`ads-csv/`. Está trabada en `Missing value in "Campaign ID"`; para destrabarla
+hay que bajar el `Download template` de esa misma pantalla y copiar sus
+encabezados exactos. Siempre usar `Preview` antes de `Apply`.
+
+---
+
+### Paso 2 — Limpiar
+
+1. **Borrar el grupo `Ad group 1`** — el temporal con 3 keywords. Recién después
+   de que los 6 grupos reales existan.
+2. **Borrar el borrador `Campaign #1`** (CLP 1.000/día), de un intento previo.
+   Campañas → pestaña *Drafts* → seleccionarlo → *Editar* → *Quitar*.
+
+---
+
+### Paso 3 — Cargar los recursos
+
+Todos a nivel de campaña. Los textos exactos están en la §6.
+
+1. **5 enlaces de sitio** con sus dos descripciones y su URL.
+2. **7 textos destacados.**
+3. **Fragmento estructurado**, encabezado `Servicios`, con los 6 valores.
+4. **Recurso de llamada:** +56 9 7992 5812, **con horario 8:00–21:00**. Distinto
+   del horario de la campaña, que va 24/7.
+5. **Activar informes de llamadas**, duración mínima **60 segundos**. Verificar
+   si Google ofrece números de desvío en Chile.
+6. **Recurso de ubicación:** vincular el Perfil de Empresa
+   `https://share.google/K1ZzYydFXDxCS9WZD`.
+
+---
+
+### Paso 4 — Verificar antes de encender
+
+La lista completa está en la §10. Lo que no se puede saltar:
+
+- `python tools-validar-anuncios.py` en verde.
+- Las 4 URLs de destino cargan, el formulario avanza sus 2 pasos y WhatsApp responde.
+- GA4 con DebugView: `generate_lead` y `whatsapp_click` disparan desde un móvil real.
+- En Ads: ambas conversiones **Primary**, conteo "una por sesión".
+- Que **"Presence"** siga puesto en la segmentación de ubicación.
+- Que `Text customization` y `Final URL expansion` sigan **apagadas**.
+
+---
+
+### Paso 5 — Encender
+
+Campañas → el punto de estado de `AO - Busqueda - Zona Sur` → **Enable**.
+
+**A las 48 horas:** informe de términos de búsqueda y primera ronda de negativas.
+Es donde se fuga el presupuesto más rápido. Vigilar primero el Grupo F
+(`constructora`) y la keyword `piso vinilico`, que es la de mayor riesgo de traer
+gente que quiere comprar el material en vez de contratar la instalación.
 
 ---
 

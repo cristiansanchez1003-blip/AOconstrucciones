@@ -24,7 +24,19 @@ import re
 import sys
 
 BASE = os.path.dirname(os.path.abspath(__file__))
+
+# Dos salidas, porque las dos herramientas piden formatos distintos:
+#   ads-csv/         carga masiva de la web: exige Customer ID y Campaign ID
+#   ads-csv-editor/  Google Ads Editor: identifica por nombre, sin IDs
 SALIDA = os.path.join(BASE, "ads-csv")
+SALIDA_EDITOR = os.path.join(BASE, "ads-csv-editor")
+
+# Editor nombra la concordancia "Match Type", no "Criterion Type".
+ENCABEZADO_EDITOR = {"Criterion Type": "Match Type"}
+
+# En Editor las negativas se pegan dentro de la vista de negativas de campana,
+# asi que la concordancia va sola: "Broad", no "Campaign Negative Broad".
+VALOR_EDITOR = {"Campaign Negative Broad": "Broad"}
 
 CAMPANA = "AO - Busqueda - Zona Sur"
 
@@ -188,22 +200,33 @@ def anuncios_de_plan(texto):
     return grupos
 
 
-def escribir(nombre, encabezados, filas):
-    """Antepone Customer ID y Campaign ID a todas las filas y escribe el CSV."""
-    ruta = os.path.join(SALIDA, nombre)
-    encabezados = ["Customer ID", "Campaign ID"] + list(encabezados)
-    filas = [[CUSTOMER_ID, CAMPAIGN_ID] + list(f) for f in filas]
+def _volcar(ruta, encabezados, filas):
     # utf-8-sig para que Excel lo abra bien y Google Ads lo acepte igual.
     with io.open(ruta, "w", encoding="utf-8-sig", newline="") as fh:
         w = csv.writer(fh)
         w.writerow(encabezados)
         w.writerows(filas)
+
+
+def escribir(nombre, encabezados, filas):
+    """Escribe las dos variantes: con IDs para la web, sin IDs para Editor."""
+    encabezados = list(encabezados)
+
+    _volcar(os.path.join(SALIDA, nombre),
+            ["Customer ID", "Campaign ID"] + encabezados,
+            [[CUSTOMER_ID, CAMPAIGN_ID] + list(f) for f in filas])
+
+    _volcar(os.path.join(SALIDA_EDITOR, nombre),
+            [ENCABEZADO_EDITOR.get(h, h) for h in encabezados],
+            [[VALOR_EDITOR.get(c, c) for c in f] for f in filas])
+
     print("  %-18s %d filas" % (nombre, len(filas)))
 
 
 def main():
-    if not os.path.isdir(SALIDA):
-        os.makedirs(SALIDA)
+    for carpeta in (SALIDA, SALIDA_EDITOR):
+        if not os.path.isdir(carpeta):
+            os.makedirs(carpeta)
 
     estrategia = leer("estrategia-google-ads.md")
     plan = leer("PLAN-CAMPANA.md")
