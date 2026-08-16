@@ -28,6 +28,15 @@ SALIDA = os.path.join(BASE, "ads-csv")
 
 CAMPANA = "AO - Busqueda - Zona Sur"
 
+# La carga masiva exige "Customer ID" en cada fila cuando el alcance del upload
+# queda en "Multiple accounts", que es el valor por defecto. Incluirlo siempre
+# hace que los archivos funcionen con cualquiera de los dos alcances.
+CUSTOMER_ID = "365-657-1293"
+
+# La carga masiva no identifica la campana por nombre: exige el ID numerico.
+# Es el de "AO - Busqueda - Zona Sur", publicada el 15 de agosto de 2026.
+CAMPAIGN_ID = "24141314300"
+
 # Nombre de grupo y puja maxima, de PLAN-CAMPANA.md seccion 2.
 GRUPOS = {
     "A": ("A - Ampliaciones", "800"),
@@ -180,7 +189,10 @@ def anuncios_de_plan(texto):
 
 
 def escribir(nombre, encabezados, filas):
+    """Antepone Customer ID y Campaign ID a todas las filas y escribe el CSV."""
     ruta = os.path.join(SALIDA, nombre)
+    encabezados = ["Customer ID", "Campaign ID"] + list(encabezados)
+    filas = [[CUSTOMER_ID, CAMPAIGN_ID] + list(f) for f in filas]
     # utf-8-sig para que Excel lo abra bien y Google Ads lo acepte igual.
     with io.open(ruta, "w", encoding="utf-8-sig", newline="") as fh:
         w = csv.writer(fh)

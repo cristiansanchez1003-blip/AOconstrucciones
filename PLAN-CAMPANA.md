@@ -548,6 +548,7 @@ Conviene confirmarlo una vez más después de publicar.
    al menos un grupo y un anuncio. **Borrarlo recién después de subir los CSV**,
    porque una campaña sin ningún grupo puede dar problemas.
 3. **Subir los 4 CSV** de `ads-csv/`, generados con `tools-generar-csv-ads.py`.
+   Ver §8-ter: la carga masiva está a medio resolver.
 4. **Cargar los recursos** de la §6.
 5. **Verificar** con la §10.
 6. **Encender la campaña.** Ese botón lo aprieta Cristian, no antes de que la
@@ -565,6 +566,45 @@ La pantalla de Review se queda pegada en *"Checking for errors…"* y no dibuja
 > **Ojo con las "Recommendations" del resumen.** Traen un botón `Apply all` que
 > agrega keywords elegidas por Google, saltándose la lista curada y las
 > concordancias decididas. **No aplicarlas.**
+
+---
+
+## 8-ter. Carga masiva: dónde está trabada
+
+**Dónde vive la herramienta.** No es adivinable por URL: se llega por
+**Tools → Bulk actions → Uploads**, y la ruta real es
+`ads.google.com/aw/bulk/uploads`. Intentar `/aw/bulkactions/uploads`,
+`/aw/bulkupload` o `/aw/uploads` da 404.
+
+**El flujo.** `+ New Upload` → `Select source` → `Upload a file` → elegir el
+archivo → **`Preview`** → revisar → `Apply`.
+
+> **Usar siempre `Preview` antes de `Apply`.** Muestra cuántos cambios, cuántos
+> exitosos y cuántos errores, sin tocar la cuenta. Los dos intentos hechos hasta
+> ahora fallaron completos, y gracias al preview no se aplicó nada.
+
+### Errores encontrados, en orden
+
+**1. `Missing value in "Customer ID"` — resuelto.** El alcance del upload viene
+en "Multiple accounts", que exige identificar la cuenta en cada fila.
+`tools-generar-csv-ads.py` ahora antepone `Customer ID = 365-657-1293` a los
+cuatro archivos.
+
+**2. `Missing value in "Campaign ID"` — sin resolver.** Se agregó
+`Campaign ID = 24141314300` a todas las filas y el error persiste igual. El
+preview sí resuelve bien la cuenta, el nombre de campaña y los nombres de grupo,
+así que el archivo se entiende: lo que falla es el esquema de columnas.
+
+### Cómo cerrarlo
+
+Dejar de adivinar encabezados. La página tiene un **`Download template
+(optional)`** justo arriba del selector de origen. Bajar esa plantilla, mirar sus
+encabezados exactos y ajustar `tools-generar-csv-ads.py` para que los replique.
+
+**Alternativa, probablemente más rápida:** hacer la carga con **Google Ads
+Editor**, la aplicación de escritorio gratuita de Google. Es la herramienta
+estándar para construir campañas en volumen, acepta pegar keywords y anuncios
+directo desde una planilla, valida offline y publica todo de una vez.
 
 ---
 
