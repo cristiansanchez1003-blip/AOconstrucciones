@@ -31,12 +31,9 @@ BASE = os.path.dirname(os.path.abspath(__file__))
 SALIDA = os.path.join(BASE, "ads-csv")
 SALIDA_EDITOR = os.path.join(BASE, "ads-csv-editor")
 
-# Editor nombra la concordancia "Match Type", no "Criterion Type".
-ENCABEZADO_EDITOR = {"Criterion Type": "Match Type"}
-
-# En Editor las negativas se pegan dentro de la vista de negativas de campana,
-# asi que la concordancia va sola: "Broad", no "Campaign Negative Broad".
-VALOR_EDITOR = {"Campaign Negative Broad": "Broad"}
+# La carga web nombra las concordancias con la palabra "match" al final;
+# Editor usa solo el adjetivo.
+CONCORDANCIA_WEB = {"Phrase": "Phrase match", "Exact": "Exact match"}
 
 CAMPANA = "AO - Busqueda - Zona Sur"
 
@@ -201,26 +198,24 @@ def anuncios_de_plan(texto):
 
 
 def _volcar(ruta, encabezados, filas):
-    # utf-8-sig para que Excel lo abra bien y Google Ads lo acepte igual.
-    with io.open(ruta, "w", encoding="utf-8-sig", newline="") as fh:
+    # utf-8 sin BOM: con BOM, Google no reconoce el primer encabezado y
+    # deja de entender el esquema completo del archivo.
+    with io.open(ruta, "w", encoding="utf-8", newline="") as fh:
         w = csv.writer(fh)
         w.writerow(encabezados)
         w.writerows(filas)
 
 
-def escribir(nombre, encabezados, filas):
-    """Escribe las dos variantes: con IDs para la web, sin IDs para Editor."""
-    encabezados = list(encabezados)
+def escribir(nombre, cols_web, filas_web, cols_editor, filas_editor):
+    """Escribe las dos variantes, cada una con su propio esquema.
 
-    _volcar(os.path.join(SALIDA, nombre),
-            ["Customer ID", "Campaign ID"] + encabezados,
-            [[CUSTOMER_ID, CAMPAIGN_ID] + list(f) for f in filas])
-
-    _volcar(os.path.join(SALIDA_EDITOR, nombre),
-            [ENCABEZADO_EDITOR.get(h, h) for h in encabezados],
-            [[VALOR_EDITOR.get(c, c) for c in f] for f in filas])
-
-    print("  %-18s %d filas" % (nombre, len(filas)))
+    La carga web exige los encabezados exactos de las plantillas de Google
+    (Row Type, Action, "Ad group" en minuscula, "Default max. CPC", y los
+    tipos de concordancia como "Phrase match"). Editor usa nombres simples.
+    """
+    _volcar(os.path.join(SALIDA, nombre), cols_web, filas_web)
+    _volcar(os.path.join(SALIDA_EDITOR, nombre), cols_editor, filas_editor)
+    print("  %-18s %d filas" % (nombre, len(filas_web)))
 
 
 def main():
@@ -232,12 +227,19 @@ def main():
     plan = leer("PLAN-CAMPANA.md")
 
     # 1 - Grupos
-    filas = [[CAMPANA, nombre, puja, "Paused"] for _, (nombre, puja) in sorted(GRUPOS.items())]
-    escribir("1-grupos.csv", ["Campaign", "Ad Group", "Max CPC", "Status"], filas)
+    grupos = [(nombre, puja) for _, (nombre, puja) in sorted(GRUPOS.items())]
+    escribir(
+        "1-grupos.csv",
+        ["Row Type", "Action", "Ad group status", "Customer ID",
+         "Campaign ID", "Campaign", "Ad group", "Default max. CPC"],
+        [["Ad group", "Add", "Paused", CUSTOMER_ID, CAMPAIGN_ID, CAMPANA, n, p]
+         for n, p in grupos],
+        ["Campaign", "Ad Group", "Max CPC", "Status"],
+        [[CAMPANA, n, p, "Paused"] for n, p in grupos])
 
     # 2 - Keywords
     kws = keywords_de_estrategia(estrategia) + keywords_de_plan(plan)
-    filas = []
+    datos = []
     con_url = 0
     for letra, kw, conc in kws:
         if letra not in GRUPOS:
@@ -246,22 +248,32 @@ def main():
         if url:
             url = SITIO + url
             con_url += 1
-        filas.append([CAMPANA, GRUPOS[letra][0], kw, conc, url])
-    escribir("2-keywords.csv",
-             ["Campaign", "Ad Group", "Keyword", "Criterion Type", "Final URL"], filas)
+        datos.append((GRUPOS[letra][0], kw, conc, url))
+    escribir(
+        "2-keywords.csv",
+        ["Row Type", "Action", "Customer ID", "Keyword status",
+         "Campaign ID", "Campaign", "Ad group", "Keyword", "Type", "Final URL"],
+        [["Keyword", "Add", CUSTOMER_ID, "Enabled", CAMPAIGN_ID, CAMPANA, g, k,
+          CONCORDANCIA_WEB[c], u] for g, k, c, u in datos],
+        ["Campaign", "Ad Group", "Keyword", "Match Type", "Final URL"],
+        [[CAMPANA, g, k, c, u] for g, k, c, u in datos])
 
     # 3 - Negativas
     negativas, excluidas = negativas_de_estrategia(estrategia)
-    filas = [[CAMPANA, t, "Campaign Negative Broad"] for t in negativas]
-    escribir("3-negativas.csv", ["Campaign", "Keyword", "Criterion Type"], filas)
+    escribir(
+        "3-negativas.csv",
+        ["Row Type", "Action", "Keyword status", "Customer ID",
+         "Level", "Campaign ID", "Campaign", "Negative keyword", "Type"],
+        [["Negative keyword", "Add", "Enabled", CUSTOMER_ID, "Campaign",
+          CAMPAIGN_ID, CAMPANA, t, "Broad match"] for t in negativas],
+        ["Campaign", "Keyword", "Match Type"],
+        [[CAMPANA, t, "Broad"] for t in negativas])
 
     # 4 - Anuncios
     anuncios = anuncios_de_plan(plan)
-    encabezados = (["Campaign", "Ad Group", "Ad type"]
-                   + ["Headline %d" % n for n in range(1, 16)]
-                   + ["Description %d" % n for n in range(1, 5)]
-                   + ["Final URL"])
-    filas = []
+    campos = (["Headline %d" % n for n in range(1, 16)]
+              + ["Description %d" % n for n in range(1, 5)])
+    datos = []
     problemas = []
     for letra in sorted(anuncios):
         if letra not in GRUPOS:
@@ -271,9 +283,17 @@ def main():
         if len(t) != 15 or len(d) != 4:
             problemas.append("Grupo %s tiene %d titulos y %d descripciones"
                              % (letra, len(t), len(d)))
-        filas.append([CAMPANA, GRUPOS[letra][0], "Responsive search ad"]
-                     + t[:15] + d[:4] + [SITIO + "/"])
-    escribir("4-anuncios.csv", encabezados, filas)
+        datos.append((GRUPOS[letra][0], t[:15] + d[:4]))
+    escribir(
+        "4-anuncios.csv",
+        ["Row Type", "Action", "Ad status", "Customer ID", "Campaign ID",
+         "Campaign", "Ad group", "Ad type"] + campos + ["Final URL"],
+        [["Ad", "Add", "Enabled", CUSTOMER_ID, CAMPAIGN_ID, CAMPANA, g,
+          "Responsive search ad"] + textos + [SITIO + "/"] for g, textos in datos],
+        ["Campaign", "Ad Group", "Ad type"] + campos + ["Final URL"],
+        [[CAMPANA, g, "Responsive search ad"] + textos + [SITIO + "/"]
+         for g, textos in datos])
+    filas = datos
 
     print("")
     print("Campana: %s" % CAMPANA)
