@@ -539,6 +539,23 @@ configuración ya recorrida, la pantalla de AI Max las reporta apagadas:
 *"Asset optimization: Text customization and Final URL expansion turned off"*.
 Conviene confirmarlo una vez más después de publicar.
 
+### Verificado el 17 de agosto de 2026
+
+`generate_lead` y `whatsapp_click` **disparan desde un móvil real**, confirmado
+en GA4 Tiempo real. Los recursos quedaron completos: 5 enlaces de sitio, 7
+textos destacados, fragmento `Servicios`, recurso de llamada con horario
+8:00-21:00 y recurso de ubicación filtrado solo a AO Construcciones. El
+borrador `Campaign #1` fue eliminado.
+
+> **DebugView solo muestra sesiones en modo depuración.** Ver 0 eventos ahí no
+> prueba nada: hay que usar **Tiempo real**, o entrar con `?debug_mode=true`.
+> Se perdió un rato en eso.
+
+> **El recurso de ubicación sincroniza todas las fichas del MCC.** Aparecían 4
+> negocios, tres ajenos a AO. Hay que usar el desplegable *"Limit the locations
+> that are synced"* y filtrar solo AO Construcciones, o los anuncios podrían
+> mostrar direcciones de otros clientes.
+
 ### Cargado el 17 de agosto de 2026
 
 La campaña quedó **llena y pausada**. Publicado desde Google Ads Editor:
