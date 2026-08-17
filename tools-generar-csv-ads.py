@@ -232,10 +232,10 @@ def main():
         "1-grupos.csv",
         ["Row Type", "Action", "Ad group status", "Customer ID",
          "Campaign ID", "Campaign", "Ad group", "Default max. CPC"],
-        [["Ad group", "Add", "Paused", CUSTOMER_ID, CAMPAIGN_ID, CAMPANA, n, p]
+        [["Ad group", "Add", "Enabled", CUSTOMER_ID, CAMPAIGN_ID, CAMPANA, n, p]
          for n, p in grupos],
         ["Campaign", "Ad Group", "Max CPC", "Status"],
-        [[CAMPANA, n, p, "Paused"] for n, p in grupos])
+        [[CAMPANA, n, p, "Enabled"] for n, p in grupos])
 
     # 2 - Keywords
     kws = keywords_de_estrategia(estrategia) + keywords_de_plan(plan)
@@ -309,7 +309,8 @@ def main():
             print("  - " + p)
         return 1
     print("")
-    print("Los grupos salen en Paused. La campana se crea y se enciende a mano.")
+    print("Los grupos salen Habilitados: la llave de seguridad es la campana,")
+    print("que queda pausada. Asi encender es un clic y no siete.")
     return 0
 
 
