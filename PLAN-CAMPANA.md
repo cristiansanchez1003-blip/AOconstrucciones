@@ -547,6 +547,16 @@ La campaña quedó **llena y pausada**. Publicado desde Google Ads Editor:
 - **67 keywords**, 170 negativas de campaña, 6 anuncios responsivos.
 - **3 de los 5 enlaces de sitio**, a nivel de campaña, en revisión:
   Ver obras ejecutadas · Cotiza tu proyecto · Obras en Puente Alto.
+- **Los 7 textos destacados**, a nivel de campaña: Cotización sin costo ·
+  El dueño va a terreno · 15 años de experiencia · 200+ obras ejecutadas ·
+  Atención todos los días · Sin intermediarios · Constructora local.
+
+> **Al cargar recursos, fijar siempre "Add to: Campaign"** y elegir
+> `AO - Busqueda - Zona Sur`. El formulario viene en **Account** por defecto, y
+> a nivel de cuenta los recursos se aplicarían también a campañas futuras.
+>
+> El check de la campaña en el diálogo *Select campaigns* **no responde al clic
+> por coordenada**; hay que apuntar al checkbox mismo.
 
 Ruta de los recursos, que tampoco es adivinable por URL:
 **Assets → Assets**, o sea `ads.google.com/aw/assetreport/associations`.
