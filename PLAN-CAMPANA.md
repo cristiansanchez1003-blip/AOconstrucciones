@@ -569,10 +569,17 @@ El menú de recursos recién aparece cuando la cuenta tiene una campaña.
 
 0. **Los 2 enlaces de sitio que faltan** (§6): `Obras en La Florida` y
    `Cajón del Maipo`.
-0b. **El recurso de llamada.** Quedó a medio configurar y **no se guardó**:
-   país Chile, número 979925812, ámbito de campaña. Falta terminarlo y fijar
-   el horario 8:00–21:00 y la duración mínima de 60 s en *Advanced options*.
-   Dato útil: el formulario ya trae **"Call reporting on"** por defecto.
+0b. **El recurso de llamada.** **No se guardó.** Lo que ya se sabe del
+   formulario, para no redescubrirlo:
+   - País **Chile** (no United States, que es el default), número **979925812**
+     sin el +56 ni el 9 inicial. El ejemplo que muestra es `600 123 456`.
+   - **"Call reporting on"** ya viene activado por defecto.
+   - El horario está en *Advanced options* → *Days and hours*, que arranca en
+     `All days, 12:00 AM a 12:00 AM`. **Hay que dejarlo 8:00 AM – 9:00 PM.**
+     Los desplegables de hora no responden bien a la automatización; se hace
+     más rápido a mano.
+   - No guardarlo con el horario en 24/7: un clic a llamar de madrugada se
+     paga y no se contesta.
 0c. **El recurso de ubicación** con el Perfil de Empresa.
 1. **Borrar el borrador `Campaign #1`** (CLP 1.000/día), basura de un intento
    previo. No gasta nada, pero ensucia la cuenta.
