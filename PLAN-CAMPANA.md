@@ -539,8 +539,24 @@ configuración ya recorrida, la pantalla de AI Max las reporta apagadas:
 *"Asset optimization: Text customization and Final URL expansion turned off"*.
 Conviene confirmarlo una vez más después de publicar.
 
+### Cargado el 17 de agosto de 2026
+
+La campaña quedó **llena y pausada**. Publicado desde Google Ads Editor:
+
+- **6 grupos**, en Habilitado. `Ad group 1` ya no existe.
+- **67 keywords**, 170 negativas de campaña, 6 anuncios responsivos.
+- **3 de los 5 enlaces de sitio**, a nivel de campaña, en revisión:
+  Ver obras ejecutadas · Cotiza tu proyecto · Obras en Puente Alto.
+
+Ruta de los recursos, que tampoco es adivinable por URL:
+**Assets → Assets**, o sea `ads.google.com/aw/assetreport/associations`.
+El menú de recursos recién aparece cuando la cuenta tiene una campaña.
+
 **Pendiente, en este orden:**
 
+0. **Los 2 enlaces de sitio que faltan** (§6): `Obras en La Florida` y
+   `Cajón del Maipo`. Los 7 textos destacados, el fragmento `Servicios`,
+   el recurso de llamada y el de ubicación.
 1. **Borrar el borrador `Campaign #1`** (CLP 1.000/día), basura de un intento
    previo. No gasta nada, pero ensucia la cuenta.
 2. **Borrar el grupo `Ad group 1`**, temporal, con 3 keywords y 3 títulos del
