@@ -266,8 +266,8 @@ def main():
          "Level", "Campaign ID", "Campaign", "Negative keyword", "Type"],
         [["Negative keyword", "Add", "Enabled", CUSTOMER_ID, "Campaign",
           CAMPAIGN_ID, CAMPANA, t, "Broad match"] for t in negativas],
-        ["Campaign", "Keyword", "Match Type"],
-        [[CAMPANA, t, "Broad"] for t in negativas])
+        ["Campaign", "Level", "Keyword", "Match Type"],
+        [[CAMPANA, "Campaign", t, "Broad"] for t in negativas])
 
     # 4 - Anuncios
     anuncios = anuncios_de_plan(plan)
