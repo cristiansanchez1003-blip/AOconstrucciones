@@ -547,6 +547,9 @@ La campaña quedó **llena y pausada**. Publicado desde Google Ads Editor:
 - **67 keywords**, 170 negativas de campaña, 6 anuncios responsivos.
 - **3 de los 5 enlaces de sitio**, a nivel de campaña, en revisión:
   Ver obras ejecutadas · Cotiza tu proyecto · Obras en Puente Alto.
+- **El fragmento estructurado**, encabezado `Servicios` en **español**, con sus
+  6 valores: Ampliaciones · Remodelaciones · Techumbres · Construcción ·
+  Terrazas · Quinchos.
 - **Los 7 textos destacados**, a nivel de campaña: Cotización sin costo ·
   El dueño va a terreno · 15 años de experiencia · 200+ obras ejecutadas ·
   Atención todos los días · Sin intermediarios · Constructora local.
@@ -565,8 +568,12 @@ El menú de recursos recién aparece cuando la cuenta tiene una campaña.
 **Pendiente, en este orden:**
 
 0. **Los 2 enlaces de sitio que faltan** (§6): `Obras en La Florida` y
-   `Cajón del Maipo`. Los 7 textos destacados, el fragmento `Servicios`,
-   el recurso de llamada y el de ubicación.
+   `Cajón del Maipo`.
+0b. **El recurso de llamada.** Quedó a medio configurar y **no se guardó**:
+   país Chile, número 979925812, ámbito de campaña. Falta terminarlo y fijar
+   el horario 8:00–21:00 y la duración mínima de 60 s en *Advanced options*.
+   Dato útil: el formulario ya trae **"Call reporting on"** por defecto.
+0c. **El recurso de ubicación** con el Perfil de Empresa.
 1. **Borrar el borrador `Campaign #1`** (CLP 1.000/día), basura de un intento
    previo. No gasta nada, pero ensucia la cuenta.
 2. **Borrar el grupo `Ad group 1`**, temporal, con 3 keywords y 3 títulos del
