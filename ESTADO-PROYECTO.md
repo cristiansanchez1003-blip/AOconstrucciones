@@ -80,6 +80,12 @@ verificación de Search Console.
 
 ## 4. Reglas de contenido — leer antes de escribir nada
 
+> **Excepción decidida por Cristian el 25 de agosto de 2026.** El sitio promete
+> *"te contactaremos en menos de 24 horas"* en el formulario y en el mensaje de
+> éxito. **Es deliberado y se deja.** El compromiso de responder rápido es de
+> Andrés, no del sitio. Se quitó una vez por error creyendo que violaba la
+> regla 1; **no volver a quitarlo.**
+
 1. **Nunca inventar precios, plazos, garantías ni certificaciones.** El
    presupuesto lo hace Andrés en terreno; no se dan cifras por teléfono ni por
    metro cuadrado. Ya ocurrió una vez: se publicaron "una cocina parte en 5
