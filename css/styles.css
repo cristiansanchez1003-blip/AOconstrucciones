@@ -2056,3 +2056,44 @@ body::before {
 .reviews__link:focus-visible {
   border-bottom-color: var(--accent-color);
 }
+
+/* Calificación en el hero: prueba social antes del primer scroll.
+   Solo el 10% de los visitantes llega al final de la página. */
+.hero__rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: clamp(1.25rem, 3vw, 1.75rem);
+  padding: 0.45rem 0.9rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  background: rgba(30, 30, 30, 0.55);
+  backdrop-filter: blur(6px);
+  text-decoration: none;
+  transition: border-color var(--transition), background var(--transition);
+}
+
+.hero__rating:hover,
+.hero__rating:focus-visible {
+  border-color: var(--border-accent);
+  background: rgba(30, 30, 30, 0.8);
+}
+
+.hero__rating-stars {
+  color: #ffb300;
+  font-size: 0.92rem;
+  letter-spacing: 0.12em;
+  line-height: 1;
+}
+
+.hero__rating-text {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.hero__rating-text strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}

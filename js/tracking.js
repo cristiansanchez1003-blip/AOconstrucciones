@@ -25,6 +25,11 @@
   'use strict';
 
   const GTM_ID = 'GTM-TWJVTWLD';
+
+  // Microsoft Clarity: mapas de calor y grabaciones de sesion. Sirve para ver
+  // hasta donde baja la gente y donde abandona, que GA4 no muestra.
+  // Vacio = no se carga y el sitio funciona igual.
+  const CLARITY_ID = 'y7xa9avwgc';
   const IS_CONFIGURED = /^GTM-[A-Z0-9]+$/.test(GTM_ID) && GTM_ID !== 'GTM-PENDIENTE';
 
   window.dataLayer = window.dataLayer || [];
@@ -45,6 +50,20 @@
       '[AO] Medición inactiva: falta el ID de Google Tag Manager en js/tracking.js. ' +
       'Los eventos se están encolando en dataLayer y se enviarán apenas se configure.'
     );
+  }
+
+  // ---- CARGA DE MICROSOFT CLARITY ----
+  // Va aparte de GTM a propósito: si mañana se cambia el contenedor, la
+  // grabación de sesiones no se cae con él.
+  if (CLARITY_ID) {
+    window.clarity = window.clarity || function () {
+      (window.clarity.q = window.clarity.q || []).push(arguments);
+    };
+
+    const clarityScript = document.createElement('script');
+    clarityScript.async = true;
+    clarityScript.src = 'https://www.clarity.ms/tag/' + encodeURIComponent(CLARITY_ID);
+    document.head.appendChild(clarityScript);
   }
 
   // ---- DISPARO DE EVENTOS ----
