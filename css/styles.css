@@ -1955,3 +1955,104 @@ body::before {
   font-size: 0.84rem;
   opacity: 0.85;
 }
+
+/* ============================================
+   RESEÑAS — prueba social antes del formulario
+   ============================================ */
+
+.reviews {
+  padding: var(--section-py) var(--section-px);
+  background: var(--bg-deep);
+}
+
+.reviews__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(1rem, 3vw, 2rem);
+  margin-top: clamp(2rem, 5vw, 3rem);
+}
+
+.review-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: var(--shadow-soft);
+  transition: border-color var(--transition), transform var(--transition);
+}
+
+.review-card:hover {
+  border-color: var(--border-accent);
+  transform: translateY(-4px);
+}
+
+.review-card__stars {
+  color: #ffb300;
+  font-size: 1.15rem;
+  letter-spacing: 0.18em;
+  line-height: 1;
+}
+
+.review-card__text {
+  font-family: var(--font-body);
+  font-size: clamp(0.98rem, 2.4vw, 1.05rem);
+  line-height: 1.65;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.review-card__author {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.review-card__name {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.review-card__source {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+.reviews__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem 1.25rem;
+  margin-top: clamp(1.5rem, 4vw, 2.25rem);
+  text-align: center;
+}
+
+.reviews__score {
+  font-family: var(--font-heading);
+  color: var(--text-secondary);
+}
+
+.reviews__score strong {
+  color: #ffb300;
+  font-size: 1.35rem;
+}
+
+.reviews__link {
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--transition);
+}
+
+.reviews__link:hover,
+.reviews__link:focus-visible {
+  border-bottom-color: var(--accent-color);
+}
