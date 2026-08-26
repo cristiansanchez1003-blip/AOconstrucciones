@@ -14,7 +14,7 @@
    antes: manda al usuario a WhatsApp. Con la key puesta, el lead queda
    guardado por correo ANTES de ofrecer WhatsApp, así no se pierde ninguno.
    --------------------------------------------------------------- */
-const WEB3FORMS_ACCESS_KEY = 'PENDIENTE';
+const WEB3FORMS_ACCESS_KEY = '1ff1d598-f68d-4de3-970f-cc09a3144591';
 const WEB3FORMS_KEY_OK =
   WEB3FORMS_ACCESS_KEY !== 'PENDIENTE' && WEB3FORMS_ACCESS_KEY.length > 20;
 

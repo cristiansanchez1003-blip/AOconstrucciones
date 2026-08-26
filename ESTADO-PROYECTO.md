@@ -146,11 +146,24 @@ verificación de Search Console.
 ## 6. Pendientes, por prioridad
 
 ### Bloqueante para lanzar campañas
-1. **Key de Web3Forms** — va en `js/main.js` línea 17. Mientras diga
-   `'PENDIENTE'`, si WhatsApp falla el lead se pierde. **Decisión del 15 de
-   agosto de 2026: se lanza sin ella.** El formulario ya deriva a WhatsApp y eso
-   se mide; el riesgo se limita al caso de que WhatsApp falle. Se le pide a
-   Andrés en el correo grande, cuando las campañas ya estén corriendo.
+1. ~~Key de Web3Forms~~ **Puesta el 26 de agosto de 2026**, a nombre de
+   `espiritudigital.chile@gmail.com`. Los leads llegan a Cristian, que se los
+   pasa a Andrés. Cuando Andrés entregue su propia key, se reemplaza la línea 17
+   de `js/main.js` y listo.
+
+   > **Lo que costó lanzarla sin ella.** Entre el 12 y el 26 de agosto,
+   > **3 personas completaron el formulario** (`generate_lead` en GA4) y sus
+   > datos se perdieron: con la key en `'PENDIENTE'`, `saveLead()` retorna
+   > `false` sin hacer la petición, así que el nombre y el teléfono nunca
+   > salieron del navegador. Ninguna llegó a Andrés por WhatsApp — confirmado
+   > con él. **Las 3 no completaron el envío en WhatsApp.**
+   >
+   > La hipótesis: la persona aprieta "Enviar" en el formulario, da el trámite
+   > por terminado, y no entiende por qué se le abre WhatsApp con un mensaje
+   > escrito sobre ella misma. El flujo le pedía hacer el trabajo dos veces.
+   >
+   > Con la key puesta esto se corrige solo: `saveLead()` guarda el lead y
+   > `showSuccess()` muestra confirmación con WhatsApp como paso **opcional**.
 2. ~~Confirmar facturación en Google Ads.~~ **Confirmada** (15 de agosto de 2026).
 
 ### Alto impacto
