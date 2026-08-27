@@ -4,7 +4,7 @@ Documento vivo. Recoge decisiones, IDs y pendientes que **no** se pueden deducir
 leyendo el código ni el historial de git. Si retomas este proyecto en una sesión
 nueva, empieza por acá.
 
-**Última actualización:** 15 de agosto de 2026
+**Última actualización:** 27 de agosto de 2026
 
 ---
 
@@ -68,6 +68,9 @@ Search Console         verificado por archivo HTML, sitemap enviado
 Cuenta Google          espiritudigital.chile@gmail.com  (authuser=3)
 Perfil de Empresa      https://share.google/K1ZzYydFXDxCS9WZD
 Link de reseñas        https://g.page/r/CbLqUGAYENtCEAI/review
+Campaña de Búsqueda    24141314300  "AO - Busqueda - Zona Sur"
+Microsoft Clarity      y7xa9avwgc   clarity.microsoft.com
+Web3Forms              1ff1d598-f68d-4de3-970f-cc09a3144591
 ```
 
 El link de reseñas es el que hay que pasarle a Andrés para que lo mande a sus
@@ -121,6 +124,14 @@ verificación de Search Console.
   sesión**. `tel_click` marcado como evento clave en GA4 pero no importado.
 - La conversión heredada "Vista de una página" se bajó a **Secondary** y se sacó
   de los objetivos: contaba *cada* vista de página.
+- **Microsoft Clarity** desde el 25 de agosto: mapas de calor y grabaciones de
+  sesión. Carga desde `tracking.js`, aparte de GTM a propósito, para que un
+  cambio de contenedor no se lo lleve por delante.
+- **4 dimensiones personalizadas en GA4** (26 de agosto), ámbito Event:
+  `project_type`, `project_location`, `project_budget` y `lead_backup`.
+  **No son retroactivas**: solo leen datos desde esa fecha.
+- `whatsapp_click` y `tel_click` ahora mandan `link_location`, que distingue
+  `barra_movil`, `boton_flotante`, `hero` y `footer`.
 
 ### Rendimiento
 - Carga inicial del home: **1.466 KB → 285 KB**
@@ -139,7 +150,9 @@ verificación de Search Console.
 - De 7 campos obligatorios a 3: servicio, nombre y teléfono
 - De 3 pasos a 2, con el selector de servicio primero
 - Validación por paso con mensajes visibles
-- Respaldo por Web3Forms **pendiente de activar** (falta la key)
+- **Web3Forms activo desde el 26 de agosto de 2026.** Los leads llegan por
+  correo a `espiritudigital.chile@gmail.com` **antes** de ofrecer WhatsApp.
+  Probado de punta a punta.
 
 ---
 
@@ -339,3 +352,109 @@ están:
   §5 para cómo se resolvió en las negativas.
 - **Oficios que no ofrece:** quedan los del bloque 5.11 menos `pintor`, porque sí
   hace pintura y fachadas.
+
+---
+
+## 11. Monitoreo de la campaña — estado al 27 de agosto de 2026
+
+La campaña lleva **16 días corriendo**. Esta sección es el punto de partida para
+retomar; lo de arriba es la historia del proyecto.
+
+### Números al 27 de agosto
+
+| Google Ads (12–27 ago) | |
+|---|---|
+| Impresiones | 1.303 |
+| Clics | 131 |
+| CTR | 10,05% |
+| CPC promedio | **CLP 425** |
+| Gasto | CLP 55.642 · ~70% del presupuesto |
+| Conversiones | 4, **todas `whatsapp_click`** |
+
+**El CPC baja sin parar gracias a las negativas:** 654 → 497 → 449 → 425.
+El CTR sobre 10% dice que los anuncios enganchan. **La campaña no es el problema.**
+
+| GA4 (28 días, 227 usuarios) | |
+|---|---|
+| `form_start` | 9 eventos / 7 personas |
+| `generate_lead` | 4 eventos / 3 personas |
+| `whatsapp_click` | 9 eventos / 8 personas |
+| `tel_click` | 3 eventos / 3 personas |
+| `scroll` (90%) | 67 eventos / **23 personas = 10,1%** |
+
+### El diagnóstico, y cómo se llegó
+
+**Contactos reales que le llegaron a Andrés: cero.** Confirmado con él. Consiguió
+un cliente nuevo en el período, pero por recomendación, no por el sitio.
+
+Clarity resolvió el misterio en dos días. De **25 sesiones venidas de anuncios**:
+
+- **18 duraron menos de 20 segundos**, casi todas con 1 página y **0 clics**
+- 4 entre 20 y 60 segundos
+- 3 más de un minuto
+
+Y el resto de los indicadores descartan que el sitio esté roto:
+
+```
+Rage clicks         0%     Errores de JavaScript   0%
+Dead clicks         0%     CLS                     0 (bueno)
+Excessive scrolling 0%     LCP                     4 s  ← el problema
+```
+
+**Era velocidad, no diseño.** Con el 75,76% del tráfico en ChromeMobile, un LCP
+de 4 segundos significa que la gente se iba antes de que la página se dibujara.
+Las sesiones de 1 y 3 segundos no son rechazo: son personas que nunca vieron nada.
+
+**El segundo hallazgo:** solo **7 toques en 24 vistas del home**, y 3 de ellos en
+la píldora de calificación del hero — que además los mandaba a Google. No es que
+rechacen la oferta; es que no había nada que tocar sin hacer scroll, y el scroll
+promedio es 43,74%.
+
+### Lo que se hizo el 27 de agosto
+
+1. **`preload` + `fetchpriority="high"` en la imagen del hero** (`add05a9`). Era
+   el elemento LCP y se descubría después de la fuente y el CSS.
+2. **La píldora de calificación ahora baja a `#resenas`** en vez de salir a
+   Google. Era el elemento más pinchado del sitio.
+3. **Barra de contacto fija en móvil** (`d917c18`): *Llamar ahora* y *WhatsApp*,
+   siempre visibles, sin scroll. El teléfono va primero a propósito — quien tiene
+   goteras quiere llamar, no llenar un formulario. Probada en celular por Cristian.
+4. **Tres reseñas de Google en el sitio** más la calificación en el hero.
+
+### Lo primero que hay que mirar mañana
+
+**Clarity, después de 2–3 días de datos nuevos:**
+
+- **LCP** — ¿bajó de los 4 segundos? Es la métrica que dice si el arreglo sirvió.
+- **Toques en la barra** — el parámetro `link_location` en GA4 ahora distingue
+  `barra_movil` de `boton_flotante`, `hero` y `footer`.
+- **Duración de sesión** — ¿siguen yéndose antes de los 20 segundos?
+
+### Pendientes concretos
+
+1. ⚠️ **Verificación de anunciante en Google Ads — vence el 22 de septiembre
+   de 2026.** Si se pasa, Google pausa los anuncios. Sigue apareciendo el aviso
+   *"Verify your identity"* en la pantalla principal de Ads. **Es lo más urgente.**
+2. **Negativas por agregar:** `modulares`, `prefabricados`. Salieron de
+   `quinchos modulares prefabricados`.
+3. **Vigilar `constructora`:** su CTR cayó de 17,86% a 6,65%. Trae más
+   impresiones con peor calce.
+4. **Política de privacidad:** no menciona la grabación de sesiones de Clarity.
+   Con la Ley 21.719 vigente conviene declararlo. Es un párrafo.
+5. **Web3Forms a nombre de Andrés.** Hoy los leads llegan al correo de Cristian.
+
+### Expectativa realista — leer antes de angustiarse
+
+La estrategia proyectaba **5 a 18 cotizaciones al mes** con el presupuesto
+completo. Con 131 clics en 16 días y el 70% del presupuesto usado, el orden de
+magnitud esperable es de **4 a 8 contactos al mes**, no cuarenta.
+
+La zona es chica y el presupuesto acotado. Eso se sabía desde la investigación
+de keywords, y por eso se le anticipó a Andrés que el presupuesto no se gastaría
+completo. **Medir el éxito contra una expectativa imposible lleva a tocar cosas
+que no había que tocar.**
+
+### La regla que no ha cambiado
+
+**No se tocan pujas, presupuesto ni textos de anuncio bajo 100 clics acumulados
+por grupo.** Las negativas sí se ajustan siempre, desde el día uno.
