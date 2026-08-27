@@ -2097,3 +2097,73 @@ body::before {
   color: var(--text-primary);
   font-weight: 600;
 }
+
+/* ============================================
+   BARRA DE CONTACTO FIJA — solo móvil
+   El 76% del tráfico llega por celular y el scroll promedio es 43%:
+   sin esto, contactar obliga a bajar hasta el final de la página.
+   ============================================ */
+
+.contact-bar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .contact-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 900;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    padding: 0.6rem 0.75rem calc(0.6rem + env(safe-area-inset-bottom));
+    background: rgba(13, 13, 13, 0.92);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .contact-bar__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    min-height: 48px;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform var(--transition), filter var(--transition);
+  }
+
+  .contact-bar__btn:active {
+    transform: scale(0.97);
+  }
+
+  .contact-bar__btn .icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .contact-bar__btn--call {
+    background: var(--accent-color);
+    color: var(--white);
+  }
+
+  .contact-bar__btn--wa {
+    background: #25d366;
+    color: #0b1f12;
+  }
+
+  /* Que la barra no tape el final de la página ni el botón del formulario. */
+  body {
+    padding-bottom: 76px;
+  }
+
+  /* El botón flotante sube para no chocar con la barra. */
+  #whatsapp-float {
+    bottom: 92px;
+  }
+}

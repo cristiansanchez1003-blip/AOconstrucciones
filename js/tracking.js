@@ -114,16 +114,25 @@
 
       const href = link.getAttribute('href') || '';
 
+      // De donde salio el contacto. Sirve para saber que camino usa la gente.
+      const origen = link.closest('.contact-bar') ? 'barra_movil'
+        : link.id === 'whatsapp-float' ? 'boton_flotante'
+        : link.closest('.hero') ? 'hero'
+        : 'footer';
+
       if (href.includes('wa.me') || href.includes('api.whatsapp.com')) {
         track('whatsapp_click', {
-          link_location: link.id === 'whatsapp-float' ? 'boton_flotante' : 'footer',
+          link_location: origen,
           page_path: window.location.pathname
         });
         return;
       }
 
       if (href.startsWith('tel:')) {
-        track('tel_click', { page_path: window.location.pathname });
+        track('tel_click', {
+          link_location: origen,
+          page_path: window.location.pathname
+        });
         return;
       }
 

@@ -28,10 +28,10 @@
   <!-- La imagen del hero es el elemento LCP. Sin esto se descubre despues del
        CSS y la fuente, y en movil tarda 4 s en aparecer. -->
   <link rel="preload" as="image" href="assets/img/hero-portada-casa.webp" fetchpriority="high">
-  <link rel="stylesheet" href="css/styles.css?v=6191ebfe02">
+  <link rel="stylesheet" href="css/styles.css?v=a10a1a8c06">
 
   <!-- Medición: define dataLayer y window.aoTrack antes que cualquier otro script -->
-  <script src="js/tracking.js?v=f7e5fd1d9d"></script>
+  <script src="js/tracking.js?v=31e23a3bcc"></script>
 
   <script type="application/ld+json">
   {
@@ -759,6 +759,19 @@
       <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.82 2.41a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.69 8.23-8.24 8.23z"/>
     </svg>
   </a>
+
+  <!-- Barra de contacto fija en movil. El 76% del trafico es celular y el
+       scroll promedio es 43%: sin esto, contactar exige bajar hasta el final. -->
+  <div class="contact-bar" role="region" aria-label="Contacto rápido">
+    <a class="contact-bar__btn contact-bar__btn--call" href="tel:+56979925812">
+      <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-phone"></use></svg>
+      Llamar ahora
+    </a>
+    <a class="contact-bar__btn contact-bar__btn--wa" href="https://wa.me/56979925812?text=Hola%2C%20vi%20su%20sitio%20web%20y%20quiero%20cotizar%20un%20proyecto" target="_blank" rel="noopener noreferrer">
+      <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-whatsapp"></use></svg>
+      WhatsApp
+    </a>
+  </div>
 
   <script src="js/main.js?v=2c75241ee8"></script>
 </body>
