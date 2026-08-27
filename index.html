@@ -25,6 +25,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- La imagen del hero es el elemento LCP. Sin esto se descubre despues del
+       CSS y la fuente, y en movil tarda 4 s en aparecer. -->
+  <link rel="preload" as="image" href="assets/img/hero-portada-casa.webp" fetchpriority="high">
   <link rel="stylesheet" href="css/styles.css?v=6191ebfe02">
 
   <!-- Medición: define dataLayer y window.aoTrack antes que cualquier otro script -->
@@ -242,7 +245,7 @@
           </a>
         </div>
 
-        <a class="hero__rating" href="https://share.google/K1ZzYydFXDxCS9WZD" target="_blank" rel="noopener noreferrer">
+        <a class="hero__rating" href="#resenas">
           <span class="hero__rating-stars" role="img" aria-label="Calificación 5 de 5 estrellas">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
           <span class="hero__rating-text"><strong>5,0</strong> en Google</span>
         </a>
@@ -265,7 +268,7 @@
 
       <div class="hero__visual">
         <div class="hero__image-wrapper clip-reveal">
-          <img src="assets/img/hero-portada-casa.webp" alt="Proyecto arquitectónico sustentable de AO Construcciones en Cajón del Maipo" loading="eager" width="1280" height="714">
+          <img src="assets/img/hero-portada-casa.webp" alt="Proyecto arquitectónico sustentable de AO Construcciones en Cajón del Maipo" loading="eager" fetchpriority="high" decoding="async" width="1280" height="714">
         </div>
 
         <div class="hero__float-card hero__float-card--top">
