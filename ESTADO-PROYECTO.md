@@ -4,7 +4,7 @@ Documento vivo. Recoge decisiones, IDs y pendientes que **no** se pueden deducir
 leyendo el código ni el historial de git. Si retomas este proyecto en una sesión
 nueva, empieza por acá.
 
-**Última actualización:** 27 de agosto de 2026
+**Última actualización:** 23 de septiembre de 2026
 
 ---
 
@@ -194,7 +194,7 @@ verificación de Search Console.
 7. **443 líneas de JS muerto** en `portafolio.html`, líneas 1240-1683. El bloque
    arranca con `return;` en la línea 1242. Hay dos copias divergentes de
    `escapeHTML`, `parseCSV` y `openProjectModal`.
-8. **Dependencia de Google Sheets** en cada carga del portafolio (7 referencias).
+8. ~~**Dependencia de Google Sheets**~~ **Resuelto el 23 de septiembre de 2026:** `SHEET_CSV_URL` quedó vacío y el cierre perimetral pasó al portafolio con fotos propias. Lo que sigue es la nota original. Dependencia de Google Sheets en cada carga del portafolio (7 referencias).
    Aporta un solo proyecto, "Cierres Perimetrales", y **su foto está rota**: los
    links vienen separados por espacios y son URLs de página de ImgBB, no
    directas.
@@ -324,17 +324,22 @@ Se envía **cuando las campañas estén corriendo**, no antes. Debe incluir:
 
 1. Que pregunte **"¿cómo nos encontró?"** en llamadas de números nuevos, y lleve
    registro. Cubre el hueco de las llamadas directas, que hoy son invisibles.
-2. La **key de Web3Forms**, a nombre de su correo.
-3. El **Drive con las mejores fotos**, pidiendo explícitamente **fotos del estado
+2. El **Drive con las mejores fotos**, pidiendo explícitamente **fotos del estado
    inicial** (el "antes"), que hoy no existen: las numeradas del portafolio son
    de proceso o demolición.
-4. **Cuántas obras reales tiene por comuna**, para poder publicar esa cifra sin
+3. **Cuántas obras reales tiene por comuna**, para poder publicar esa cifra sin
    inventarla.
-5. El **link de reseñas** (`https://g.page/r/CbLqUGAYENtCEAI/review`) para que se
+4. El **link de reseñas** (`https://g.page/r/CbLqUGAYENtCEAI/review`) para que se
    lo mande a los clientes con los que quedó bien.
-6. Avisarle que **el presupuesto probablemente no se gaste completo** — es
+5. Avisarle que **el presupuesto probablemente no se gaste completo** — es
    esperable gastar $60.000–$100.000 de los $150.000. Anticiparlo, porque la
    reacción natural va a ser pedir ampliar comunas, y eso está descartado.
+
+> **Web3Forms ya no va en esta lista.** Quedó resuelto de punta a punta: la key
+> de Cristian funciona, y el 3 de septiembre se confirmaron **3 leads reales**
+> reenviados a Andrés (uno incluso escribió por WhatsApp después). Migrar la
+> key al correo de Andrés sigue siendo una mejora posible, pero no una urgencia
+> ni algo que haya que pedirle.
 
 **No pedirle el ticket promedio.** Se le pidió el 15 de agosto de 2026 y **no
 quiso darlo**; mandó solo los servicios ordenados por margen. No insistir. Ver
@@ -355,10 +360,82 @@ están:
 
 ---
 
-## 11. Monitoreo de la campaña — estado al 27 de agosto de 2026
+## 11. Monitoreo de la campaña — estado al 3 de septiembre de 2026
 
-La campaña lleva **16 días corriendo**. Esta sección es el punto de partida para
+La campaña lleva **22 días corriendo**. Esta sección es el punto de partida para
 retomar; lo de arriba es la historia del proyecto.
+
+### Actualización — 3 de septiembre de 2026
+
+**El arreglo de LCP del 27 de agosto funcionó.** Clarity (1–3 de septiembre):
+LCP bajó de 4 s a **2,213 s**, score de performance 90. El comportamiento
+cambió con eso: **28 clics en 31 vistas del home** (antes 7 en 24), repartidos
+entre tarjetas de servicio, proyectos del portafolio y pasos del formulario —
+ya no todo concentrado en la píldora de calificación.
+
+**Primeros contactos reales confirmados.** Entre el 26 de agosto (key de
+Web3Forms activa) y el 3 de septiembre, **3 personas completaron el
+formulario y llegaron de verdad a Andrés** (vía Cristian, que reenvía). Una de
+ellas además escribió por WhatsApp después de enviar el formulario. **Sin
+llamados reportados.** Es la primera confirmación de contactos reales desde
+que se detectó el problema el 27 de agosto — hasta esa fecha habían sido cero.
+
+**Google Ads (12 ago – 3 sep):** 224 clics, CTR 10,38%, CPC promedio CLP402,
+gasto CLP90.997 (dentro del rango $60.000–$100.000 proyectado). **12
+conversiones** — 2 `generate_lead` + 10 `whatsapp_click` —, costo por
+conversión CLP7.500, tasa de conversión 5,36%.
+
+**GA4 (28 días, 6 ago – 2 sep, 320 usuarios):** `whatsapp_click` 16
+eventos/13 personas, `form_start` 15/12, `generate_lead` 6/5, `tel_click`
+3/3. La diferencia con las 2 conversiones de `generate_lead` que importó Ads
+es esperable: GA4 cuenta todo el tráfico (orgánico y directo también), Ads
+solo lo atribuido a un clic de anuncio.
+
+**Pendiente para cerrar el cuadro:** preguntarle a Andrés cuántas de esas
+conversaciones de WhatsApp fueron reales, más allá de los 3 contactos
+confirmados — es la misma pregunta que en agosto reveló que 0 de 4 se
+traducían en contacto real. No se sabe todavía si los otros `whatsapp_click`
+son conversaciones o gente que abrió la app y no escribió.
+
+**Nuevo hallazgo de Clarity:** dead clicks subieron a **11,11% de las
+sesiones** (antes 0%). Por identificar qué elemento parece clickeable y no
+responde — revisar grabaciones.
+
+**Ningún grupo de anuncios llega a 100 clics todavía** (12 ago – 3 sep):
+Exteriores 53, Remodelaciones 52, Genérico Local 37, Obra Nueva 35, Techumbres
+27, Ampliaciones 20. Por la regla de la estrategia (`estrategia-google-ads.md`
+§10.4), **no se toca puja, presupuesto ni copy de ningún grupo todavía** —
+tampoco aplicar la recomendación de Google de pasar a "Maximize conversions"
+(12 conversiones totales, faltan para las 15-20 que pide `PLAN-CAMPANA.md`
+§7). Techumbres es el más eficiente (CLP3.519 por conversión); Ampliaciones
+tiene 0 conversiones en 20 clics pero la muestra es insuficiente para actuar.
+Única acción tomada: negativas `modulares` y `prefabricados`.
+
+**Verificación de anunciante — en curso.** El emparejamiento automático con
+Dun & Bradstreet falló al confirmar nombre y dirección de la SpA. Se le pidió
+a Andrés el certificado de vigencia y estatuto actualizado
+(registrodeempresasysociedades.cl), correo enviado el 3 de septiembre con
+plazo interno 15 de septiembre. **Plazo real de Google: 22 de septiembre.**
+
+**Actualización 11 de septiembre de 2026 — campaña pausada por Google.** La
+verificación de la empresa (certificado de vigencia) se envió, pero Google
+pidió además la **verificación de identidad del representante** y la rechazó:
+*"The name you entered doesn't match the name on the document you
+submitted"*. Para reintentar:
+
+- Carnet de **Andrés** (representante legal de la SpA), no el de Cristian.
+- Nombre copiado **letra por letra** del carnet: todos los nombres y los dos
+  apellidos, con tildes si las tiene.
+- Foto con las 4 esquinas, sin flash, sin reflejos. No subir nada distinto a
+  lo pedido: Google advierte que puede **suspender la cuenta**.
+- **Intentos limitados.** Ante la duda, preguntar primero al chat de soporte
+  de Google Ads.
+- No crear campañas ni cuentas nuevas para seguir mientras tanto: cuenta como
+  eludir la verificación.
+
+Mientras dure la pausa no hay gasto. La promesa a Andrés es correr **hasta
+completar los $150.000**, no hasta una fecha, así que la campaña se extiende
+lo que haga falta cuando Google apruebe.
 
 ### Números al 27 de agosto
 
@@ -458,3 +535,31 @@ que no había que tocar.**
 
 **No se tocan pujas, presupuesto ni textos de anuncio bajo 100 clics acumulados
 por grupo.** Las negativas sí se ajustan siempre, desde el día uno.
+
+---
+
+## 12. Actualización del sitio — 23 de septiembre de 2026
+
+A pedido de Andrés, al cerrar el primer mes pagado.
+
+- **3 obras nuevas en el portafolio**, primeras en la grilla: *Remodelación de
+  fachada y balcón* (Las Vertientes), *Construcción de quincho* (Hacienda El
+  Peñón) y *Cierre perimetral* (El Manzano). Cada una con su "antes".
+- Datos por obra en `projectDetails` (`portafolio.html`): descripción,
+  materiales, metraje y categoría cuando los textos genéricos no calzan. Los
+  del cierre son los que Andrés cargó en la planilla de Sheets.
+- **Hero nuevo:** la fachada de Las Vertientes mejorada con IA, en
+  `assets/img/hero-fachada-las-vertientes-{720,1120}.webp`, con `srcset` y
+  preload con `imagesrcset`. Pesa 64 KB contra los 108 KB de la foto anterior.
+- En la home, el quincho reemplaza al deck en "Proyectos destacados". El deck
+  sigue como `og:image`.
+- Las fotos mejoradas con IA **solo corrigen luz, nitidez y resolución**: no se
+  aceptan imágenes que agreguen o cambien la obra. En el antes/después, las dos
+  fotos tienen que mostrar **el mismo lado de la casa** (se corrigió una vez).
+- Carpetas fuera de git: `_fotos-originales/` (JPEG de WhatsApp y versiones de
+  IA) y `_entregables-andres/` (pieza promocional 9:16 para estados de
+  WhatsApp, editable en Canva: https://canva.link/ktzkhzlf8onizyi).
+
+Pendiente, a decisión de Cristian: el título del hero y una tarjeta flotante
+dicen "calidad garantizada", que choca con la regla 1. Cristian decidió dejarlo
+por ahora.
