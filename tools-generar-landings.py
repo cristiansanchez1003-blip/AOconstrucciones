@@ -196,7 +196,7 @@ def build(c):
         f"{hero_obra['sector']}, {hero_obra['comuna']}"
 
     tarjetas = '\n'.join(f'''          <article class="local-work" role="listitem">
-            <img src="{img_url(o['portada'])}" alt="{e(o['titulo'])} ejecutada por AO Construcciones en {e(o['sector'])}, {e(c['nombre'])}" loading="lazy" width="1080" height="810">
+            <img src="{img_url(o['portada'])}" alt="{e(o['titulo'])}, obra de AO Construcciones en {e(o['sector'])}, {e(c['nombre'])}" loading="lazy" width="1080" height="810">
             <figcaption class="local-work__caption">
               <span class="local-work__place">{icon('i-location-dot')} {e(o['sector'])}</span>
               <h3>{e(o['titulo'])}</h3>
@@ -317,7 +317,7 @@ def build(c):
         </div>
 
         <figure class="local-hero__media">
-          <img src="{img_url(hero_obra['portada'])}" alt="{e(hero_obra['titulo'])} ejecutada por AO Construcciones en {e(hero_obra['sector'])}, {e(hero_obra['comuna'])}" width="1080" height="810" loading="eager" fetchpriority="high">
+          <img src="{img_url(hero_obra['portada'])}" alt="{e(hero_obra['titulo'])}, obra de AO Construcciones en {e(hero_obra['sector'])}, {e(hero_obra['comuna'])}" width="1080" height="810" loading="eager" fetchpriority="high">
           <figcaption>{icon('i-location-dot')} {e(hero_lugar)}</figcaption>
         </figure>
       </div>

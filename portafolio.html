@@ -1698,7 +1698,10 @@
   <script>
     (() => {
       const PORTFOLIO_IMAGE_PATH = "Portafolio AOconstrucciones/";
-      const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQSOWfNlUPo2uAR5ZAjenlJk6HKo8H2lYWzQU65wTOGc6kvxpOVEUZFgxUpoKeOWYosK9VCTDQSRG3_/pub?gid=1562743549&single=true&output=csv";
+      // Apagado el 23 de septiembre de 2026. La planilla solo tenía "Cierres
+      // Perimetrales" de El Manzano, con links de ImgBB rotos; ahora esa obra
+      // vive en el portafolio con fotos propias. Vacío = no se consulta.
+      const SHEET_CSV_URL = "";
       const portfolioGrid = document.getElementById("portfolio-grid");
       const portfolioFilters = document.getElementById("portfolio-filters");
       const projectModal = document.getElementById("project-modal");
@@ -1715,6 +1718,31 @@
       const nextButton = projectModal.querySelector(".project-carousel__button--next");
 
       const portfolioFiles = [
+        "Remodelación de fachada y balcón Resultado final.webp",
+        "Remodelación de fachada y balcón.webp",
+        "Remodelación de fachada y balcón 1.webp",
+        "Remodelación de fachada y balcón 2.webp",
+        "Remodelación de fachada y balcón 3.webp",
+        "Remodelación de fachada y balcón 4.webp",
+        "Remodelación de fachada y balcón 5.webp",
+        "Remodelación de fachada y balcón 6.webp",
+        "Remodelación de fachada y balcón 7.webp",
+        "Construcción de quincho Resultado final.webp",
+        "Construcción de quincho.webp",
+        "Construcción de quincho 1.webp",
+        "Construcción de quincho 2.webp",
+        "Construcción de quincho 3.webp",
+        "Construcción de quincho 4.webp",
+        "Construcción de quincho 5.webp",
+        "Cierre perimetral Resultado final.webp",
+        "Cierre perimetral.webp",
+        "Cierre perimetral 1.webp",
+        "Cierre perimetral 2.webp",
+        "Cierre perimetral 3.webp",
+        "Cierre perimetral 4.webp",
+        "Cierre perimetral 5.webp",
+        "Cierre perimetral 6.webp",
+        "Cierre perimetral 7.webp",
         "2da remodelacion cocina 1.webp",
         "2da remodelacion cocina 2.webp",
         "2da remodelacion cocina 3.webp",
@@ -1851,6 +1879,9 @@
       };
 
       const projectLocations = {
+        "cierre-perimetral": "El Manzano, San José de Maipo",
+        "construccion-de-quincho": "Hacienda El Peñón, Puente Alto",
+        "remodelacion-de-fachada-y-balcon": "Las Vertientes, San José de Maipo",
         "2da-remodelacion-cocina": "Condominio La Vizcachas, Puente Alto",
         "2da-remodelacion-exterior": "Las Vertientes, San José de Maipo",
         "2da-remodelacion-interior": "Las Vertientes, San José de Maipo",
@@ -1873,6 +1904,27 @@
         "remodelacion-techumbre": "Hacienda El Peñón, Puente Alto",
         "remodelacion-terraza": "Las Vertientes, San José de Maipo",
         "reparacion-de-porton": "Las Vertientes, San José de Maipo"
+      };
+
+      // Datos propios de algunas obras. Lo que no esté acá sale de los textos
+      // genéricos por categoría. Cierre perimetral: metraje y materiales tal
+      // como Andrés los cargó en la planilla de Google Sheets.
+      const projectDetails = {
+        "cierre-perimetral": {
+          categoria: "ampliaciones",
+          metraje: "50 metros lineales",
+          descripcion: "Cierre perimetral de 50 metros lineales en El Manzano, con polines y malla electrosoldada galvanizada, resistente a la intemperie.",
+          materiales: ["Polines de 3\" a 4\"", "Malla electrosoldada galvanizada"]
+        },
+        "construccion-de-quincho": {
+          categoria: "remodelaciones",
+          descripcion: "Cocina de quincho hecha a medida bajo el techo existente: muebles con cubierta blanca, espacio integrado para la parrilla, lavaplatos, campana y refrigerador bajo cubierta.",
+          materiales: ["Muebles a medida", "Parrilla integrada", "Lavaplatos y campana"]
+        },
+        "remodelacion-de-fachada-y-balcon": {
+          descripcion: "Renovación completa de la fachada con revestimiento de paneles verticales, un balcón nuevo con estructura metálica y cielo de madera, e iluminación exterior.",
+          materiales: ["Revestimiento de paneles verticales", "Balcón con estructura metálica", "Iluminación exterior"]
+        }
       };
 
       let allProjectsData = [];
@@ -2135,7 +2187,8 @@
           .filter((group) => group.cover)
           .map((group) => {
             const title = humanizeTitle(group.baseName);
-            const categoria = resolveCategory(group.baseName);
+            const details = projectDetails[group.id] || {};
+            const categoria = details.categoria || resolveCategory(group.baseName);
             const sortedFiles = group.files
               .slice()
               .sort((first, second) => getImageRank(first, group.baseName) - getImageRank(second, group.baseName));
@@ -2147,9 +2200,9 @@
               categoriaLabel: categoryLabels[categoria],
               ubicacion: projectLocations[group.id] || "Cajón del Maipo / Santiago",
               mapa: mapsUrl(projectLocations[group.id] || "Cajón del Maipo / Santiago"),
-              metraje: "Obra ejecutada",
-              descripcion: buildDescription(title, categoria),
-              materiales: buildMaterials(title, categoria),
+              metraje: details.metraje || "Obra ejecutada",
+              descripcion: details.descripcion || buildDescription(title, categoria),
+              materiales: details.materiales || buildMaterials(title, categoria),
               cover: imageSrc(group.cover),
               imagenes: sortedFiles.map(imageSrc)
             };
