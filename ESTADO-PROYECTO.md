@@ -681,3 +681,22 @@ incluye los días 21 a 23 de septiembre.
   móvil** (antes solo el home).
 - **Instagram:** @aoconstrucciones2026, en el footer y en `sameAs` del JSON-LD.
   Se quitó el ícono de Facebook, que era un link a "#" (no hay página).
+
+### Landings y páginas de servicio al nivel del home (1 de octubre de 2026)
+
+Las 5 páginas generadas (3 de comuna y 2 de servicio) tienen ahora, en este
+orden: hero con calificación de Google y "cotización sin costo / el dueño
+visita en terreno", **antes y después** de una obra real con fotos del proceso
+(`DESTACADA_*` en el generador), obras, banda de llamado a la acción, las 3
+reseñas de Google (`RESENAS`), 6 servicios con link, "cómo trabajamos" en 4
+pasos (`PASOS`, sin plazos ni garantías), formulario, preguntas frecuentes y
+el footer completo. Cada página tiene 4 CTA a `#cotizar`, además de WhatsApp
+y teléfono.
+
+**Antes y después:** solo se usan obras cuyo archivo sin número es de verdad
+el "antes" (las subidas desde el 23 de septiembre). La Florida no tiene una
+obra local con antes: muestra la fachada de Las Vertientes, con su ubicación.
+
+**Pendiente de revisar en el home:** el paso 4 del proceso dice "con garantía
+y seguimiento post-entrega" y el paso 2 "cronogramas precisos", que chocan con
+la regla 1. No se tocó, a la espera de la decisión de Cristian.
