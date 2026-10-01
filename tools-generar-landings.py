@@ -171,8 +171,14 @@ def icon(name):
     return f'<svg class="icon" aria-hidden="true" focusable="false"><use href="#{name}"></use></svg>'
 
 
+# Las fotos del portafolio se sirven como immutable: subir este número cuando
+# se reprocesen, para que los navegadores no muestren la versión vieja.
+FOTOS_VERSION = '2'
+
+
 def img_url(path):
-    return urllib.parse.quote(path)
+    url = urllib.parse.quote(path)
+    return f'{url}?v={FOTOS_VERSION}' if path.startswith('Portafolio') else url
 
 
 def e(s):

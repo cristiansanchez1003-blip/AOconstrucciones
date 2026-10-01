@@ -1200,9 +1200,13 @@
 
       <div id="portfolio-filters" class="filter-container" aria-label="Filtrar proyectos por categor&iacute;a">
         <button class="filter-button active" type="button" data-filter="todos" aria-pressed="true">Todos</button>
-        <button class="filter-button" type="button" data-filter="cota-cero" aria-pressed="false">Cota Cero</button>
-        <button class="filter-button" type="button" data-filter="remodelaciones" aria-pressed="false">Remodelaciones</button>
+        <button class="filter-button" type="button" data-filter="cota-cero" aria-pressed="false">Obra nueva</button>
         <button class="filter-button" type="button" data-filter="ampliaciones" aria-pressed="false">Ampliaciones</button>
+        <button class="filter-button" type="button" data-filter="remodelaciones" aria-pressed="false">Remodelaciones</button>
+        <button class="filter-button" type="button" data-filter="techumbres" aria-pressed="false">Techumbres</button>
+        <button class="filter-button" type="button" data-filter="quinchos" aria-pressed="false">Quinchos</button>
+        <button class="filter-button" type="button" data-filter="terrazas-y-decks" aria-pressed="false">Terrazas y decks</button>
+        <button class="filter-button" type="button" data-filter="cierres-y-portones" aria-pressed="false">Cierres y portones</button>
       </div>
 
       <div id="portfolio-grid" class="portfolio-grid" aria-live="polite"></div>
@@ -1718,6 +1722,25 @@
       const nextButton = projectModal.querySelector(".project-carousel__button--next");
 
       const portfolioFiles = [
+        "Construcción de casa desde cero Resultado final.webp",
+        "Construcción de casa desde cero.webp",
+        "Construcción de casa desde cero 1.webp",
+        "Construcción de casa desde cero 2.webp",
+        "Construcción de casa desde cero 3.webp",
+        "Construcción de casa desde cero 4.webp",
+        "Construcción de casa desde cero 5.webp",
+        "Construcción de casa desde cero 6.webp",
+        "Construcción de casa desde cero 7.webp",
+        "Construcción de casa desde cero 8.webp",
+        "Construcción de portón Resultado final.webp",
+        "Construcción de portón.webp",
+        "Construcción de portón 1.webp",
+        "Remodelación interior en Pirque Resultado final.webp",
+        "Remodelación interior en Pirque 1.webp",
+        "Remodelación interior en Pirque 2.webp",
+        "Remodelación interior en Pirque 3.webp",
+        "Remodelación interior en Pirque 4.webp",
+        "Remodelación interior en Pirque 5.webp",
         "Remodelación de fachada y balcón Resultado final.webp",
         "Remodelación de fachada y balcón.webp",
         "Remodelación de fachada y balcón 1.webp",
@@ -1873,12 +1896,19 @@
       ];
 
       const categoryLabels = {
-        "cota-cero": "Cota Cero",
+        "cota-cero": "Obra nueva",
+        "ampliaciones": "Ampliaciones",
         "remodelaciones": "Remodelaciones",
-        "ampliaciones": "Ampliaciones"
+        "techumbres": "Techumbres",
+        "quinchos": "Quinchos",
+        "terrazas-y-decks": "Terrazas y decks",
+        "cierres-y-portones": "Cierres y portones"
       };
 
       const projectLocations = {
+        "construccion-de-casa-desde-cero": "El Manzano, San José de Maipo",
+        "construccion-de-porton": "El Manzano, San José de Maipo",
+        "remodelacion-interior-en-pirque": "Pirque",
         "cierre-perimetral": "El Manzano, San José de Maipo",
         "construccion-de-quincho": "Hacienda El Peñón, Puente Alto",
         "remodelacion-de-fachada-y-balcon": "Las Vertientes, San José de Maipo",
@@ -1910,14 +1940,23 @@
       // genéricos por categoría. Cierre perimetral: metraje y materiales tal
       // como Andrés los cargó en la planilla de Google Sheets.
       const projectDetails = {
+        "construccion-de-casa-desde-cero": {
+          descripcion: "Casa construida desde cero en El Manzano: fundaciones, estructura con paneles OSB, barrera de humedad, revestimiento exterior y terminaciones interiores.",
+          materiales: ["Fundaciones y radier", "Estructura con paneles OSB", "Revestimiento exterior"]
+        },
+        "construccion-de-porton": {
+          descripcion: "Portón nuevo de estructura metálica con revestimiento de madera, fabricado e instalado en El Manzano.",
+          materiales: ["Estructura metálica", "Revestimiento de madera"]
+        },
+        "remodelacion-interior-en-pirque": {
+          descripcion: "Remodelación interior en Pirque, con renovación de pisos y terminaciones en pasillos, comedor y living."
+        },
         "cierre-perimetral": {
-          categoria: "ampliaciones",
           metraje: "50 metros lineales",
           descripcion: "Cierre perimetral de 50 metros lineales en El Manzano, con polines y malla electrosoldada galvanizada, resistente a la intemperie.",
           materiales: ["Polines de 3\" a 4\"", "Malla electrosoldada galvanizada"]
         },
         "construccion-de-quincho": {
-          categoria: "remodelaciones",
           descripcion: "Cocina de quincho hecha a medida bajo el techo existente: muebles con cubierta blanca, espacio integrado para la parrilla, lavaplatos, campana y refrigerador bajo cubierta.",
           materiales: ["Muebles a medida", "Parrilla integrada", "Lavaplatos y campana"]
         },
@@ -2084,7 +2123,8 @@
       }
 
       function imageSrc(filename) {
-        return `${PORTFOLIO_IMAGE_PATH}${encodeURIComponent(filename)}`;
+        // ?v= cambia cuando se reprocesan las fotos (las sirve Vercel como immutable)
+        return `${PORTFOLIO_IMAGE_PATH}${encodeURIComponent(filename)}?v=2`;
       }
 
       function getImageRank(filename, baseName) {
@@ -2122,8 +2162,12 @@
       function resolveCategory(baseName) {
         const normalized = normalizeText(baseName);
 
-        if (normalized.includes("cota cero")) return "cota-cero";
-        if (normalized.includes("construccion") || normalized.includes("deck")) return "ampliaciones";
+        if (normalized.includes("cota cero") || normalized.includes("desde cero") || normalized.includes("casa en arbol")) return "cota-cero";
+        if (normalized.includes("ampliacion")) return "ampliaciones";
+        if (normalized.includes("techumbre")) return "techumbres";
+        if (normalized.includes("quincho")) return "quinchos";
+        if (normalized.includes("deck") || normalized.includes("terraza")) return "terrazas-y-decks";
+        if (normalized.includes("cierre") || normalized.includes("porton")) return "cierres-y-portones";
         return "remodelaciones";
       }
 
@@ -2140,6 +2184,14 @@
 
         if (normalized.includes("techumbre")) {
           return "Renovación de cubierta y estructura superior con foco en protección climática, aislación eficiente y una terminación limpia que prolonga la vida útil de la vivienda.";
+        }
+
+        if (normalized.includes("deck")) {
+          return "Deck construido para sumar espacio exterior útil, con madera protegida y una estructura pensada para resistir la intemperie.";
+        }
+
+        if (normalized.includes("porton") || normalized.includes("cierre")) {
+          return "Trabajo de cierre y acceso a la propiedad, ejecutado con materiales resistentes a la intemperie y terminaciones cuidadas.";
         }
 
         if (normalized.includes("cocina")) {
@@ -2159,6 +2211,7 @@
         if (category === "cota-cero") return ["Fundaciones sólidas", "Estructura eficiente", "Terminaciones nobles"];
         if (category === "ampliaciones") return ["Madera tratada", "Integración arquitectónica", "Luz natural"];
         if (normalized.includes("techumbre")) return ["Estructura reforzada", "Aislación térmica", "Cubierta eficiente"];
+        if (normalized.includes("porton") || normalized.includes("cierre")) return ["Estructura resistente", "Terminaciones para exterior"];
         if (normalized.includes("cocina")) return ["Carpintería a medida", "Cubiertas nobles", "Terminaciones premium"];
         if (normalized.includes("terraza") || normalized.includes("deck") || normalized.includes("quincho")) return ["Madera protegida", "Sellos climáticos", "Revestimientos durables"];
         return ["Materialidades nobles", "Eficiencia térmica", "Ejecución premium"];
@@ -2289,6 +2342,16 @@
             </article>
           `;
         }).join("");
+      }
+
+      // Un botón de categoría sin obras se oculta: hoy "Ampliaciones" no tiene
+      // ninguna. Aparece solo apenas se suba una obra de esa categoría.
+      function hideEmptyFilters(projects) {
+        const used = new Set(projects.map((project) => project.categoria));
+        portfolioFilters.querySelectorAll(".filter-button").forEach((button) => {
+          const value = button.dataset.filter;
+          button.hidden = value !== "todos" && !used.has(value);
+        });
       }
 
       function filterPortfolio(filterValue = "todos") {
@@ -2464,6 +2527,7 @@
         const localProjects = buildPortfolioProjects();
         allProjectsData = localProjects;
         renderPortfolioCards(allProjectsData);
+        hideEmptyFilters(allProjectsData);
         filterPortfolio("todos");
 
         const sheetProjects = await fetchPortfolioData();
