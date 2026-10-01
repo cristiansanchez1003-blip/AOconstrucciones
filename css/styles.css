@@ -2209,3 +2209,329 @@ body::before {
   font-size: 0.88rem;
   line-height: 1.25;
 }
+
+/* ============================================
+   LANDINGS Y PÁGINAS DE SERVICIO — secciones de conversión
+   A estas páginas llega tráfico pagado: tienen que convencer tanto como el
+   home (prueba social, antes y después, proceso y llamados a la acción).
+   ============================================ */
+
+.navbar__cta-short {
+  display: none;
+}
+
+@media (max-width: 520px) {
+  .navbar__cta-long {
+    display: none;
+  }
+
+  .navbar__cta-short {
+    display: inline;
+  }
+}
+
+.local-hero__rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 1.25rem;
+  padding: 0.45rem 0.95rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  background: var(--bg-surface);
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  transition: border-color var(--transition);
+}
+
+.local-hero__rating:hover {
+  border-color: var(--border-accent);
+}
+
+.local-hero__rating strong {
+  color: var(--text-primary);
+}
+
+.local-hero__stars {
+  color: #ffb300;
+  letter-spacing: 0.12em;
+}
+
+.local-hero__assure {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.5rem;
+  margin-top: 1rem;
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+.local-hero__assure .icon {
+  color: #16a34a;
+}
+
+/* Antes y después */
+.local-ba {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(0.6rem, 2vw, 1.25rem);
+}
+
+.local-ba__item {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--bg-elevated);
+  box-shadow: var(--shadow-soft);
+}
+
+.local-ba__item img {
+  width: 100%;
+  height: clamp(260px, 52vw, 560px);
+  object-fit: cover;
+}
+
+.local-ba__label {
+  position: absolute;
+  top: clamp(0.6rem, 2vw, 1rem);
+  left: clamp(0.6rem, 2vw, 1rem);
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  font-size: clamp(0.72rem, 2vw, 0.85rem);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.local-ba__label--after {
+  background: var(--accent-color);
+  color: var(--white);
+}
+
+.local-ba__place {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.9rem;
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.local-ba__place .icon {
+  color: var(--accent-color);
+}
+
+.local-steps__title {
+  margin-top: 2.25rem;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.local-steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(0.5rem, 1.5vw, 1rem);
+  margin-top: 0.9rem;
+}
+
+.local-steps__item {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+}
+
+.local-steps__item img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.local-steps__item figcaption {
+  position: absolute;
+  left: 0.5rem;
+  bottom: 0.5rem;
+  display: grid;
+  place-items: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  background: var(--accent-color);
+  color: var(--white);
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+@media (max-width: 600px) {
+  .local-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.local-ba__cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+  margin-top: 2rem;
+}
+
+.local-ba__cta span {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+/* Banda de llamado a la acción */
+.local-cta {
+  padding: clamp(3rem, 7vw, 4.5rem) 0;
+  background:
+    radial-gradient(circle at 85% 20%, rgba(229, 57, 53, 0.28), transparent 22rem),
+    #1e293b;
+  color: #ffffff;
+}
+
+.local-cta__inner {
+  display: grid;
+  gap: 1.75rem;
+  align-items: center;
+}
+
+.local-cta h2 {
+  max-width: 20ch;
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 4.5vw, 2.3rem);
+  font-weight: 800;
+  line-height: 1.12;
+  color: #ffffff;
+  text-wrap: balance;
+}
+
+.local-cta p {
+  max-width: 46ch;
+  margin-top: 0.8rem;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.local-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.local-cta__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 48px;
+  padding: 0.85rem 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: var(--radius-sm);
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.local-cta__btn:hover {
+  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+@media (min-width: 900px) {
+  .local-cta__inner {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+}
+
+/* Servicios con link y "también hacemos" */
+.local-service {
+  display: flex;
+  flex-direction: column;
+}
+
+.local-service__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  color: var(--accent-color);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.local-services__more {
+  margin-top: 1.75rem;
+  color: var(--text-secondary);
+  font-size: 0.93rem;
+}
+
+.local-services__more a {
+  display: inline-block;
+  margin: 0.3rem 0.35rem 0 0;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.local-services__more a:hover {
+  border-color: var(--border-accent);
+  color: var(--accent-color);
+}
+
+/* Reseñas y proceso dentro de las landings */
+.reviews .local-section__head h2,
+.local-ba-section h2 {
+  max-width: 20ch;
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 4.5vw, 2.3rem);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.reviews .local-section__head {
+  margin-bottom: 0;
+}
+
+.reviews .local-section__lead {
+  max-width: 46ch;
+  margin-top: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.local-section__head .section-tag {
+  margin-bottom: 0.9rem;
+}
+
+@media (min-width: 900px) {
+  .local-process {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.local-hero__assure span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap;
+}
+
+.local-hero__assure {
+  column-gap: 1rem;
+}
