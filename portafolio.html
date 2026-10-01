@@ -1949,7 +1949,8 @@
           materiales: ["Estructura metálica", "Revestimiento de madera"]
         },
         "remodelacion-interior-en-pirque": {
-          descripcion: "Remodelación interior en Pirque, con renovación de pisos y terminaciones en pasillos, comedor y living."
+          descripcion: "Remodelación interior en Pirque: pisos nuevos, pintura e instalación de lámparas en pasillos, comedor y living.",
+          materiales: ["Pisos nuevos", "Pintura", "Instalación de lámparas"]
         },
         "cierre-perimetral": {
           metraje: "50 metros lineales",
@@ -1961,6 +1962,7 @@
           materiales: ["Muebles a medida", "Parrilla integrada", "Lavaplatos y campana"]
         },
         "remodelacion-de-fachada-y-balcon": {
+          categoria: "ampliaciones",
           descripcion: "Renovación completa de la fachada con revestimiento de paneles verticales, un balcón nuevo con estructura metálica y cielo de madera, e iluminación exterior.",
           materiales: ["Revestimiento de paneles verticales", "Balcón con estructura metálica", "Iluminación exterior"]
         }
@@ -2344,8 +2346,8 @@
         }).join("");
       }
 
-      // Un botón de categoría sin obras se oculta: hoy "Ampliaciones" no tiene
-      // ninguna. Aparece solo apenas se suba una obra de esa categoría.
+      // Un botón de categoría sin obras se oculta, y aparece solo apenas se
+      // suba una obra de esa categoría.
       function hideEmptyFilters(projects) {
         const used = new Set(projects.map((project) => project.categoria));
         portfolioFilters.querySelectorAll(".filter-button").forEach((button) => {

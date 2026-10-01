@@ -640,7 +640,7 @@ incluye los días 21 a 23 de septiembre.
 
 - **Portafolio con 7 categorías** (`categoryLabels` + `resolveCategory` en
   `portafolio.html`). La clave interna de obra nueva sigue siendo `cota-cero`,
-  con etiqueta "Obra nueva". **Ampliaciones no tiene obras**: el botón se oculta
+  con etiqueta "Obra nueva". **Ampliaciones:** la fachada y balcón de Las Vertientes (el balcón nuevo cuenta como ampliación, confirmado por Cristian). Un botón sin obras se oculta
   solo (`hideEmptyFilters`) hasta que se suba una. Pedirle a Andrés fotos de
   ampliaciones.
 - **3 obras nuevas:** *Construcción de casa desde cero* (El Manzano, distinta
