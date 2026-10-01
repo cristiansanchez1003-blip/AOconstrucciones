@@ -697,9 +697,9 @@ y teléfono.
 el "antes" (las subidas desde el 23 de septiembre). La Florida no tiene una
 obra local con antes: muestra la fachada de Las Vertientes, con su ubicación.
 
-**Pendiente de revisar en el home:** el paso 4 del proceso dice "con garantía
-y seguimiento post-entrega" y el paso 2 "cronogramas precisos", que chocan con
-la regla 1. No se tocó, a la espera de la decisión de Cristian.
+**"Nuestro proceso" del home:** el paso 4 dice "con garantía y seguimiento
+post-entrega" y el paso 2 "cronogramas precisos". Cristian decidió dejarlo
+así (1 de octubre).
 
 ### Google Ads — optimización de octubre
 
@@ -708,5 +708,20 @@ del gasto visible ($33.745) fue a búsquedas sin intención (informativas,
 marcas ajenas, precio, prefabricadas, empleo). Se proponen ~55 negativas, URLs
 por palabra clave hacia las páginas de quinchos y portones, rutas visibles,
 3 vínculos a sitio nuevos e imágenes. La puja **sigue en Maximizar clics**:
-13 de las 15 conversiones son clics a WhatsApp. Los cambios los aplica
-Cristian desde la interfaz.
+13 de las 15 conversiones son clics a WhatsApp.
+
+**Aplicado el 1 de octubre de 2026:**
+
+- Cristian cargó las negativas (todas, con el tipo de concordancia correcto),
+  las URLs del grupo E y las 3 palabras clave nuevas.
+- Claude puso las **rutas visibles** a los 6 anuncios (aprobadas) y creó los
+  recursos: 3 vínculos a sitio y el texto destacado "5,0 en Google" a nivel
+  campaña; 8 imágenes (4 cuadradas + 4 horizontales) a nivel campaña; logotipo
+  y nombre de la empresa ("AO Construcciones") a nivel cuenta.
+- **Logo:** el `logo-ao-construcciones-1200.jpg` era el logo horizontal con
+  mucho margen blanco, ilegible al tamaño en que Google lo muestra. Se subió
+  `logo-ao-icono-cuadrado-600.jpg` (solo la casa con la hoja, centrada).
+- **Pendiente:** las 3 palabras clave nuevas quedaron en concordancia amplia;
+  el plan las pedía de frase. Las negativas antiguas `vinilico`,
+  `piso vinilico` y `"piso vinilico"` bloquean las 3 palabras clave activas de
+  piso vinílico: hay que quitar las negativas o pausar esas palabras clave.

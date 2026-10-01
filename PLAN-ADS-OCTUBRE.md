@@ -175,7 +175,11 @@ hace que el anuncio se vea más específico. Máximo 15 caracteres por campo.
 1200×628, **sin marca de agua**: Google rechaza imágenes con logos o texto
 encima. Fachada y balcón de Las Vertientes, cocina del quincho de El Peñón, casa
 nueva de El Manzano y portón de El Manzano. Más el **logo** cuadrado para el
-recurso de logotipo de la empresa.
+recurso de logotipo de la empresa: `logo-ao-icono-cuadrado-600.jpg` (solo el
+ícono de la casa; el logo horizontal no se lee al tamaño del anuncio).
+
+**Estado (1 de octubre):** todo lo de esta sección quedó creado, más el nombre
+de la empresa "AO Construcciones" a nivel cuenta, que acompaña al logo.
 
 ## 5. Lo que no se cambia todavía, y por qué
 
