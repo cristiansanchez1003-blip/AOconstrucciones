@@ -961,7 +961,33 @@ label {
 
 .form-options {
   display: grid;
-  gap: 0.75rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+/* "Otro" ocupa la fila completa: son 7 opciones en 2 columnas. */
+.form-option:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
+/* Responde "¿trabajan en mi comuna?" sin pedir interacción: antes la gente
+   abría el selector de comuna solo para averiguarlo y se iba. */
+.form-zone {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+  margin: 0.9rem 0 0;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: var(--text-secondary, #5b6472);
+}
+
+.form-zone .icon {
+  flex: none;
+  width: 1rem;
+  height: 1rem;
+  margin-top: 0.1rem;
+  color: var(--accent-color);
 }
 
 .form-option input {
@@ -2166,4 +2192,20 @@ body::before {
   #whatsapp-float {
     bottom: 92px;
   }
+}
+
+/* Links a las páginas de servicio dentro del texto de servicios */
+.section-subtitle a {
+  color: var(--accent-color);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Con 2 columnas en celular, "Remodelación" no cabía con el relleno original. */
+.form-options .form-option label {
+  gap: 0.45rem;
+  min-height: 48px;
+  padding: 0.65rem 0.6rem;
+  font-size: 0.88rem;
+  line-height: 1.25;
 }

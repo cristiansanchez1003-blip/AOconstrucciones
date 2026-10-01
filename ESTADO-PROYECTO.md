@@ -660,3 +660,24 @@ incluye los días 21 a 23 de septiembre.
   los clientes. Las sube Cristian (no hay conector).
 - **Pendiente del mes:** 3 páginas de servicio (quinchos, portones,
   cobertizos; de cobertizos no hay fotos), formulario, Instagram e informe.
+
+### 1 de octubre de 2026 (tarde)
+
+- **Quincho Hacienda El Peñón:** la portada es la foto original **con el
+  cliente** (pedido de Andrés; hay permiso). La versión editada con IA quedó
+  como 3.ª foto (`Construcción de quincho 1`). Fotos en `?v=3`.
+- **2 páginas de servicio** generadas por `tools-generar-landings.py`
+  (`PAGINAS_SERVICIO`): `construccion-de-quinchos.html` y
+  `fabricacion-de-portones.html`. **Cobertizos se omitió: no hay fotos.**
+  Enlazadas desde el texto de servicios del home y en `sitemap.xml`.
+- **Formulario** (index y todas las páginas generadas): 7 opciones en 2
+  columnas (Obra nueva, Ampliación, Remodelación, Techumbre, Quincho o
+  terraza, Portón o cierre, Otro). El selector de comuna salió del paso 1 y
+  pasó a "Agregar más detalles"; en su lugar va la línea "Trabajamos en
+  Cajón del Maipo, Pirque, Puente Alto y La Florida". Se quitaron Las Condes,
+  Providencia y Santiago Centro. En las páginas de servicio el formulario
+  viene con el servicio ya marcado.
+- Las landings y las páginas de servicio ahora tienen la **barra de contacto
+  móvil** (antes solo el home).
+- **Instagram:** @aoconstrucciones2026, en el footer y en `sameAs` del JSON-LD.
+  Se quitó el ícono de Facebook, que era un link a "#" (no hay página).
