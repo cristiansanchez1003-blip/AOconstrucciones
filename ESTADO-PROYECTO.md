@@ -700,3 +700,13 @@ obra local con antes: muestra la fachada de Las Vertientes, con su ubicación.
 **Pendiente de revisar en el home:** el paso 4 del proceso dice "con garantía
 y seguimiento post-entrega" y el paso 2 "cronogramas precisos", que chocan con
 la regla 1. No se tocó, a la espera de la decisión de Cristian.
+
+### Google Ads — optimización de octubre
+
+Plan completo en [`PLAN-ADS-OCTUBRE.md`](PLAN-ADS-OCTUBRE.md). Resumen: el 38%
+del gasto visible ($33.745) fue a búsquedas sin intención (informativas,
+marcas ajenas, precio, prefabricadas, empleo). Se proponen ~55 negativas, URLs
+por palabra clave hacia las páginas de quinchos y portones, rutas visibles,
+3 vínculos a sitio nuevos e imágenes. La puja **sigue en Maximizar clics**:
+13 de las 15 conversiones son clics a WhatsApp. Los cambios los aplica
+Cristian desde la interfaz.
