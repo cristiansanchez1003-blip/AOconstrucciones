@@ -4,7 +4,7 @@ Documento vivo. Recoge decisiones, IDs y pendientes que **no** se pueden deducir
 leyendo el código ni el historial de git. Si retomas este proyecto en una sesión
 nueva, empieza por acá.
 
-**Última actualización:** 23 de septiembre de 2026
+**Última actualización:** 1 de octubre de 2026
 
 ---
 
@@ -563,3 +563,100 @@ A pedido de Andrés, al cerrar el primer mes pagado.
 Pendiente, a decisión de Cristian: el título del hero y una tarjeta flotante
 dicen "calidad garantizada", que choca con la regla 1. Cristian decidió dejarlo
 por ahora.
+
+---
+
+## 13. Cierre del primer mes — 23 de septiembre de 2026
+
+**Números finales (12 ago – 23 sep):** 4.028 impresiones, 421 clics, CTR
+10,3%, CPC $408, gasto **$171.779**, 14 conversiones registradas (2
+`generate_lead` + 12 `whatsapp_click`). **5 contactos reales** confirmados por
+Andrés (el 5.º, el 17 de septiembre). Costo por contacto real: ~$34.000.
+
+**Corrección importante sobre el presupuesto.** La campaña **usa todo su
+presupuesto diario** cuando está activa: ~13 clics y ~$5.300 por día entre el
+17 de agosto y el 10 de septiembre, contra un presupuesto de $4.930. El
+"sobrante" que se le anunció a Andrés el 11 de septiembre salió de un cálculo
+mal hecho: se dividió por 28 días sin descontar los 5 días sin entrega por la
+revisión inicial (12–16 ago), y además hubo 6 días de pausa por la
+verificación. **La campaña está limitada por presupuesto, no por demanda:**
+bajar a $100.000 reduce los clics en proporción (~370 → ~245 al mes).
+
+**Exceso de $21.779.** Google no corta en un total: la campaña siguió activa
+después de completar los $150.000 (~21 sep) hasta que Cristian la pausó el 23
+de septiembre. Decisión de Cristian: **no mencionarlo en el informe final.** Si
+Andrés continúa, se suma al segundo mes; si no continúa, se le explica como un
+descuido operativo. El correo no afirma en ninguna parte que el total haya sido
+$150.000, porque el cobro de Google a la tarjeta de Andrés (1 de octubre) va a
+mostrar la cifra real.
+
+**Pendiente para el mes 2, si continúa:** poner un tope que no dependa de
+acordarse de pausar (bajar el presupuesto diario o agendar la pausa al
+completar el monto), revisar el INP (704 ms en Clarity del 21 al 23 de
+septiembre), páginas de servicios nuevos, landing de Pirque y el campo
+"Comuna" del formulario.
+
+---
+
+## 14. Mes 2 (octubre) — acordado el 27 de septiembre de 2026
+
+Andrés renovó. Parte el **1 de octubre**, con pago de la gestión ($150.000) por
+transferencia antes del inicio. El plan se le envió por escrito con cantidades
+y una sección de "no incluye", **y ese es el alcance de referencia** si pide
+cosas nuevas: lo que no esté ahí se cotiza aparte.
+
+**Alcance acordado:**
+
+1. **Google Ads:** $150.000 completos para octubre. **Presupuesto diario
+   $4.934** (150.000 / 30,4), así el mes cierra en el monto sin depender de
+   pausar a mano. Los $21.779 de exceso de septiembre **no se le mencionan**
+   (decisión de Cristian) y **no se descuentan** de octubre.
+2. **Sitio:** fotos nuevas con marca de agua de AO; portafolio con 7
+   categorías: **Obra nueva · Ampliaciones · Remodelaciones · Techumbres ·
+   Quinchos · Terrazas y decks · Cierres y portones** (hoy son 3); **3 páginas
+   de servicio: quinchos, portones y cobertizos**; simplificar el formulario
+   (el campo "Comuna" opcional, ver §11 y el análisis del 8 de septiembre).
+3. **Perfil de Empresa de Google:** 7 fotos nuevas, distintas a las actuales.
+4. **Instagram, manejo básico, incluido solo este mes:** perfil listo, 8
+   publicaciones (2 por semana) y destacadas por servicio. Desde el mes 3 se
+   puede cobrar aparte.
+
+**No incluye:** publicidad en Meta, videos o reels, responder mensajes,
+sesiones de fotos, páginas o cambios fuera de la lista.
+**Fotos con clientes:** solo con autorización del cliente, que consigue Andrés.
+**Resultados:** el plan dice explícitamente que no se garantiza un número de
+contactos.
+
+**Contactos reales acumulados: 6.** El 6.º llegó por Web3Forms el **27 de
+septiembre, con la campaña pausada** desde el 23. No viene de un anuncio
+activo: es orgánico, directo o de alguien que volvió. Cuenta como contacto del
+sitio, no de la campaña.
+
+**Antes del 1 de octubre:** configurar el presupuesto diario en $4.934 y
+reactivar la campaña ese día. El cobro automático de Google del 1 de octubre
+incluye los días 21 a 23 de septiembre.
+
+### Avance al 1 de octubre de 2026 (pago recibido, mes 2 iniciado)
+
+- **Portafolio con 7 categorías** (`categoryLabels` + `resolveCategory` en
+  `portafolio.html`). La clave interna de obra nueva sigue siendo `cota-cero`,
+  con etiqueta "Obra nueva". **Ampliaciones no tiene obras**: el botón se oculta
+  solo (`hideEmptyFilters`) hasta que se suba una. Pedirle a Andrés fotos de
+  ampliaciones.
+- **3 obras nuevas:** *Construcción de casa desde cero* (El Manzano, distinta
+  a "Proyecto desde Cota Cero"), *Construcción de portón* (El Manzano) y
+  *Remodelación interior en Pirque* (sin foto del antes). **Es la primera obra
+  en Pirque**; el generador de landings todavía no crea página con una sola obra.
+- **Marca de agua en todo el portafolio:** antes solo 9 portadas la tenían.
+  Se aplicó a las otras 143 y a las 19 nuevas, imitando la original (logo
+  `ao-construcciones-logo-portfolio-transparent.webp` abajo a la izquierda,
+  con halo blanco suave). Las fotos que ya la tenían no se tocaron.
+- **Caché:** las fotos del portafolio se sirven como `immutable` por un año.
+  Al reprocesarlas hay que subir la versión: `?v=` en `imageSrc()`
+  (portafolio), `FOTOS_VERSION` (generador de landings) y las 3 imágenes de
+  proyectos en `index.html`. Hoy va en `?v=2`.
+- **Google Business:** 7 fotos con clientes en
+  `_entregables-andres/google-maps/`. Andrés confirmó que tiene el permiso de
+  los clientes. Las sube Cristian (no hay conector).
+- **Pendiente del mes:** 3 páginas de servicio (quinchos, portones,
+  cobertizos; de cobertizos no hay fotos), formulario, Instagram e informe.
