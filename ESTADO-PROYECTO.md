@@ -760,7 +760,9 @@ respaldo": conviene que Andrés sume una segunda tarjeta.
 - Búsquedas: mucho más limpias que en septiembre. Candidatas a negativas
   nuevas (1 clic cada una): `motor`, `faac`, `brazo`, `hidraulico`,
   `rodamiento`, `cuanto`, `cuánto`, `cobra`, `tonos`, `villarrica`, `basal`,
-  `totora`, `bulldog`, `materiales`. No se cargaron: a decisión de Cristian.
+  `totora`, `bulldog`, `materiales` (más `hidráulico` con tilde). **Cargadas
+  el 16 de octubre** a nivel campaña, concordancia amplia; ninguna choca con
+  las 70 palabras clave activas.
 
 **GA4 1–16 oct:** 254 usuarios, 286 sesiones (80% Paid Search, 12% orgánico,
 8% directo). 14 eventos clave: 12 `whatsapp_click` + 2 `tel_click`.
