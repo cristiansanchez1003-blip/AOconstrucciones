@@ -4,7 +4,7 @@ Documento vivo. Recoge decisiones, IDs y pendientes que **no** se pueden deducir
 leyendo el código ni el historial de git. Si retomas este proyecto en una sesión
 nueva, empieza por acá.
 
-**Última actualización:** 1 de octubre de 2026
+**Última actualización:** 16 de octubre de 2026
 
 ---
 
@@ -725,3 +725,51 @@ por palabra clave hacia las páginas de quinchos y portones, rutas visibles,
   el plan las pedía de frase. Las negativas antiguas `vinilico`,
   `piso vinilico` y `"piso vinilico"` bloquean las 3 palabras clave activas de
   piso vinílico: hay que quitar las negativas o pausar esas palabras clave.
+
+### Revisión del 16 de octubre de 2026
+
+**Pausa por pago (1–4 de octubre).** Google intentó cobrar ~$22.000 pendientes
+de septiembre y la tarjeta de Andrés no tenía saldo; la campaña no corrió hasta
+el **5 de octubre**. Google Ads muestra el aviso "Agregar un método de pago de
+respaldo": conviene que Andrés sume una segunda tarjeta.
+
+**Contactos reales de octubre, informados por Andrés: 9.**
+
+| Fecha del aviso | Contactos | Detalle |
+|---|---|---|
+| 6 oct | 3 | Por la página web, los 3 de techumbre |
+| 11 oct (domingo) | 4 | |
+| 15 oct | 1 | |
+| 16 oct | 1 | |
+
+**Acumulado desde el 12 de agosto: 15** (6 del primer ciclo + 9 de octubre).
+
+**Números 1–16 oct** (la campaña corrió del 5 al 16):
+
+- Google Ads: 1.804 impresiones, 221 clics, CPC $353, gasto **$77.957**,
+  7 conversiones (todas `whatsapp_click`), 4 clics inválidos.
+- **Costo por contacto real: ~$8.700** (77.957 / 9), contra ~$34.000 del
+  primer ciclo.
+- Por grupo: **C Techumbres** 61 clics y 5 conversiones (la mejor, coincide con
+  los 3 clientes de techumbre); E Exteriores 67 clics y 2; F, B, D y A sin
+  conversiones (93 clics, ~$33.000).
+- Ritmo: quedan ~$72.000 para el 31; el presupuesto diario ($4.930) cierra el
+  mes en ~$150.000.
+- Todos los recursos creados el 1 de octubre están **aprobados** y
+  publicándose (el logo ya tuvo 810 impresiones).
+- Búsquedas: mucho más limpias que en septiembre. Candidatas a negativas
+  nuevas (1 clic cada una): `motor`, `faac`, `brazo`, `hidraulico`,
+  `rodamiento`, `cuanto`, `cuánto`, `cobra`, `tonos`, `villarrica`, `basal`,
+  `totora`, `bulldog`, `materiales`. No se cargaron: a decisión de Cristian.
+
+**GA4 1–16 oct:** 254 usuarios, 286 sesiones (80% Paid Search, 12% orgánico,
+8% directo). 14 eventos clave: 12 `whatsapp_click` + 2 `tel_click`.
+**`generate_lead` = 0** con 9 `form_start`: nadie envió el formulario. Se probó
+el formulario en local (home y quinchos, con el envío y GA bloqueados) y
+**funciona**: guarda en Web3Forms, dispara `generate_lead` y muestra la
+confirmación. Los contactos de octubre llegan por WhatsApp.
+
+Páginas: home 212 vistas (8 eventos clave), **portones 51 (4)**, portafolio 38
+(1), quinchos 22 (0), Puente Alto 12 (1), La Florida 4, San José de Maipo 2.
+
+**Clarity:** la sesión expiró; no se revisó.
