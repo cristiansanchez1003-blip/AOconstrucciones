@@ -1,98 +1,169 @@
-# Instagram — banco de publicaciones
+# Instagram — plantilla y banco de publicaciones
 
-Cuenta: **@aoconstrucciones.cl** (creada el 19 de octubre de 2026). Las fotos de
-cada publicación están en `_entregables-andres/instagram/`, una carpeta por
-publicación, ya en JPG y **sin marca de agua** cuando existe una versión limpia
-(los originales, o la versión anterior al commit que puso la marca). Las que
-dicen "con marca" en la tabla traen el logo encima: el prompt le pide a la IA
-quitarlo y se vuelve a poner en Canva.
+Cuenta: **@aoconstrucciones.cl** (creada el 19 de octubre de 2026; la antigua
+@aoconstrucciones2026 se va a eliminar). Todo el feed usa **una sola plantilla**
+con los colores del logo, para que se vea ordenado y reconocible.
 
-En la misma carpeta: `logo-ao-transparente.png` (para poner encima) y
-`foto-de-perfil-instagram.jpg` (el ícono de la casa, que se lee bien en el
-círculo de perfil).
+## La plantilla AO
 
-## Cómo se arma cada publicación
+**Paleta** (sacada del logo):
 
-1. En la herramienta de IA (ChatGPT, Gemini u otra) sube las fotos que indica
-   el prompt y pega **el prompt de la publicación + las reglas base**.
-2. **Compara el resultado con la foto original.** Tiene que ser la misma
-   construcción: mismas ventanas, mismos materiales, mismos colores. Si la IA
-   inventó o cambió algo de la obra, se descarta y se vuelve a pedir. Son obras
-   reales y el cliente que cotiza espera ver eso.
-3. En Canva, pon `logo-ao-transparente.png` chico, abajo a la izquierda.
-4. Publica en **carrusel**: primero la imagen hecha con IA (es el gancho) y
-   después las fotos reales del proceso, sin editar o solo mejoradas con el
-   prompt de mejora.
+| Color | HEX | Dónde va |
+|---|---|---|
+| Azul petróleo | `#183C4D` | Cabecera, etiqueta "ANTES", etiquetas de proceso |
+| Terracota | `#A65442` | Franja bajo la cabecera, etiqueta "DESPUÉS" / "RESULTADO", "COTIZA SIN COSTO" |
+| Oliva claro | `#C8C36B` | El lugar, bajo el título (es el oliva del logo `#98953A`, aclarado para que se lea sobre el azul) |
+| Crema | `#F4F1E9` | Fondo y pie |
+| Blanco | `#FFFFFF` | Texto sobre azul y terracota |
 
-**Ritmo:** 2 publicaciones por semana (martes y viernes), en el orden de la
-tabla. Techumbre va primero porque fue el servicio que más contactos trajo en
-octubre.
+**Tipografía:** títulos y etiquetas en una letra **condensada, negrita y en
+mayúsculas**, parecida a la del logo (en el script: Bahnschrift Bold Condensed;
+en Canva sirven *Oswald* o *Bebas Neue*). El lugar va en semibold, en
+minúsculas.
 
-## Reglas base (pegar al final de cada prompt)
+**Estructura** (1080 × 1350 px, el formato vertical del feed):
 
-```
-Reglas: esta es una obra real de una empresa constructora. No cambies la
-estructura, la forma, los materiales, los colores ni las proporciones de la
-construcción. No agregues ni quites elementos (muebles, plantas, ventanas,
-personas, autos, herramientas). Solo mejora la luz, el color, la nitidez y el
-encuadre, como lo haría un fotógrafo de arquitectura al editar. Si alguna foto
-trae un logo superpuesto, elimínalo limpiamente. No escribas ningún texto
-aparte del que te indico, y revisa la ortografía y los tildes. Formato vertical
-4:5 (1080 × 1350 px).
-```
+1. **Cabecera azul** con el título en blanco (qué se hizo), el lugar en oliva
+   claro y una barrita terracota a la izquierda.
+2. **Franja terracota** de 8 px.
+3. **Fotos** sobre fondo crema, con esquinas redondeadas y 12 px de separación,
+   con sus etiquetas en pastilla.
+4. **Pie crema:** logo a la izquierda; "COTIZA SIN COSTO" (terracota) y
+   "aoconstrucciones.cl" (azul) a la derecha.
 
-**Prompt de mejora** (para las fotos de proceso del carrusel, una por una):
+**Formatos de portada:**
+
+- **Apilada:** antes arriba, después abajo. Para fotos horizontales.
+- **Lado a lado:** antes a la izquierda, después a la derecha. Para fotos
+  verticales tomadas desde el mismo ángulo.
+- **Evolución:** 4 fotos numeradas ("1 · FUNDACIONES"…). Para obras con proceso
+  largo.
+- **Collage:** una foto grande y tres chicas. Para obras sin foto del antes.
+
+**Láminas del carrusel:** la foto completa, con una etiqueta ("EL PROCESO ·
+1/3" o "RESULTADO") y el mismo pie, para que todo el carrusel se vea de la
+misma marca.
+
+## Las imágenes ya están armadas
+
+`tools-plantilla-instagram.py` arma cada publicación con la plantilla, usando
+las fotos reales tal cual: solo las recorta, no cambia nada de la obra.
+
+Cada carpeta de `_entregables-andres/instagram/` tiene una subcarpeta
+**`publicar/`** con las láminas en orden: `01-portada.jpg`, `02-…`, `03-…`. Se
+suben así, como carrusel.
+
+Las fotos que traían la marca de agua vieja se recortaron hacia arriba para
+dejarla fuera, así que no se repite el logo.
+
+**Para una obra nueva:** crea la carpeta con las fotos (`antes.jpg`,
+`despues.jpg`, `proceso-1.jpg`…), agrega su entrada en `POSTS` dentro del
+script y corre `python tools-plantilla-instagram.py nombre-carpeta`. O pídele a
+Claude que la arme.
+
+## Si quieres fotos más vistosas con IA
+
+**Opción recomendada:** mejora con IA **solo las fotos**, nunca el diseño. Así
+la plantilla queda perfecta y sin errores de ortografía.
+
+1. Sube una foto de la carpeta a la IA con el **prompt de mejora** de abajo.
+2. Guarda el resultado en la misma carpeta y **con el mismo nombre**
+   (reemplaza la original; el original queda en `_fotos-originales/` o en git).
+3. Vuelve a correr el script para esa carpeta.
 
 ```
 Mejora esta foto como un fotógrafo de arquitectura: endereza las líneas
-verticales, equilibra la luz y el color y aumenta la nitidez, sin que se vea
-artificial. Recórtala en formato vertical 4:5 dejando lo importante al centro.
+verticales, equilibra la luz y el color, dale un cielo más limpio si está
+quemado y aumenta la nitidez, sin que se vea artificial. Reglas: es una obra
+real de una empresa constructora. No cambies la estructura, la forma, los
+materiales, los colores ni las proporciones de la construcción. No agregues ni
+quites elementos (muebles, plantas, ventanas, personas, autos, herramientas).
+Si la foto trae un logo superpuesto, elimínalo limpiamente. Mantén el tamaño y
+la proporción de la foto original.
+```
+
+**Opción "todo en la IA":** si prefieres que la IA arme la portada completa,
+adjunta tres cosas: la plantilla de referencia
+(`01-techumbre-la-granja/publicar/01-portada.jpg`), el logo
+(`logo-ao-transparente.png`) y las fotos de la obra. Pega el **prompt maestro**
+y completa el bloque de la publicación. Revisa siempre que los textos tengan
+tildes y que el logo no venga deformado; si viene mal, la opción recomendada
+es más segura.
+
+```
+PROMPT MAESTRO — PLANTILLA AO CONSTRUCCIONES
+
+Usa la imagen "plantilla" adjunta como diseño obligatorio: copia exactamente
+su estructura, proporciones, márgenes, colores y tipo de letra. Formato
+vertical 1080 × 1350 px.
+- Cabecera azul petróleo (#183C4D) de 176 px de alto. Título en mayúsculas,
+  letra condensada negrita, blanca. Debajo, el lugar en oliva claro (#C8C36B).
+  A la izquierda del título, una barrita vertical terracota (#A65442).
+- Bajo la cabecera, una franja terracota (#A65442) de 8 px.
+- Fondo crema (#F4F1E9). Fotos con esquinas redondeadas, márgenes de 40 px y
+  12 px de separación entre ellas.
+- Etiquetas en forma de pastilla, letra condensada negrita blanca: "ANTES" en
+  azul petróleo y "DESPUÉS" en terracota, en la esquina superior izquierda de
+  cada foto.
+- Pie crema: a la izquierda el logo adjunto tal cual, sin redibujarlo; a la
+  derecha "COTIZA SIN COSTO" en terracota y debajo "aoconstrucciones.cl" en
+  azul petróleo.
+- No agregues ningún otro texto, ícono ni adorno. Revisa ortografía y tildes.
+Reglas de las fotos: es una obra real. No cambies la estructura, la forma, los
+materiales, los colores ni las proporciones de la construcción, y no agregues
+ni quites elementos. Solo mejora la luz, el color y la nitidez. Si una foto
+trae un logo superpuesto, elimínalo.
+
+PUBLICACIÓN:
+Título: [TÍTULO]
+Lugar: [LUGAR]
+Formato: [apilada / lado a lado / evolución / collage]
+Fotos: [qué foto va en cada lugar]
 ```
 
 ## Las publicaciones
 
-| # | Obra | Carpeta | Tipo |
-|---|---|---|---|
-| 01 | Techumbre nueva, La Granja | `01-techumbre-la-granja` | Antes / después |
-| 02 | Casa desde cero, El Manzano | `02-casa-desde-cero-el-manzano` | Evolución en 4 fotos |
-| 03 | Cocina de quincho, Hacienda El Peñón | `03-quincho-hacienda-el-penon` | Antes / después |
-| 04 | Acceso a quincho, Las Vertientes | `04-acceso-quincho-las-vertientes` | Antes / después |
-| 05 | Portón, El Manzano | `05-porton-el-manzano` | Antes / después |
-| 06 | Techumbre, Las Vertientes | `06-techumbre-las-vertientes` | Antes / después |
-| 07 | Cocina, El Manzano | `07-cocina-el-manzano` | Antes / después |
-| 08 | Remodelación interior, Pirque | `08-interior-pirque` | Collage |
-| Extra | Deck, Melocotón · Casa en el árbol · Fachada Las Vertientes | `extra-*` | Antes / después |
+Orden sugerido, 2 por semana (martes y viernes). Techumbre va primero porque
+fue el servicio que más contactos trajo en octubre.
+
+| # | Carpeta | Título · Lugar | Formato | Láminas |
+|---|---|---|---|---|
+| 01 | `01-techumbre-la-granja` | TECHUMBRE NUEVA · La Granja | Apilada | 5 |
+| 02 | `02-casa-desde-cero-el-manzano` | DE TERRENO A CASA · El Manzano, San José de Maipo | Evolución | 6 |
+| 03 | `03-quincho-hacienda-el-penon` | COCINA DE QUINCHO · Hacienda El Peñón, Puente Alto | Apilada | 5 |
+| 04 | `04-acceso-quincho-las-vertientes` | NUEVO ACCESO AL QUINCHO · Las Vertientes, San José de Maipo | Lado a lado | 3 |
+| 05 | `05-porton-el-manzano` | PORTÓN A MEDIDA · El Manzano, San José de Maipo | Apilada | 2 |
+| 06 | `06-techumbre-las-vertientes` | CAMBIO DE TECHUMBRE · Las Vertientes, San José de Maipo | Apilada | 3 |
+| 07 | `07-cocina-el-manzano` | COCINA NUEVA · El Manzano, San José de Maipo | Apilada | 4 |
+| 08 | `08-interior-pirque` | REMODELACIÓN INTERIOR · Pirque | Collage | 5 |
+| Extra | `extra-09-deck-melocoton` | DECK NUEVO · Melocotón, San José de Maipo | Apilada | 2 |
+| Extra | `extra-10-casa-en-el-arbol` | CASA EN EL ÁRBOL · El Manzano, San José de Maipo | Lado a lado | 2 |
+| Extra | `extra-11-fachada-las-vertientes` | FACHADA Y BALCÓN NUEVOS · Las Vertientes, San José de Maipo | Lado a lado | 2 |
 
 La fachada de Las Vertientes quedó como extra porque probablemente es el antes
-y después que ya se publicó. Si no lo es, es la más llamativa de todas.
+y después que ya se publicó.
 
----
+**Fotos para la opción "todo en la IA"** (el bloque PUBLICACIÓN): las mismas
+que usa la portada armada. Apilada y lado a lado: `antes.jpg` y `despues.jpg`
+(en la 01, `despues-con-clientes.jpg`). Evolución (02): `antes`, `proceso-2`,
+`proceso-3` y `despues`, con las etiquetas "1 · FUNDACIONES", "2 ·
+ESTRUCTURA", "3 · REVESTIMIENTO" y "4 · TERMINADA". Collage (08): el living
+grande y las otras tres abajo.
+
+**Cuidado con las personas que aparecen en las fotos:** no siempre son los
+clientes. En la 01, el hombre de polera amarilla del "después" es el mismo que
+aparece trabajando en el proceso. Los textos no dicen quién es quién.
+
+## Textos
+
+Usan solo datos reales de cada obra: no prometen precios, plazos ni garantías.
 
 ### 01 · Techumbre nueva en La Granja
-
-**Fotos para la IA:** `antes.jpg` y `despues-con-clientes.jpg` (esta trae la
-marca grande encima). **Carrusel:** imagen IA → `despues-con-clientes` →
-`proceso-1`, `proceso-2`, `proceso-3`.
-
-```
-Te adjunto dos fotos de la misma obra: "antes" (el techo antiguo) y "después"
-(el techo nuevo, con los dueños sobre él). Crea una imagen antes/después: la
-foto "antes" en la mitad superior y la foto "después" en la mitad inferior,
-separadas por una línea blanca de 6 px. En la esquina superior izquierda de
-cada mitad, una etiqueta pequeña que diga "ANTES" y "DESPUÉS", en letra sans
-serif negrita blanca, sobre una pastilla azul petróleo (#183C4D). Arriba de
-todo, una franja azul petróleo con el título "TECHUMBRE NUEVA · LA GRANJA" en
-blanco. Recorta cada foto para que el techo quede al centro y los dueños se
-vean completos.
-```
-
-**Texto:**
 
 > Techumbre nueva en La Granja 🏠
 >
 > Retiramos la cubierta antigua, preparamos la base y dejamos un techo
-> completamente nuevo. Y lo mejor: la cara de felicidad de nuestros clientes al
-> ver el resultado 🙌
+> completamente nuevo. Desliza para ver el proceso ➡️
 >
 > ¿Tu techo tiene goteras o ya cumplió su vida útil? Escríbenos: la cotización
 > no tiene costo y vamos a terreno a ver tu caso.
@@ -103,24 +174,6 @@ vean completos.
 > #AntesYDespues #Constructora #LaGranja #PuenteAlto #LaFlorida
 
 ### 02 · De terreno a casa en El Manzano
-
-**Fotos para la IA:** `antes.jpg`, `proceso-2.jpg`, `proceso-3.jpg` y
-`despues.jpg`. **Carrusel:** imagen IA → `despues` → `proceso-1` a
-`proceso-4`.
-
-```
-Te adjunto cuatro fotos de una casa construida desde cero, en este orden:
-"antes" (terreno con el moldaje de las fundaciones), "proceso-2" (estructura
-con paneles), "proceso-3" (revestimiento) y "despues" (casa terminada). Crea
-una cuadrícula de 2 × 2 con las fotos en ese orden (arriba a la izquierda,
-arriba a la derecha, abajo a la izquierda, abajo a la derecha), separadas por
-líneas blancas de 6 px. En cada foto, una pastilla azul petróleo (#183C4D) con
-texto blanco: "1 · Fundaciones", "2 · Estructura", "3 · Revestimiento",
-"4 · Terminada". Arriba de todo, una franja azul petróleo con el título
-"DE TERRENO A CASA · EL MANZANO" en blanco.
-```
-
-**Texto:**
 
 > De terreno vacío a casa terminada en El Manzano 🏡
 >
@@ -139,21 +192,6 @@ texto blanco: "1 · Fundaciones", "2 · Estructura", "3 · Revestimiento",
 
 ### 03 · Cocina de quincho en Hacienda El Peñón
 
-**Fotos para la IA:** `antes.jpg` y `despues.jpg`. **Carrusel:** imagen IA →
-`despues` → `proceso-1`, `proceso-2`, `proceso-3`.
-
-```
-Te adjunto dos fotos de la misma obra: "antes" (el quincho en obra, con el
-equipo trabajando) y "después" (la cocina de quincho terminada). Crea una
-imagen antes/después: "antes" en la mitad superior y "después" en la mitad
-inferior, separadas por una línea blanca de 6 px. Etiquetas "ANTES" y
-"DESPUÉS" en la esquina superior izquierda de cada mitad, en letra sans serif
-negrita blanca sobre una pastilla azul petróleo (#183C4D). Arriba, una franja
-azul petróleo con el título "COCINA DE QUINCHO · HACIENDA EL PEÑÓN" en blanco.
-```
-
-**Texto:**
-
 > Se viene el verano ☀️ ¿Tu quincho está listo?
 >
 > Cocina de quincho a medida en Hacienda El Peñón, Puente Alto: muebles con
@@ -167,28 +205,13 @@ azul petróleo con el título "COCINA DE QUINCHO · HACIENDA EL PEÑÓN" en blan
 > #AOConstrucciones #Quincho #Quinchos #CocinaDeQuincho #Parrilla
 > #AntesYDespues #PuenteAlto #Constructora
 
-### 04 · Donde había una ventana, ahora hay una entrada (Las Vertientes)
-
-**Fotos para la IA:** `antes.jpg` y `despues.jpg` (las dos verticales y desde
-el mismo ángulo). **Carrusel:** imagen IA → `proceso-1` → `proceso-2`.
-
-```
-Te adjunto dos fotos verticales tomadas desde el mismo ángulo: "antes" (un muro
-de piedra con una ventana) y "después" (el mismo muro con una puerta doble de
-vidrio y el dueño feliz). Crea una imagen antes/después lado a lado: "antes" a
-la izquierda y "después" a la derecha, separadas por una línea blanca de 6 px.
-Etiquetas "ANTES" y "DESPUÉS" arriba de cada foto, en letra sans serif negrita
-blanca sobre una pastilla azul petróleo (#183C4D). Arriba, una franja azul
-petróleo con el título "NUEVO ACCESO AL QUINCHO · LAS VERTIENTES" en blanco.
-```
-
-**Texto:**
+### 04 · Nuevo acceso al quincho en Las Vertientes
 
 > Donde había una ventana, ahora hay una entrada 🚪
 >
 > En Las Vertientes abrimos el muro para instalar una puerta doble de vidrio y
-> darle al quincho un acceso directo desde la casa. El pulgar arriba de nuestro
-> cliente lo dice todo 👍
+> darle al quincho un acceso directo desde la casa. El pulgar arriba lo dice
+> todo 👍
 >
 > ¿Quieres cambiar cómo se usa un espacio de tu casa? Escríbenos.
 >
@@ -197,23 +220,7 @@ petróleo con el título "NUEVO ACCESO AL QUINCHO · LAS VERTIENTES" en blanco.
 > #AOConstrucciones #Remodelacion #AntesYDespues #Quincho #CajonDelMaipo
 > #SanJoseDeMaipo #Constructora
 
-### 05 · Portón nuevo en El Manzano
-
-**Fotos para la IA:** `antes.jpg` y `despues.jpg`. **Carrusel:** imagen IA →
-`proceso-1`.
-
-```
-Te adjunto dos fotos de la misma entrada: "antes" (el acceso antiguo, con
-nuestro maestro trabajando) y "después" (el portón nuevo de madera con
-estructura metálica). Crea una imagen antes/después: "antes" en la mitad
-superior y "después" en la mitad inferior, separadas por una línea blanca de
-6 px. Recorta "antes" para que se vea el acceso completo. Etiquetas "ANTES" y
-"DESPUÉS" en la esquina superior izquierda de cada mitad, en letra sans serif
-negrita blanca sobre una pastilla azul petróleo (#183C4D). Arriba, una franja
-azul petróleo con el título "PORTÓN A MEDIDA · EL MANZANO" en blanco.
-```
-
-**Texto:**
+### 05 · Portón a medida en El Manzano
 
 > Portón nuevo en El Manzano 🔨
 >
@@ -227,23 +234,7 @@ azul petróleo con el título "PORTÓN A MEDIDA · EL MANZANO" en blanco.
 > #AOConstrucciones #Porton #Portones #PortonDeMadera #CierrePerimetral
 > #CajonDelMaipo #SanJoseDeMaipo #Constructora
 
-### 06 · Techumbre en Las Vertientes
-
-**Fotos para la IA:** `antes.jpg` y `despues.jpg` (esta trae la marca).
-**Carrusel:** imagen IA → `proceso-1` → `proceso-2`.
-
-```
-Te adjunto dos fotos del mismo techo desde casi el mismo ángulo: "antes"
-(planchas antiguas, oxidadas y con la pintura saltada) y "después" (la cubierta
-nueva terminada). Crea una imagen antes/después: "antes" en la mitad superior y
-"después" en la mitad inferior, separadas por una línea blanca de 6 px.
-Etiquetas "ANTES" y "DESPUÉS" en la esquina superior izquierda de cada mitad,
-en letra sans serif negrita blanca sobre una pastilla azul petróleo (#183C4D).
-Arriba, una franja azul petróleo con el título "CAMBIO DE TECHUMBRE · LAS
-VERTIENTES" en blanco.
-```
-
-**Texto:**
+### 06 · Cambio de techumbre en Las Vertientes
 
 > Así cambia un techo 👇
 >
@@ -260,21 +251,6 @@ VERTIENTES" en blanco.
 
 ### 07 · Cocina nueva en El Manzano
 
-**Fotos para la IA:** `antes.jpg` y `despues.jpg` (esta trae la marca).
-**Carrusel:** imagen IA → `proceso-1` a `proceso-3`.
-
-```
-Te adjunto dos fotos del mismo espacio: "antes" (la habitación en obra gruesa)
-y "después" (la cocina terminada con isla central). Crea una imagen
-antes/después: "antes" en la mitad superior y "después" en la mitad inferior,
-separadas por una línea blanca de 6 px. Etiquetas "ANTES" y "DESPUÉS" en la
-esquina superior izquierda de cada mitad, en letra sans serif negrita blanca
-sobre una pastilla azul petróleo (#183C4D). Arriba, una franja azul petróleo
-con el título "COCINA NUEVA · EL MANZANO" en blanco.
-```
-
-**Texto:**
-
 > Una cocina completamente nueva en El Manzano ✨
 >
 > Desliza para ver cómo era el espacio y todo el proceso, hasta llegar a una
@@ -288,23 +264,6 @@ con el título "COCINA NUEVA · EL MANZANO" en blanco.
 > #CajonDelMaipo #SanJoseDeMaipo #Constructora
 
 ### 08 · Remodelación interior en Pirque
-
-No hay foto del antes: va como collage de portada más el carrusel con las
-fotos mejoradas.
-
-**Fotos para la IA:** las 4 de la carpeta. **Carrusel:** imagen IA →
-`foto-1-living` a `foto-4-pasillo`, mejoradas con el prompt de mejora.
-
-```
-Te adjunto cuatro fotos de una remodelación interior: un living, un comedor y
-dos pasillos. Crea un collage vertical: el living grande en la mitad superior
-y las otras tres en una fila abajo, separadas por líneas blancas de 6 px.
-Endereza las líneas verticales y equilibra la luz de todas para que se vean
-del mismo tono. Arriba, una franja azul petróleo (#183C4D) con el título
-"REMODELACIÓN INTERIOR · PIRQUE" en blanco.
-```
-
-**Texto:**
 
 > Remodelación interior en Pirque 🏠
 >
@@ -321,17 +280,12 @@ del mismo tono. Arriba, una franja azul petróleo (#183C4D) con el título
 
 ### Extras
 
-Usan el mismo prompt antes/después de la 03, cambiando la descripción y el
-título:
-
-- **Deck en Melocotón** (`extra-09-deck-melocoton`): "antes" es el terreno con
-  el carro de arrastre; "después", el carro sobre el deck nuevo con escalera.
-  Título: "DECK NUEVO · MELOCOTÓN". Bueno para la temporada de verano.
-- **Casa en el árbol** (`extra-10-casa-en-el-arbol`): título "CASA EN EL ÁRBOL ·
-  EL MANZANO". Es la más simpática para generar comentarios.
-- **Fachada y balcón** (`extra-11-fachada-las-vertientes`): lado a lado, como
-  la 04. Datos para el texto: revestimiento de paneles verticales, balcón nuevo
-  con estructura metálica y cielo de madera, iluminación exterior.
+- **Deck en Melocotón:** un deck nuevo alrededor del carro de arrastre, con
+  escalera de acceso. Bueno para la temporada de verano.
+- **Casa en el árbol:** la más simpática para generar comentarios.
+- **Fachada y balcón en Las Vertientes:** revestimiento de paneles verticales,
+  balcón nuevo con estructura metálica y cielo de madera, e iluminación
+  exterior.
 
 ## Perfil
 
@@ -350,6 +304,7 @@ título:
 - **Link de la bio:**
   `https://aoconstrucciones.cl/?utm_source=instagram&utm_medium=social&utm_campaign=bio`.
   Así Analytics muestra cuántas visitas llegan desde Instagram.
-- **Destacadas por servicio** (están en el alcance del mes): Techumbres,
-  Quinchos, Portones, Obra nueva, Remodelaciones y Clientes. Cada una con 2 o 3
-  fotos de las carpetas.
+- **Destacadas por servicio:** Techumbres, Quinchos, Portones, Obra nueva,
+  Remodelaciones y Clientes. Las portadas ya están hechas con la misma paleta
+  en `_entregables-andres/instagram/destacadas/`: se suben como historia y se
+  eligen como portada al crear la destacada.

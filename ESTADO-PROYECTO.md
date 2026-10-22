@@ -794,10 +794,15 @@ propia cuando haya más fotos de allá.
 
 **Instagram:** Cristian creó **@aoconstrucciones.cl** el 19 de octubre (bio,
 link a la web, foto de perfil y una primera publicación antes/después hecha
-con IA). Sigue existiendo la cuenta antigua **@aoconstrucciones2026** (5
-seguidores, publicaciones con el logo), que es la que enlaza la web en el
-footer y en el `sameAs` del JSON-LD: **pendiente decidir si se cambian los
-links a la cuenta nueva.**
+con IA). La cuenta antigua **@aoconstrucciones2026** (5 seguidores) la va a
+eliminar Andrés; Cristian pidió no tocar todavía los links de la web, que
+siguen apuntando a ella (footer y `sameAs` del JSON-LD).
+
+**Plantilla del feed:** `tools-plantilla-instagram.py` arma portadas, láminas
+de carrusel y portadas de destacadas con la paleta del logo (azul petróleo
+`#183C4D`, terracota `#A65442`, oliva, crema `#F4F1E9`) y Bahnschrift Bold
+Condensed. Usa las fotos reales sin alterarlas; las que tienen la marca vieja
+se recortan hacia arriba para dejarla fuera.
 
 Banco de publicaciones con fotos, prompts para la IA y textos:
 [`PLAN-INSTAGRAM.md`](PLAN-INSTAGRAM.md). Las fotos están en
