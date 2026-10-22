@@ -807,3 +807,13 @@ se recortan hacia arriba para dejarla fuera.
 Banco de publicaciones con fotos, prompts para la IA y textos:
 [`PLAN-INSTAGRAM.md`](PLAN-INSTAGRAM.md). Las fotos están en
 `_entregables-andres/instagram/`.
+
+**Avance al 22 de octubre (tarde):** publicadas con la plantilla las 2
+primeras (01 Techumbre La Granja y 02 De terreno a casa), en carrusel, con el
+texto del plan y música. Bio y foto de perfil listas, 6 destacadas subidas.
+Link de la bio: `aoconstrucciones.cl/ig` (redirección en `vercel.json` que
+conserva las UTM). Van **2 de las 8 publicaciones** comprometidas para el mes.
+
+**Instagram desde noviembre:** el plan de octubre lo dejó "incluido solo este
+mes". Cristian quiere proponer cobrarlo aparte desde el mes 3, como agregado
+opcional, junto con el informe de cierre de octubre.

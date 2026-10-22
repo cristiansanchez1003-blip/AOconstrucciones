@@ -301,9 +301,10 @@ Usan solo datos reales de cada obra: no prometen precios, plazos ni garantías.
   👇 Cotiza sin costo por WhatsApp
   ```
 
-- **Link de la bio:**
-  `https://aoconstrucciones.cl/?utm_source=instagram&utm_medium=social&utm_campaign=bio`.
-  Así Analytics muestra cuántas visitas llegan desde Instagram.
+- **Link de la bio:** `aoconstrucciones.cl/ig`. Es una redirección de
+  `vercel.json` hacia
+  `/?utm_source=instagram&utm_medium=social&utm_campaign=bio`, así la bio se ve
+  corta y Analytics igual cuenta las visitas que llegan desde Instagram.
 - **Destacadas por servicio:** Techumbres, Quinchos, Portones, Obra nueva,
   Remodelaciones y Clientes. Las portadas ya están hechas con la misma paleta
   en `_entregables-andres/instagram/destacadas/`: se suben como historia y se
