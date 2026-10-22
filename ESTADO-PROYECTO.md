@@ -4,7 +4,7 @@ Documento vivo. Recoge decisiones, IDs y pendientes que **no** se pueden deducir
 leyendo el código ni el historial de git. Si retomas este proyecto en una sesión
 nueva, empieza por acá.
 
-**Última actualización:** 16 de octubre de 2026
+**Última actualización:** 22 de octubre de 2026
 
 ---
 
@@ -775,3 +775,30 @@ Páginas: home 212 vistas (8 eventos clave), **portones 51 (4)**, portafolio 38
 (1), quinchos 22 (0), Puente Alto 12 (1), La Florida 4, San José de Maipo 2.
 
 **Clarity:** la sesión expiró; no se revisó.
+
+### Actualización del 22 de octubre de 2026
+
+**4 contactos más** (informados por Cristian):
+
+| Fecha | Contactos | Detalle |
+|---|---|---|
+| 17 oct (sábado) | 1 | Formulario de la web |
+| 18 oct (domingo) | 1 | Formulario de la web |
+| 19 oct (lunes) | 1 | WhatsApp directo; de Pirque (ya van 2 de Pirque) |
+| 20 oct (martes) | 1 | Cotización de portón |
+
+**Octubre: 13. Acumulado desde el 12 de agosto: 19.** Los 2 formularios
+confirman en producción que el formulario funciona (ver revisión del 16).
+Pirque tiene 2 clientes y una sola obra en el portafolio: candidata a landing
+propia cuando haya más fotos de allá.
+
+**Instagram:** Cristian creó **@aoconstrucciones.cl** el 19 de octubre (bio,
+link a la web, foto de perfil y una primera publicación antes/después hecha
+con IA). Sigue existiendo la cuenta antigua **@aoconstrucciones2026** (5
+seguidores, publicaciones con el logo), que es la que enlaza la web en el
+footer y en el `sameAs` del JSON-LD: **pendiente decidir si se cambian los
+links a la cuenta nueva.**
+
+Banco de publicaciones con fotos, prompts para la IA y textos:
+[`PLAN-INSTAGRAM.md`](PLAN-INSTAGRAM.md). Las fotos están en
+`_entregables-andres/instagram/`.
