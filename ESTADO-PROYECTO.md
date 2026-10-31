@@ -796,7 +796,7 @@ propia cuando haya más fotos de allá.
 link a la web, foto de perfil y una primera publicación antes/después hecha
 con IA). La cuenta antigua **@aoconstrucciones2026** (5 seguidores) la va a
 eliminar Andrés; Cristian pidió no tocar todavía los links de la web, que
-siguen apuntando a ella (footer y `sameAs` del JSON-LD).
+Desde el 31 de octubre la web enlaza a @aoconstrucciones.cl (footer y `sameAs`).
 
 **Plantilla del feed:** `tools-plantilla-instagram.py` arma portadas, láminas
 de carrusel y portadas de destacadas con la paleta del logo (azul petróleo
