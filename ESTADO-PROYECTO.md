@@ -4,7 +4,7 @@ Documento vivo. Recoge decisiones, IDs y pendientes que **no** se pueden deducir
 leyendo el código ni el historial de git. Si retomas este proyecto en una sesión
 nueva, empieza por acá.
 
-**Última actualización:** 22 de octubre de 2026
+**Última actualización:** 31 de octubre de 2026
 
 ---
 
@@ -817,3 +817,52 @@ conserva las UTM). Van **2 de las 8 publicaciones** comprometidas para el mes.
 **Instagram desde noviembre:** el plan de octubre lo dejó "incluido solo este
 mes". Cristian quiere proponer cobrarlo aparte desde el mes 3, como agregado
 opcional, junto con el informe de cierre de octubre.
+
+---
+
+## 15. Cierre de octubre — 31 de octubre de 2026
+
+**Contactos de octubre: 16** (los 13 al 22 de octubre más: lunes 26, 2 —uno
+de Puente Alto y otro de **Estación Central, fuera de la zona**—; miércoles 28,
+1). **Acumulado desde el 12 de agosto: 22.**
+
+| | Primer ciclo (12 ago – 23 sep) | Octubre (activa del 5 al 31) |
+|---|---|---|
+| Contactos reales | 5 | **16** |
+| Costo por contacto | ~$34.400 | **~$9.200** |
+| Impresiones | 4.028 | 3.665 |
+| Clics | 421 | 458 |
+| CTR | 10,3% | 12,5% |
+| CPC | $408 | $321 |
+| Conversiones Ads | 14 (2 form + 12 WA) | 21 (6 form + 15 WA) |
+| Gasto | $171.779 | $147.092 (al 31, cierra ~$150.000) |
+
+Por grupo en octubre: **E Exteriores** 159 clics, 10 conv. (el mejor, empujado
+por las páginas de portones y quinchos); C Techumbres 106 / 6; F Genérico
+67 / 3; B Remodelaciones 65 / 2; **D Obra nueva 41 / 0; A Ampliaciones 20 / 0**
+(Ampliaciones lleva 55 clics y 0 conversiones desde agosto). 8 clics
+inválidos.
+
+GA4 octubre: 491 usuarios, 554 sesiones (81% Paid Search, 9% orgánico, 7%
+directo, 8 de redes sociales). 24 `whatsapp_click`, 21 `form_start`, 5
+`generate_lead`, 5 `tel_click`. Páginas: home 410 vistas (20 eventos clave),
+**portones 102 (8)**, portafolio 72, quinchos 49 (1), Puente Alto 25 (2).
+
+Búsquedas 17–30 oct: mucho más limpias que en septiembre, pero se cuelan
+marcas de otras constructoras (benhaus, canada house, casas chile, cipreses,
+cauquenes, construir simple, altius, axisdc, conavicoop, izacar) y productos
+(tapagoteras, bisagras, "listos para instalar"). Google marca **"Conflicting
+negative keywords"**: el conflicto de `vinilico` sigue sin resolverse. La página
+de ubicaciones de Ads no abre con el bloqueador de anuncios de Chrome: falta
+confirmar que la opción de ubicación sea "Presencia" (caso Estación Central).
+
+**Instagram al 31 de octubre:** 5 publicaciones visibles y 3 seguidores. Andrés
+dejó en Drive ("Imagenes para subir a instagram de AOconstrucciones") fotos de
+3 obras; están en `_fotos-originales/drive-31-oct/` y con ellas se armaron la
+07 (cocina, rehecha), la 09 (fachada Las Vertientes, antes y final desde el
+mismo ángulo) y la 10 (fachada y accesos El Manzano). Los extras quedaron como
+`extra-deck-melocoton` y `extra-casa-en-el-arbol`.
+
+**Mes 3 (noviembre):** Andrés continúa. Base $150.000 con la gestión completa
+de la campaña; Instagram y otros servicios pasan a ser opcionales con precio
+(propuesta en el correo de cierre).

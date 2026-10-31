@@ -136,12 +136,18 @@ fue el servicio que más contactos trajo en octubre.
 | 06 | `06-techumbre-las-vertientes` | CAMBIO DE TECHUMBRE · Las Vertientes, San José de Maipo | Apilada | 3 |
 | 07 | `07-cocina-el-manzano` | COCINA NUEVA · El Manzano, San José de Maipo | Apilada | 4 |
 | 08 | `08-interior-pirque` | REMODELACIÓN INTERIOR · Pirque | Collage | 5 |
-| Extra | `extra-09-deck-melocoton` | DECK NUEVO · Melocotón, San José de Maipo | Apilada | 2 |
-| Extra | `extra-10-casa-en-el-arbol` | CASA EN EL ÁRBOL · El Manzano, San José de Maipo | Lado a lado | 2 |
-| Extra | `extra-11-fachada-las-vertientes` | FACHADA Y BALCÓN NUEVOS · Las Vertientes, San José de Maipo | Lado a lado | 2 |
+| 09 | `09-fachada-las-vertientes` | FACHADA Y BALCÓN NUEVOS · Las Vertientes, San José de Maipo | Lado a lado | 5 |
+| 10 | `10-fachada-el-manzano` | FACHADA Y ACCESOS NUEVOS · El Manzano, San José de Maipo | Lado a lado | 7 |
+| Extra | `extra-deck-melocoton` | DECK NUEVO · Melocotón, San José de Maipo | Apilada | 2 |
+| Extra | `extra-casa-en-el-arbol` | CASA EN EL ÁRBOL · El Manzano, San José de Maipo | Lado a lado | 2 |
 
-La fachada de Las Vertientes quedó como extra porque probablemente es el antes
-y después que ya se publicó.
+**Fotos que mandó Andrés** (Drive "Imagenes para subir a instagram de
+AOconstrucciones", 31 de octubre; los originales quedaron en
+`_fotos-originales/drive-31-oct/`): la 07, la 09 y la 10 se armaron con ellas.
+En la 09 el antes y el final están tomados desde el mismo ángulo, cosa que las
+fotos del portafolio no tenían. La 07 usa el antes real (el living con el muro
+de piedra que se abrió para la cocina) y las etapas con el nombre que les puso
+Andrés.
 
 **Fotos para la opción "todo en la IA"** (el bloque PUBLICACIÓN): las mismas
 que usa la portada armada. Apilada y lado a lado: `antes.jpg` y `despues.jpg`
@@ -251,10 +257,11 @@ Usan solo datos reales de cada obra: no prometen precios, plazos ni garantías.
 
 ### 07 · Cocina nueva en El Manzano
 
-> Una cocina completamente nueva en El Manzano ✨
+> Del living cerrado a una cocina abierta en El Manzano ✨
 >
-> Desliza para ver cómo era el espacio y todo el proceso, hasta llegar a una
-> cocina con isla central e iluminación nueva ➡️
+> Donde había un muro de piedra con dos puertas, ahora hay una cocina integrada
+> al living, con isla central e iluminación nueva. Desliza para ver el proceso:
+> demolición, revestimiento interior, muebles y terminaciones ➡️
 >
 > Remodelamos cocinas, baños e interiores. Cotización sin costo.
 >
@@ -278,14 +285,45 @@ Usan solo datos reales de cada obra: no prometen precios, plazos ni garantías.
 > #AOConstrucciones #Pirque #RemodelacionInterior #Remodelacion #PisosNuevos
 > #Constructora #PuenteAlto
 
+### 09 · Fachada y balcón nuevos en Las Vertientes
+
+> Fachada y balcón nuevos en Las Vertientes ✨
+>
+> Mismo ángulo, otra casa 👀 Renovamos por completo la fachada: revestimiento
+> de paneles verticales, un balcón nuevo con estructura metálica y cielo de
+> madera, e iluminación exterior.
+>
+> Desliza para ver el balcón y el proceso ➡️
+>
+> ¿Quieres renovar la cara de tu casa? Cotización sin costo.
+>
+> 📲 WhatsApp +56 9 7992 5812 · link en la bio
+>
+> #AOConstrucciones #Fachada #RemodelacionDeFachada #AntesYDespues #Balcon
+> #CajonDelMaipo #SanJoseDeMaipo #Constructora
+
+### 10 · Fachada y accesos nuevos en El Manzano
+
+> Fachada y accesos nuevos en El Manzano 🌿
+>
+> Cambiamos las escaleras antiguas por unas nuevas de madera con pasamanos,
+> renovamos la terraza de acceso y pintamos la fachada. Una entrada más cómoda
+> y que se ve muy bien.
+>
+> Desliza para ver el antes y después de cada acceso ➡️
+>
+> ¿Tus escaleras o tu terraza ya piden cambio? Cotización sin costo.
+>
+> 📲 WhatsApp +56 9 7992 5812 · link en la bio
+>
+> #AOConstrucciones #Fachada #Escaleras #Terraza #RemodelacionExterior
+> #AntesYDespues #CajonDelMaipo #SanJoseDeMaipo #Constructora
+
 ### Extras
 
 - **Deck en Melocotón:** un deck nuevo alrededor del carro de arrastre, con
   escalera de acceso. Bueno para la temporada de verano.
 - **Casa en el árbol:** la más simpática para generar comentarios.
-- **Fachada y balcón en Las Vertientes:** revestimiento de paneles verticales,
-  balcón nuevo con estructura metálica y cielo de madera, e iluminación
-  exterior.
 
 ## Perfil
 

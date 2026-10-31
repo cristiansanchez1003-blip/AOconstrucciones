@@ -212,28 +212,39 @@ POSTS = [
      "titulo": "CAMBIO DE TECHUMBRE", "lugar": "Las Vertientes, San José de Maipo",
      "fotos": [("antes", 0.5, 0.4), ("despues", 0.5, 0.1)],
      "carrusel": [("proceso-1", "EL PROCESO · 1/2", 0.5, 0.5), ("proceso-2", "EL PROCESO · 2/2", 0.5, 0.5)]},
+    # Fotos de Andrés (Drive, 31 de octubre): el antes es el mismo living con el
+    # muro de piedra que se abrió para integrar la cocina.
     {"carpeta": "07-cocina-el-manzano", "tipo": "apilada",
      "titulo": "COCINA NUEVA", "lugar": "El Manzano, San José de Maipo",
-     "fotos": [("antes", 0.5, 0.5), ("despues", 0.5, 0.4)],
-     "carrusel": [("proceso-1", "EL PROCESO · 1/3", 0.5, 0.5), ("proceso-2", "EL PROCESO · 2/3", 0.5, 0.5),
-                  ("proceso-3", "EL PROCESO · 3/3", 0.5, 0.5)]},
+     "fotos": [("antes", 0.5, 0.55), ("despues", 0.5, 0.55)],
+     "carrusel": [("despues", "RESULTADO", 0.5, 0.5), ("proceso-1", "DEMOLICIÓN", 0.5, 0.5),
+                  ("proceso-2", "REVESTIMIENTO INTERIOR", 0.5, 0.5), ("proceso-3", "MONTAJE DE MUEBLES", 0.5, 0.5),
+                  ("proceso-4", "TERMINACIONES", 0.5, 0.5)]},
     {"carpeta": "08-interior-pirque", "tipo": "collage",
      "titulo": "REMODELACIÓN INTERIOR", "lugar": "Pirque",
      "fotos": [("foto-1-living", 0.5, 0.7), ("foto-2-comedor", 0.5, 0.5),
                ("foto-3-pasillo", 0.5, 0.5), ("foto-4-pasillo", 0.5, 0.5)],
      "carrusel": [("foto-1-living", "LIVING", 0.5, 0.5), ("foto-2-comedor", "COMEDOR", 0.5, 0.5),
                   ("foto-3-pasillo", "PASILLO", 0.5, 0.5), ("foto-4-pasillo", "PASILLO", 0.5, 0.5)]},
-    {"carpeta": "extra-09-deck-melocoton", "tipo": "apilada",
+    # Fotos de Andrés (Drive, 31 de octubre): antes y final desde el mismo ángulo.
+    {"carpeta": "09-fachada-las-vertientes", "tipo": "lado",
+     "titulo": "FACHADA Y BALCÓN NUEVOS", "lugar": "Las Vertientes, San José de Maipo",
+     "fotos": [("antes", 0.45, 0.5), ("despues", 0.5, 0.5)],
+     "carrusel": [("balcon", "RESULTADO", 0.5, 0.5), ("final-2", "RESULTADO", 0.5, 0.5),
+                  ("proceso-1", "EL PROCESO · 1/2", 0.5, 0.5), ("proceso-2", "EL PROCESO · 2/2", 0.5, 0.5)]},
+    {"carpeta": "10-fachada-el-manzano", "tipo": "lado",
+     "titulo": "FACHADA Y ACCESOS NUEVOS", "lugar": "El Manzano, San José de Maipo",
+     "fotos": [("antes", 0.5, 0.6), ("despues", 0.5, 0.6)],
+     "carrusel": [("acceso", "RESULTADO", 0.5, 0.5), ("terraza", "RESULTADO", 0.5, 0.5),
+                  ("antes-2", "ANTES", 0.5, 0.5), ("despues-2", "DESPUÉS", 0.5, 0.5),
+                  ("proceso-1", "EL PROCESO", 0.5, 0.5), ("final", "RESULTADO", 0.5, 0.5)]},
+    {"carpeta": "extra-deck-melocoton", "tipo": "apilada",
      "titulo": "DECK NUEVO", "lugar": "Melocotón, San José de Maipo",
      "fotos": [("antes", 0.5, 0.5), ("despues", 0.5, 0.45)],
      "carrusel": [("proceso-1", "EL PROCESO", 0.5, 0.5)]},
-    {"carpeta": "extra-10-casa-en-el-arbol", "tipo": "lado",
+    {"carpeta": "extra-casa-en-el-arbol", "tipo": "lado",
      "titulo": "CASA EN EL ÁRBOL", "lugar": "El Manzano, San José de Maipo",
      "fotos": [("antes", 0.45, 0.5), ("despues", 0.5, 0.4)],
-     "carrusel": [("proceso-1", "EL PROCESO", 0.5, 0.5)]},
-    {"carpeta": "extra-11-fachada-las-vertientes", "tipo": "lado",
-     "titulo": "FACHADA Y BALCÓN NUEVOS", "lugar": "Las Vertientes, San José de Maipo",
-     "fotos": [("antes", 0.5, 0.5), ("despues", 0.5, 0.5)],
      "carrusel": [("proceso-1", "EL PROCESO", 0.5, 0.5)]},
 ]
 
@@ -267,7 +278,7 @@ def armar(p):
     os.makedirs(salida, exist_ok=True)
     TIPOS[p["tipo"]](p).save(os.path.join(salida, "01-portada.jpg"), quality=92)
     for i, (nombre, etiqueta, fx, fy) in enumerate(p.get("carrusel", []), start=2):
-        color = TERRACOTA if etiqueta == "RESULTADO" else AZUL
+        color = TERRACOTA if etiqueta in ("RESULTADO", "DESPUÉS") else AZUL
         lamina(p, nombre, etiqueta, color, fx, fy).save(
             os.path.join(salida, f"{i:02d}-{nombre}.jpg"), quality=92)
     print(p["carpeta"], "->", 1 + len(p.get("carrusel", [])), "láminas")
