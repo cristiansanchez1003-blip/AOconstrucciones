@@ -4,7 +4,7 @@ Documento vivo. Recoge decisiones, IDs y pendientes que **no** se pueden deducir
 leyendo el código ni el historial de git. Si retomas este proyecto en una sesión
 nueva, empieza por acá.
 
-**Última actualización:** 31 de octubre de 2026
+**Última actualización:** 3 de noviembre de 2026
 
 ---
 
@@ -866,3 +866,54 @@ mismo ángulo) y la 10 (fachada y accesos El Manzano). Los extras quedaron como
 **Mes 3 (noviembre):** Andrés continúa. Base $150.000 con la gestión completa
 de la campaña; Instagram y otros servicios pasan a ser opcionales con precio
 (propuesta en el correo de cierre).
+
+---
+
+## 16. Noviembre (mes 3)
+
+**Pago:** Andrés transfirió los $150.000 del plan base el 3 de noviembre. No
+tomó opcionales (por ahora); su respuesta al correo de cierre sigue pendiente.
+**Instagram queda en pausa** hasta que elija un plan: lo que no está publicado
+del banco sirve para después.
+
+**Contactos de noviembre:**
+
+| Fecha | Contactos | Detalle |
+|---|---|---|
+| Dom 1 | 1 | Ese mismo día, a las 15:00, visita en la casa del cliente |
+| Mar 3 | 3 | Por la página: 1 de **La Reina** (fuera de zona), 2 de Puente Alto; 2 por portón, 1 por ventana |
+
+**Acumulado desde el 12 de agosto: 26.** Andrés no contestó cuántos contactos
+terminan en trabajo; la visita del domingo indica que sí está cerrando.
+Recordar: **no pedirle montos** (ver memoria).
+
+**Reseña nueva en Google Maps** (Cristian la respondió). Va a sumarse a las
+reseñas de la web (`RESENAS` del generador y el home) cuando llegue el
+pantallazo con el texto, el nombre y las estrellas.
+
+**Cambios en Google Ads (3 de noviembre):**
+
+- **12 negativas** (amplia salvo las de frase): `benhaus`, `"canada house"`,
+  `cipreses`, `cauquenes`, `"construir simple"`, `altius`, `axisdc`,
+  `conavicoop`, `izacar`, `tapagoteras`, `bisagras`,
+  `"listos para instalar"`. Total: 282. Ninguna choca con las palabras clave.
+  No se negativizó `"casas chile"`: habría bloqueado búsquedas como
+  "construcción de casas chile".
+- **Grupo A Ampliaciones en pausa** (55 clics y 0 conversiones desde agosto).
+- **3 palabras clave nuevas en E** (frase): `"quincho con parrilla"` y
+  `"quinchos modernos"` → `/construccion-de-quinchos.html`;
+  `"pergola de madera"` → home. Terraza techada, cobertizo y pérgola ya
+  existían.
+- **Anuncio de verano en E** (aoconstrucciones.cl/quinchos/verano, home), junto
+  al anuncio que ya estaba, que no se tocó. Google había llenado el formulario
+  con textos propios ("Calidad Garantizada", "Construcción Sustentable"): se
+  reemplazaron todos por textos con datos reales (15 títulos, 4
+  descripciones).
+- **Vinílico, sin cambios:** las negativas sin tilde (`vinilico`,
+  `piso vinilico`) bloquean solo las búsquedas escritas sin tilde; con tilde
+  pasan, y `"piso vinilico para casa"` tuvo 8 impresiones y 1 clic en la
+  última semana. Pausar las palabras clave cortaría ese tráfico. **Pendiente
+  que Cristian decida** si Andrés quiere clientes de piso vinílico.
+- **Ubicación:** 2 contactos fuera de zona (Estación Central, La Reina).
+  Cristian va a revisar en la configuración si está en "Presencia" o en
+  "Presencia o interés" (la página no abre con el bloqueador de anuncios).
