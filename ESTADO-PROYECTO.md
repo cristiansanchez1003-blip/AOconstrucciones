@@ -895,7 +895,7 @@ Recordar: **no pedirle montos** (ver memoria).
   `"listos para instalar"`. Total: 282. Ninguna choca con las palabras clave.
   No se negativizó `"casas chile"`: habría bloqueado búsquedas como
   "construcción de casas chile".
-- **Grupo A Ampliaciones en pausa** (55 clics y 0 conversiones desde agosto).
+- ~~Grupo A Ampliaciones en pausa~~ (55 clics y 0 conversiones desde agosto). **Revertido el 4 de noviembre** a pedido de Andrés (ver abajo).
 - **3 palabras clave nuevas en E** (frase): `"quincho con parrilla"` y
   `"quinchos modernos"` → `/construccion-de-quinchos.html`;
   `"pergola de madera"` → home. Terraza techada, cobertizo y pérgola ya
@@ -916,6 +916,54 @@ Recordar: **no pedirle montos** (ver memoria).
 **Reseña de Loreto Moya T.** (5 estrellas, 2 de noviembre; arreglo urgente por
 lluvias) sumada primera en el home y en las 5 páginas generadas, copiada tal
 cual. Con 4 reseñas, la grilla pasó a 2 por fila desde 768 px.
+
+### Respuesta de Andrés al correo de cierre (4 de noviembre de 2026)
+
+Muy conforme con el trabajo. Lo que pidió o decidió:
+
+- **Ampliaciones y Obra nueva: no pausar; potenciarlas este mes por sobre
+  quinchos y portones**, porque económicamente son lo que más le deja. Es su
+  prioridad por sobre lo que más contactos trae (en octubre, Exteriores).
+- **Instagram: ningún opcional por ahora.** Sigue en pausa. No puede entrar a
+  la cuenta @aoconstrucciones.cl desde el computador con la clave que le
+  mandaron: lo tiene que resolver Cristian (la cuenta la creó él; Instagram
+  pide un código al correo o teléfono registrados cuando se entra desde un
+  equipo nuevo).
+- Pidió **aclarar qué son los "ajustes menores"** de la página (van en la
+  respuesta).
+- **Va a subir obras nuevas al Drive** para el portafolio (entra en ajustes
+  menores).
+- OK a filtros, zona, foco en techumbre y a evaluar a fin de mes optimizar por
+  contactos. No contestó lo de la **tarjeta de respaldo**.
+
+**Decisión de Cristian sobre cómo potenciar:** todo en la misma campaña, sin
+separar presupuesto. **Páginas propias de Obra nueva y Ampliaciones: se
+ofrecen como opcional a $35.000 cada una** (no a $70.000).
+
+**Cambios en Google Ads (4 de noviembre):**
+
+- **A - Ampliaciones reactivado.**
+- **6 palabras clave nuevas en A** (frase): `"construir segundo piso"`,
+  `"construccion segundo piso"`, `"constructora de ampliaciones"`,
+  `"maestro de ampliaciones"`, `"ampliacion de cocina"`,
+  `"construir dormitorio"`. Las de "constructora" y "maestro" quedaron con poco
+  volumen de búsqueda.
+- **6 palabras clave nuevas en D** (frase): `"construccion de vivienda"`,
+  `"construir una casa"`, `"constructor de casas"`,
+  `"construir casa en parcela"`, `"maestro para construir casa"`,
+  `"construccion de casa nueva"` (esta última, con poco volumen). Total de la
+  campaña: 85 palabras clave.
+- **Anuncio nuevo en A** (aoconstrucciones.cl/ampliaciones/segundo-piso) y
+  **en D** (aoconstrucciones.cl/casas-nuevas/desde-cero), junto a los que ya
+  estaban. Google los llenó solo con textos inventados ("Calidad Garantizada",
+  "Ampliaciones de Lujo", "Presupuestos Transparentes", "Construcción
+  sostenible"): se reemplazaron todos por datos reales.
+- **Ojo:** con una sola campaña y presupuesto compartido en Maximizar clics,
+  Google sigue repartiendo hacia donde hay más clics. Hay que mirar cada semana
+  qué parte del gasto se llevan A y D. Si no sube, la palanca es separarlos en
+  una campaña propia. Y hay que ser honestos con Andrés: A y D casi no han
+  traído contactos desde agosto, así que pueden llegar menos contactos en
+  total, aunque valgan más.
 
 ### Calendario de hitos y recordatorios (desde el 3 de noviembre de 2026)
 
