@@ -916,3 +916,19 @@ Recordar: **no pedirle montos** (ver memoria).
 **Reseña de Loreto Moya T.** (5 estrellas, 2 de noviembre; arreglo urgente por
 lluvias) sumada primera en el home y en las 5 páginas generadas, copiada tal
 cual. Con 4 reseñas, la grilla pasó a 2 por fila desde 768 px.
+
+### Calendario de hitos y recordatorios (desde el 3 de noviembre de 2026)
+
+Cristian le manda a Andrés **un mini informe cada semana** mientras dure la
+campaña. Los recordatorios son tareas programadas de Claude (sección
+"Programadas" de la app; corren con la app abierta y, si estaba cerrada, al
+abrirla). Ninguna le envía nada a Andrés: dejan borradores para Cristian.
+
+| Cuándo | Tarea | Qué hace |
+|---|---|---|
+| Cada lunes, 9:00 (desde el 9 nov) | `ao-mini-informe-semanal` | Datos de la semana anterior (Ads y GA4), negativas candidatas y borradores de WhatsApp y correo para Andrés, en `_entregables-andres/informes-semanales/` |
+| Lun 16 nov, 10:00 | `ao-hito-revision-mitad-noviembre` | Anuncio de verano contra el anterior, palabras clave nuevas, efecto de la pausa de Ampliaciones, ritmo del gasto, pendientes con Andrés y guion de la llamada sobre diciembre |
+| Lun 30 nov, 11:00 | `ao-hito-cierre-noviembre` | Informe de cierre del mes, decisión de la estrategia de puja y propuesta para diciembre, o cierre ordenado si Andrés termina |
+
+El mini informe semanal es recurrente: si la campaña se detiene, hay que
+desactivar `ao-mini-informe-semanal` en la app.
