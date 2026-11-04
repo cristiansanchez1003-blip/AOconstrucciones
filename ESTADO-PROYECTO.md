@@ -887,10 +887,6 @@ del banco sirve para después.
 terminan en trabajo; la visita del domingo indica que sí está cerrando.
 Recordar: **no pedirle montos** (ver memoria).
 
-**Reseña nueva en Google Maps** (Cristian la respondió). Va a sumarse a las
-reseñas de la web (`RESENAS` del generador y el home) cuando llegue el
-pantallazo con el texto, el nombre y las estrellas.
-
 **Cambios en Google Ads (3 de noviembre):**
 
 - **12 negativas** (amplia salvo las de frase): `benhaus`, `"canada house"`,
@@ -909,11 +905,14 @@ pantallazo con el texto, el nombre y las estrellas.
   con textos propios ("Calidad Garantizada", "Construcción Sustentable"): se
   reemplazaron todos por textos con datos reales (15 títulos, 4
   descripciones).
-- **Vinílico, sin cambios:** las negativas sin tilde (`vinilico`,
-  `piso vinilico`) bloquean solo las búsquedas escritas sin tilde; con tilde
-  pasan, y `"piso vinilico para casa"` tuvo 8 impresiones y 1 clic en la
-  última semana. Pausar las palabras clave cortaría ese tráfico. **Pendiente
-  que Cristian decida** si Andrés quiere clientes de piso vinílico.
+- **Vinílico:** Andrés no quiere clientes de piso vinílico (presupuesto bajo y
+  es fácil de instalar). Las 3 palabras clave de vinílico quedaron **en pausa**
+  el 3 de noviembre; las negativas antiguas se mantienen.
 - **Ubicación:** 2 contactos fuera de zona (Estación Central, La Reina).
-  Cristian va a revisar en la configuración si está en "Presencia" o en
-  "Presencia o interés" (la página no abre con el bloqueador de anuncios).
+  Hipótesis de Cristian: buscaron estando dentro de la zona. Falta confirmar
+  la opción de ubicación (la página no abre con el bloqueador de anuncios);
+  es baja prioridad: 2 de 26 contactos.
+
+**Reseña de Loreto Moya T.** (5 estrellas, 2 de noviembre; arreglo urgente por
+lluvias) sumada primera en el home y en las 5 páginas generadas, copiada tal
+cual. Con 4 reseñas, la grilla pasó a 2 por fila desde 768 px.
