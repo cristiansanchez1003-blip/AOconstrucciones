@@ -182,6 +182,11 @@ DESTACADA_PORTON = {
 }
 
 RESENAS = [  # Reseñas reales del Perfil de Empresa, las mismas del home.
+    ('Loreto Moya T.',  # 2 de noviembre de 2026, se copia tal cual se escribió.
+     'Muy buena disposición, necesitabamos solución pronto por las lluvias y desde un principio '
+     'muy buena atención, tanto en la visita como por WhatsApp y durante el trabajo. Personas muy '
+     'respetuosas y amables. El trabajo se ve muy bien y ya pasó la prueba de una lluvia leve, '
+     'esperando las lluvias fuertes. Agradecidas por ayudarnos tan prontamente. Los recomiendo.'),
     ('Marco Zamorano',
      'AO me hizo mi cocina, la que quedó increíble. Elegante, buenas terminaciones, y muy rápido. '
      'Agradecido!'),

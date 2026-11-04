@@ -1998,6 +1998,13 @@ body::before {
   margin-top: clamp(2rem, 5vw, 3rem);
 }
 
+/* Con 4 reseñas, 2 por fila: así no queda una sola abajo. */
+@media (min-width: 768px) {
+  .reviews__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 .review-card {
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
