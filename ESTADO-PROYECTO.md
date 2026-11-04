@@ -909,9 +909,9 @@ Recordar: **no pedirle montos** (ver memoria).
   es fácil de instalar). Las 3 palabras clave de vinílico quedaron **en pausa**
   el 3 de noviembre; las negativas antiguas se mantienen.
 - **Ubicación:** 2 contactos fuera de zona (Estación Central, La Reina).
-  Hipótesis de Cristian: buscaron estando dentro de la zona. Falta confirmar
-  la opción de ubicación (la página no abre con el bloqueador de anuncios);
-  es baja prioridad: 2 de 26 contactos.
+  Cristian revisó la opción de ubicación: está en **"Presencia"**, que es lo
+  correcto. Lo más probable es que buscaran estando dentro de la zona. No hay
+  nada que cambiar.
 
 **Reseña de Loreto Moya T.** (5 estrellas, 2 de noviembre; arreglo urgente por
 lluvias) sumada primera en el home y en las 5 páginas generadas, copiada tal
