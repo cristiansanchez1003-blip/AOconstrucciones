@@ -882,8 +882,9 @@ del banco sirve para después.
 |---|---|---|
 | Dom 1 | 1 | Ese mismo día, a las 15:00, visita en la casa del cliente |
 | Mar 3 | 3 | Por la página: 1 de **La Reina** (fuera de zona), 2 de Puente Alto; 2 por portón, 1 por ventana |
+| Dom 8 | 2 | 1 por portón, 1 por techumbre |
 
-**Acumulado desde el 12 de agosto: 26.** Andrés no contestó cuántos contactos
+**Acumulado desde el 12 de agosto: 28.** Andrés no contestó cuántos contactos
 terminan en trabajo; la visita del domingo indica que sí está cerrando.
 Recordar: **no pedirle montos** (ver memoria).
 
@@ -977,6 +978,18 @@ abrirla). Ninguna le envía nada a Andrés: dejan borradores para Cristian.
 | Cada lunes, 9:00 (desde el 9 nov) | `ao-mini-informe-semanal` | Datos de la semana anterior (Ads y GA4), negativas candidatas y borradores de WhatsApp y correo para Andrés, en `_entregables-andres/informes-semanales/` |
 | Lun 16 nov, 10:00 | `ao-hito-revision-mitad-noviembre` | Anuncio de verano contra el anterior, palabras clave nuevas, efecto de la pausa de Ampliaciones, ritmo del gasto, pendientes con Andrés y guion de la llamada sobre diciembre |
 | Lun 30 nov, 11:00 | `ao-hito-cierre-noviembre` | Informe de cierre del mes, decisión de la estrategia de puja y propuesta para diciembre, o cierre ordenado si Andrés termina |
+
+### Instagram entregado a Andrés (antes del 9 de noviembre)
+
+Cristian cambió la contraseña y Andrés ya entra a @aoconstrucciones.cl. La
+cuenta **quedó en manos de Andrés**: no tomó el plan de Instagram, así que deja
+de ser un pendiente nuestro.
+
+### Mini informes semanales
+
+| Semana | Contactos | Clics | Gasto | Costo por contacto | A + D | Notas |
+|---|---|---|---|---|---|---|
+| 2–8 nov | 5 | 123 | $36.019 | ~$7.200 | $6.725 (19%), 22 clics, 1 conv. en D | E: $18.847 (52%), 12 conv. **C Techumbres: $571 y 2 clics** (en octubre, 106 clics en el mes): revisar. GA4: 145 usuarios, 16 WhatsApp, 3 formularios, 1 llamada. Negativa candidata: `usados`. Borrador: `_entregables-andres/informes-semanales/2026-11-09.md` |
 
 El mini informe semanal es recurrente: si la campaña se detiene, hay que
 desactivar `ao-mini-informe-semanal` en la app.
