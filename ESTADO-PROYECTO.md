@@ -991,5 +991,17 @@ de ser un pendiente nuestro.
 |---|---|---|---|---|---|---|
 | 2–8 nov | 5 | 123 | $36.019 | ~$7.200 | $6.725 (19%), 22 clics, 1 conv. en D | E: $18.847 (52%), 12 conv. **C Techumbres: $571 y 2 clics** (en octubre, 106 clics en el mes): revisar. GA4: 145 usuarios, 16 WhatsApp, 3 formularios, 1 llamada. Negativa candidata: `usados`. Borrador: `_entregables-andres/informes-semanales/2026-11-09.md` |
 
+**Decisiones del 9 de noviembre:**
+
+- Negativa `usados` (amplia) cargada en la campaña. Total: 283.
+- **Tarjeta de respaldo: Andrés confirmó que no la va a cargar.** Deja de ser
+  pendiente.
+- **Páginas opcionales de Obra nueva y Ampliaciones: no las quiso.** Deja de
+  ser pendiente.
+- **Drive:** todavía no ha subido obras. Cuando las suba, nos toca a nosotros
+  pasarlas al portafolio (ajuste menor incluido).
+- **A y D:** seguir vigilando cada semana su parte del gasto. Si no sube, la
+  propuesta es separarlos en una campaña propia.
+
 El mini informe semanal es recurrente: si la campaña se detiene, hay que
 desactivar `ao-mini-informe-semanal` en la app.
