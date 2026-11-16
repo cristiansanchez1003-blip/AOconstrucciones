@@ -883,8 +883,12 @@ del banco sirve para después.
 | Dom 1 | 1 | Ese mismo día, a las 15:00, visita en la casa del cliente |
 | Mar 3 | 3 | Por la página: 1 de **La Reina** (fuera de zona), 2 de Puente Alto; 2 por portón, 1 por ventana |
 | Dom 8 | 2 | 1 por portón, 1 por techumbre |
+| Mar 10 | 1 | **Obra nueva** en San José de Maipo |
+| Mié 11 | 3 | 2 de Las Vertientes: **ampliación** y **proyecto cota cero**; en la tarde, 1 por portón |
+| Dom 15 | 1 | Portón |
 
-**Acumulado desde el 12 de agosto: 28.** Andrés no contestó cuántos contactos
+**Acumulado desde el 12 de agosto: 33.** Semana del 9 al 15: 5 contactos,
+3 de ellos de obra nueva o ampliación (la prioridad de Andrés). Andrés no contestó cuántos contactos
 terminan en trabajo; la visita del domingo indica que sí está cerrando.
 Recordar: **no pedirle montos** (ver memoria).
 
