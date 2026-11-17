@@ -1024,10 +1024,38 @@ en `AUDITORIA-GOOGLE-ADS-20261117.md`. Lo principal:
   presupuesto propio.
 - El 65% de optimización sale sobre todo de recomendaciones contrarias a la
   estrategia (Display, socios de búsqueda, Performance Max).
-- Propuestas sin aplicar: negativas nuevas, pausar el anuncio de verano de E
-  (3% de conversión contra 11,8% del original), pasar 2 amplias de E a frase,
-  sitelinks de A y D, `tel_click` como secundaria y preguntarle a Andrés por
-  la pintura.
+- Pendiente: preguntarle a Andrés por la pintura (y por wpc, pvc, malla y
+  panderetas), campaña aparte para A y D, páginas propias y la puja (30 nov).
+
+### Cambios aplicados en Google Ads (17 de noviembre, con OK de Cristian)
+
+Aplicados por la API (cambios 1 al 5 de la auditoría) y verificados leyendo la
+cuenta después:
+
+1. **36 negativas nuevas a nivel de campaña** (de 283 a 319). En amplia:
+   prosip, neredo, panguipulli, concreta, aconcagua, sacyr, nps, quincheria,
+   independencia, ruedas, kit, fotos, diseños, bodegas, piscinas, vinilicos,
+   vinílicos, vinílico, barato, baratos, barata, baratas, economico(s),
+   economica(s) y sus versiones con tilde. En frase: "tu casa facil", "gama
+   beta", "los cedros", "casas chile spa", "tipos de", "en venta". Desde agosto,
+   esos términos sumaron 57 clics y $18.093. Ojo: dos de ellos tuvieron
+   conversiones medidas: "cierres perimetrales económicos en chile" (2) y
+   "constructora gama beta" (1), un clic cada uno.
+2. **Anuncio de verano de E pausado** (830380574601). Queda activo el original
+   (821174095152). No se tocaron sus títulos.
+3. **"quincho de ladrillos" y "porton de fierro" ahora en frase** (ids
+   2199618928045 y 334875940041), con la misma página. Las amplias quedaron
+   pausadas, no borradas.
+4. **Sitelinks nuevos**: "Casas desde cero" → `/#service-cota-cero` y
+   "Ampliaciones y 2do piso" → `/#service-remodelaciones`. Ojo: en la portada
+   los ids están cruzados; `#service-remodelaciones` es la tarjeta de
+   Ampliaciones. Si alguien corrige los ids, hay que cambiar el sitelink. Se usó
+   "2do" en vez de "2°" para evitar un rechazo por uso de símbolos.
+5. **`tel_click` activada como conversión secundaria** (no cuenta en
+   "Conversiones" ni afecta la puja; se ve en "Todas las conversiones").
+
+Revisar en el cierre del 30 de noviembre: aprobación de sitelinks y palabras
+clave nuevas, y si E bajó su parte del gasto.
 
 ### Sitio: archivos internos ya no se publican (17 de noviembre)
 

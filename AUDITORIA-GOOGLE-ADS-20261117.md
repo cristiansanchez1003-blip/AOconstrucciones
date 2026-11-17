@@ -193,6 +193,11 @@ que cortar la noche.
 
 ## 4. Plan propuesto, por orden
 
+**Actualización del 17 de noviembre:** Cristian aprobó los puntos 1 al 5 y
+quedaron aplicados ese mismo día (detalle en `ESTADO-PROYECTO.md`, "Cambios
+aplicados en Google Ads"). Del punto 2 solo se pausó el anuncio de verano; los
+títulos del original no se tocaron.
+
 | # | Acción | Quién decide | Impacto esperado |
 |---|---|---|---|
 | 1 | Cargar las negativas de 3.7 (sin las dudosas) | Cristian | Menos gasto en curiosos y marcas |
