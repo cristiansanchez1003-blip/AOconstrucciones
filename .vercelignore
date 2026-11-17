@@ -1,0 +1,4 @@
+# Archivos internos del proyecto: no se publican en el sitio
+*.md
+*.py
+.gitignore
