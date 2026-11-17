@@ -884,7 +884,7 @@ del banco sirve para después.
 | Mar 3 | 3 | Por la página: 1 de **La Reina** (fuera de zona), 2 de Puente Alto; 2 por portón, 1 por ventana |
 | Dom 8 | 2 | 1 por portón, 1 por techumbre |
 | Mar 10 | 1 | **Obra nueva** en San José de Maipo |
-| Mié 11 | 3 | 2 de Las Vertientes: **ampliación** y **proyecto cota cero**; en la tarde, 1 por portón |
+| Mié 11 | 3 | 2 de Las Vertientes: **ampliación** y **proyecto cota cero** (casa desde cero = obra nueva); en la tarde, 1 por portón |
 | Dom 15 | 1 | Portón |
 
 **Acumulado desde el 12 de agosto: 33.** Semana del 9 al 15: 5 contactos,
@@ -994,6 +994,7 @@ de ser un pendiente nuestro.
 | Semana | Contactos | Clics | Gasto | Costo por contacto | A + D | Notas |
 |---|---|---|---|---|---|---|
 | 2–8 nov | 5 | 123 | $36.019 | ~$7.200 | $6.725 (19%), 22 clics, 1 conv. en D | E: $18.847 (52%), 12 conv. **C Techumbres: $571 y 2 clics** (en octubre, 106 clics en el mes): revisar. GA4: 145 usuarios, 16 WhatsApp, 3 formularios, 1 llamada. Negativa candidata: `usados`. Borrador: `_entregables-andres/informes-semanales/2026-11-09.md` |
+| 9–15 nov | 5 (3 de A/D) | 125 | $34.438 | ~$6.900 | $4.744 (14%), 18 clics, 1 conv. medida (A) | Google midió 1 contacto en A y D, pero llegaron 3 reales: preguntarle a Andrés por dónde entraron. E: $16.977 (49%). GA4: 119 usuarios, 5 WhatsApp, 3 formularios, 1 llamada. Borrador: `_entregables-andres/informes-semanales/2026-11-16.md` |
 
 **Decisiones del 9 de noviembre:**
 
@@ -1006,6 +1007,55 @@ de ser un pendiente nuestro.
   pasarlas al portafolio (ajuste menor incluido).
 - **A y D:** seguir vigilando cada semana su parte del gasto. Si no sube, la
   propuesta es separarlos en una campaña propia.
+
+### Auditoría de Google Ads (17 de noviembre)
+
+Hecha con la skill `google-ads-operacion` y datos de la API. Detalle completo
+en `AUDITORIA-GOOGLE-ADS-20261117.md`. Lo principal:
+
+- "Limitada por volumen de búsqueda" lo causan 14 palabras clave que casi nadie
+  busca. **El límite real es el ranking**: se pierde el 57% de las impresiones
+  por ranking y el 15% por presupuesto. La cuota de impresiones es del 27%.
+- **Experiencia en la página de destino "bajo el promedio"** en casi todas las
+  palabras clave. A, B, C y D llevan a la portada. Es lo que más frena a Obra
+  nueva y Ampliaciones.
+- A + D se llevaron el 14% del gasto de la semana del 9 al 15 (el 20% desde el
+  4 de noviembre). Se cumple la condición para proponer una campaña aparte con
+  presupuesto propio.
+- El 65% de optimización sale sobre todo de recomendaciones contrarias a la
+  estrategia (Display, socios de búsqueda, Performance Max).
+- Propuestas sin aplicar: negativas nuevas, pausar el anuncio de verano de E
+  (3% de conversión contra 11,8% del original), pasar 2 amplias de E a frase,
+  sitelinks de A y D, `tel_click` como secundaria y preguntarle a Andrés por
+  la pintura.
+
+### Sitio: archivos internos ya no se publican (17 de noviembre)
+
+ESTADO-PROYECTO.md, los planes `.md` y los scripts `tools-*.py` se podían
+abrir en aoconstrucciones.cl (por ejemplo, /ESTADO-PROYECTO.md). Se agregó un
+`.vercelignore` con `*.md`, `*.py` y `.gitignore`. Verificado: ahora dan 404 y
+las páginas siguen en 200. **No se sabe si alguien los leyó antes.**
+
+### Conectores de Google (desde el 17 de noviembre)
+
+Los conectores del proyecto de Espíritu Digital (carpeta
+`Desktop/Google ADS Espiritu Digital`, instalados para Codex en
+`C:/Users/cristian1/.codex/mcp/`) quedaron registrados también en Claude Code,
+a nivel de usuario: `google-ads` (solo lectura), `google-analytics`,
+`google-tag-manager` y `google-search-console`. Usan la autorización OAuth
+guardada en `C:/Users/cristian1/.codex/credentials/google-ecosystem/` (nunca
+copiarla al repo ni pegarla en el chat).
+
+- Google Ads: customer_id **3656571293**, login_customer_id **5347879097**
+  (MCC), campaña 24141314300. Grupos: A 197106233177, B 197106233217,
+  C 197106233257, D 197106233417, E 197106233457, F 197106233497.
+- GA4: propiedad **549900997**.
+- Arrancan lento (de 25 a 75 segundos). Por eso en `~/.claude/settings.json`
+  quedó `MCP_TIMEOUT=120000`.
+- Respaldo si el conector no aparece: `tools-consulta-ads.py` (consultas GAQL
+  de solo lectura con el Python del conector).
+- El conector de Ads es de **solo lectura**. Los cambios se siguen haciendo en
+  la interfaz de Google Ads, con el OK de Cristian.
 
 El mini informe semanal es recurrente: si la campaña se detiene, hay que
 desactivar `ao-mini-informe-semanal` en la app.
