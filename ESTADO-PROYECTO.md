@@ -68,7 +68,8 @@ Search Console         verificado por archivo HTML, sitemap enviado
 Cuenta Google          espiritudigital.chile@gmail.com  (authuser=3)
 Perfil de Empresa      https://share.google/K1ZzYydFXDxCS9WZD
 Link de reseñas        https://g.page/r/CbLqUGAYENtCEAI/review
-Campaña de Búsqueda    24141314300  "AO - Busqueda - Zona Sur"
+Campaña de Búsqueda    24141314300  "AO - Busqueda - Zona Sur" ($3.430/día desde el 18-11)
+Campaña de Búsqueda    24490769191  "AO - Busqueda - Obra Nueva y Ampliaciones" ($1.500/día)
 Microsoft Clarity      y7xa9avwgc   clarity.microsoft.com
 Web3Forms              1ff1d598-f68d-4de3-970f-cc09a3144591
 ```
@@ -1068,6 +1069,41 @@ Más tarde el mismo 17, con respuesta de Andrés (vía Cristian):
   negativas de pintura: "constructora" trajo 2 clics de pintura (1 conversión).
   Si aparecen más en los términos, proponerlas.
 
+### Campaña aparte para Obra nueva y Ampliaciones (18 de noviembre)
+
+Con el OK de Cristian, por pedido explícito de Andrés de empujar obra nueva y
+ampliaciones. Hecha por la API, en dos pasos atómicos (todo o nada) y
+verificada.
+
+- **Nueva:** "AO - Busqueda - Obra Nueva y Ampliaciones" (24490769191),
+  **$1.500 diarios**. Misma configuración que la actual: solo Búsqueda (sin
+  Display ni socios), Maximizar clics con tope de $700, ubicación por
+  "Presencia" en las mismas 4 zonas, español. Grupos A - Ampliaciones
+  (209020822504) y D - Obra Nueva (209020822544), con las mismas 30 palabras
+  clave y los mismos 4 anuncios.
+- **Recursos de la nueva:** 8 vínculos (Casas desde cero, Ampliaciones y 2do
+  piso, obras ejecutadas, cotiza, reseñas y las 3 comunas; sin quinchos ni
+  portones), los 8 textos destacados, el fragmento, la llamada y 4 imágenes
+  (fachada de Las Vertientes y casa nueva de El Manzano; sin quincho ni portón).
+- **Actual:** "AO - Busqueda - Zona Sur" bajó de $4.930 a **$3.430 diarios**.
+  El total sigue en $4.930.
+- **Negativas:** las 325 pasaron a la lista compartida **"AO - Negativas
+  generales"** (12326891240), conectada a las dos campañas. La campaña actual ya
+  no tiene negativas sueltas. Las nuevas se agregan a la lista. Respaldo de las
+  325 en el scratchpad de la sesión (`respaldo_negativas_campana_actual.json`).
+- **A y D de la campaña actual:** se pausan recién cuando Google apruebe los
+  anuncios nuevos, para que Obra nueva no quede sin anuncios. Mientras tanto
+  conviven: Google muestra un solo anuncio de la cuenta por búsqueda.
+- **Vínculos automáticos de Google:** los 6 grupos de la campaña actual tienen
+  6 vínculos creados por Google ("Construir Cobertizos", "Remodelación De
+  Cocinas" dos veces, "Techumbres Y Cobertizos"...), todos hacia la página de
+  Puente Alto, y aparecían también en Obra nueva. No se copiaron a la nueva.
+  Pendiente: decidir si se quitan y si se apaga esa opción en la cuenta.
+- **Evaluar en el cierre del 30 de noviembre:** si la nueva gasta los $1.500,
+  su cuota de impresiones (antes ~35%) y la pérdida por ranking (antes ~56%),
+  y cuántos contactos de obra nueva y ampliación llegan. Si no gasta, devolver
+  la diferencia a la campaña actual.
+
 ### Sitio: archivos internos ya no se publican (17 de noviembre)
 
 ESTADO-PROYECTO.md, los planes `.md` y los scripts `tools-*.py` se podían
@@ -1086,15 +1122,20 @@ guardada en `C:/Users/cristian1/.codex/credentials/google-ecosystem/` (nunca
 copiarla al repo ni pegarla en el chat).
 
 - Google Ads: customer_id **3656571293**, login_customer_id **5347879097**
-  (MCC), campaña 24141314300. Grupos: A 197106233177, B 197106233217,
-  C 197106233257, D 197106233417, E 197106233457, F 197106233497.
+  (MCC). Campaña Zona Sur 24141314300, con grupos A 197106233177 (pausado),
+  B 197106233217, C 197106233257, D 197106233417 (pausado), E 197106233457 y
+  F 197106233497. Campaña Obra Nueva y Ampliaciones 24490769191, con grupos
+  A 209020822504 y D 209020822544. Lista de negativas 12326891240.
 - GA4: propiedad **549900997**.
 - Arrancan lento (de 25 a 75 segundos). Por eso en `~/.claude/settings.json`
   quedó `MCP_TIMEOUT=120000`.
 - Respaldo si el conector no aparece: `tools-consulta-ads.py` (consultas GAQL
   de solo lectura con el Python del conector).
-- El conector de Ads es de **solo lectura**. Los cambios se siguen haciendo en
-  la interfaz de Google Ads, con el OK de Cristian.
+- El conector de Ads es de **solo lectura**. Desde el 17 de noviembre los
+  cambios se hacen por la API con el Python del conector: primero en modo
+  validación (`validate_only`), después de verdad, y se verifican leyendo la
+  cuenta. Siempre con el OK de Cristian. Quedan en el historial de cambios de
+  Google Ads.
 
 El mini informe semanal es recurrente: si la campaña se detiene, hay que
 desactivar `ao-mini-informe-semanal` en la app.
