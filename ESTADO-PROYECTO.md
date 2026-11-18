@@ -1097,11 +1097,20 @@ verificada.
   cuanto Google aprobó un anuncio de cada grupo nuevo (831963518299 en A y
   831963518305 en D). Los otros dos anuncios nuevos seguían en revisión.
   Pausados, no borrados. Hasta esa hora convivieron con los nuevos.
-- **Vínculos automáticos de Google:** los 6 grupos de la campaña actual tienen
-  6 vínculos creados por Google ("Construir Cobertizos", "Remodelación De
-  Cocinas" dos veces, "Techumbres Y Cobertizos"...), todos hacia la página de
-  Puente Alto, y aparecían también en Obra nueva. No se copiaron a la nueva.
-  Pendiente: decidir si se quitan y si se apaga esa opción en la cuenta.
+- **Vínculos automáticos de Google: quitados y apagados (18 de noviembre, con
+  OK de Cristian).** Google había creado 8 vínculos distintos ("Construir
+  Cobertizos" dos veces, "Remodelación De Cocinas" dos veces, "Techumbres Y
+  Cobertizos", "Constructora Puente Alto", "Nuestras Obras" y "Solicita Tu
+  Cotización"), casi todos hacia la página de Puente Alto, conectados a los 6
+  grupos de la campaña Zona Sur: 43 conexiones en total. Se quitaron las 43 por
+  la API (verificado: quedan 0). Respaldo temporal en el scratchpad de la sesión
+  (`respaldo_vinculos_automaticos.json`). Además, en Google Ads → Recursos →
+  Más → Recursos automatizados a nivel de cuenta → Configuración avanzada,
+  **"Vínculos a sitios dinámicos" quedó desactivado** (la API no permite
+  cambiarlo; se hizo en Chrome). Los demás recursos automatizados de la cuenta
+  (textos destacados, fragmentos, imágenes, títulos más largos, etc.) siguen
+  activos. Al revisar la cuenta por la API, no apareció ningún otro recurso
+  creado por Google.
 - **Evaluar en el cierre del 30 de noviembre:** si la nueva gasta los $1.500,
   su cuota de impresiones (antes ~35%) y la pérdida por ranking (antes ~56%),
   y cuántos contactos de obra nueva y ampliación llegan. Si no gasta, devolver
