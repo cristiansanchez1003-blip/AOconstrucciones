@@ -1024,8 +1024,7 @@ en `AUDITORIA-GOOGLE-ADS-20261117.md`. Lo principal:
   presupuesto propio.
 - El 65% de optimización sale sobre todo de recomendaciones contrarias a la
   estrategia (Display, socios de búsqueda, Performance Max).
-- Pendiente: preguntarle a Andrés por la pintura (y por wpc, pvc, malla y
-  panderetas), campaña aparte para A y D, páginas propias y la puja (30 nov).
+- Pendiente: campaña aparte para A y D, páginas propias y la puja (30 nov).
 
 ### Cambios aplicados en Google Ads (17 de noviembre, con OK de Cristian)
 
@@ -1056,6 +1055,19 @@ cuenta después:
 
 Revisar en el cierre del 30 de noviembre: aprobación de sitelinks y palabras
 clave nuevas, y si E bajó su parte del gasto.
+
+Más tarde el mismo 17, con respuesta de Andrés (vía Cristian):
+
+- **Andrés no hace cierres de PVC ni WPC, mallas ni panderetas.** Negativas en
+  amplia: wpc, pvc, malla, mallas, pandereta, panderetas (total 325). Desde
+  agosto sumaban 16 clics y ~$5.500.
+- **Andrés pidió explícitamente seguir empujando obra nueva y ampliaciones.**
+  Por eso se pausaron las 4 palabras clave de pintura de B: pintor de casas,
+  pintar fachada, pintura de casas y pintura exterior casa. Desde agosto
+  gastaron ~$11.900 sin conversiones medidas en lo que va de los términos.
+  Pausadas, no borradas, igual que las de piso vinílico. No se agregaron
+  negativas de pintura: "constructora" trajo 2 clics de pintura (1 conversión).
+  Si aparecen más en los términos, proponerlas.
 
 ### Sitio: archivos internos ya no se publican (17 de noviembre)
 
