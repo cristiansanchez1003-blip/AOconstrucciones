@@ -1025,7 +1025,8 @@ en `AUDITORIA-GOOGLE-ADS-20261117.md`. Lo principal:
   presupuesto propio.
 - El 65% de optimización sale sobre todo de recomendaciones contrarias a la
   estrategia (Display, socios de búsqueda, Performance Max).
-- Pendiente: campaña aparte para A y D, páginas propias y la puja (30 nov).
+- Pendiente: páginas propias para A y D y la puja (30 nov). La campaña aparte
+  ya está hecha (18 de noviembre, ver abajo).
 
 ### Cambios aplicados en Google Ads (17 de noviembre, con OK de Cristian)
 
@@ -1089,11 +1090,13 @@ verificada.
   El total sigue en $4.930.
 - **Negativas:** las 325 pasaron a la lista compartida **"AO - Negativas
   generales"** (12326891240), conectada a las dos campañas. La campaña actual ya
-  no tiene negativas sueltas. Las nuevas se agregan a la lista. Respaldo de las
-  325 en el scratchpad de la sesión (`respaldo_negativas_campana_actual.json`).
-- **A y D de la campaña actual:** se pausan recién cuando Google apruebe los
-  anuncios nuevos, para que Obra nueva no quede sin anuncios. Mientras tanto
-  conviven: Google muestra un solo anuncio de la cuenta por búsqueda.
+  no tiene negativas sueltas. Las nuevas se agregan a la lista. La lista es la
+  fuente oficial: el respaldo que quedó en el scratchpad de la sesión es
+  temporal (no se sube al repo porque Vercel publicaría el `.json`).
+- **A y D de la campaña actual: pausados el 18 de noviembre a las 11:15**, en
+  cuanto Google aprobó un anuncio de cada grupo nuevo (831963518299 en A y
+  831963518305 en D). Los otros dos anuncios nuevos seguían en revisión.
+  Pausados, no borrados. Hasta esa hora convivieron con los nuevos.
 - **Vínculos automáticos de Google:** los 6 grupos de la campaña actual tienen
   6 vínculos creados por Google ("Construir Cobertizos", "Remodelación De
   Cocinas" dos veces, "Techumbres Y Cobertizos"...), todos hacia la página de
