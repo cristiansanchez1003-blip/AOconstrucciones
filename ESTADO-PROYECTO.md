@@ -1064,8 +1064,7 @@ Más tarde el mismo 17, con respuesta de Andrés (vía Cristian):
 - **Andrés pidió explícitamente seguir empujando obra nueva y ampliaciones.**
   Por eso se pausaron las 4 palabras clave de pintura de B: pintor de casas,
   pintar fachada, pintura de casas y pintura exterior casa. Desde agosto
-  gastaron ~$11.900 sin conversiones medidas en lo que va de los términos.
-  Pausadas, no borradas, igual que las de piso vinílico. No se agregaron
+  sumaban 56 clics, $19.882 y 2 conversiones medidas. Pausadas, no borradas, igual que las de piso vinílico. No se agregaron
   negativas de pintura: "constructora" trajo 2 clics de pintura (1 conversión).
   Si aparecen más en los términos, proponerlas.
 
