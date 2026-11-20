@@ -1163,8 +1163,15 @@ un solo paso atómico de 16 operaciones, validado antes y verificado después):
    - "cierre perimetral" (302582793798) también se pausó el mismo 20, con OK
      de Cristian: Andrés solo quiere servicios de gran valor. Quinchos y
      terrazas siguen; para Cristian pueden contar como ampliación.
-   - Sigue el título "Fabricación de Portones" en el anuncio de E
-     (821174095152), junto con "Cierres Perimetrales". Las negativas impiden que salga en búsquedas de portones.
+   - **Anuncio de E sin portones ni cierres (20 de noviembre, con OK de
+     Cristian):** se creó una copia del anuncio 821174095152, el
+     **832198141108**. Cambios: "Fabricación de Portones" pasó a "Amplía tu
+     Casa con un Quincho" (29), "Cierres Perimetrales" a "Gana Espacio con una
+     Terraza" (28), se sacó "y portones" de la primera descripción y la ruta
+     visible pasó de quinchos/portones a quinchos/terrazas. El resto es igual.
+     El original sigue activo hasta que Google apruebe la copia; un proceso en
+     segundo plano lo pausa entonces. Si la copia es rechazada, no se pausa
+     nada. Las negativas impiden que salga en búsquedas de portones.
      Cambiar el título obliga a una nueva revisión del anuncio: se puede hacer
      más adelante si Cristian quiere.
 
