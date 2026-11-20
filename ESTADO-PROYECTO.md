@@ -1111,10 +1111,67 @@ verificada.
   (textos destacados, fragmentos, imágenes, títulos más largos, etc.) siguen
   activos. Al revisar la cuenta por la API, no apareció ningún otro recurso
   creado por Google.
-- **Evaluar en el cierre del 30 de noviembre:** si la nueva gasta los $1.500,
-  su cuota de impresiones (antes ~35%) y la pérdida por ranking (antes ~56%),
-  y cuántos contactos de obra nueva y ampliación llegan. Si no gasta, devolver
-  la diferencia a la campaña actual.
+- ~~Evaluar en el cierre del 30 de noviembre~~: **revertida el 20 de
+  noviembre** (ver la sección siguiente). La campaña nueva quedó pausada, no
+  borrada.
+
+### Semana sin contactos, vuelta a una campaña y portones fuera (20 de noviembre)
+
+Andrés le escribió a Cristian que esta semana no le había llegado ningún
+contacto por la web. Diagnóstico (Ads por Chrome y API, GA4 por Chrome):
+
+- **La web funcionaba.** Sitio y páginas en 200, sin cambios desde el 9 de
+  noviembre salvo el `.vercelignore`. El formulario guarda el contacto en
+  Web3Forms (correo de Andrés) antes de ofrecer WhatsApp. GA4 no registró
+  ningún formulario en la semana, así que no hay contactos atascados en el
+  correo.
+- **El tráfico no bajó.** Ads: 131 clics del 13 al 19 (13 más que los 7 días
+  anteriores). GA4, sesiones desde los anuncios: 54 del lunes 16 al viernes 20
+  (con el viernes incompleto) contra 66 del 9 al 13.
+- **Bajaron las acciones.** GA4, lunes 16 al viernes 20: 0 formularios, 1 inicio
+  de formulario y 2 clics a WhatsApp (de 1 persona). Del 9 al 13: 2 formularios,
+  4 inicios y 4 clics a WhatsApp.
+- **Causa principal: la campaña aparte casi no salió.** Desde que A y D
+  quedaron solo en la campaña nueva (18 de noviembre, 11:15), esta tuvo 16
+  impresiones y 0 clics hasta el jueves 19. Antes, A y D sacaban unos 4 clics
+  al día (D 18 y A 5 entre el 13 y el 18) y trajeron 3 de los 5 contactos de la
+  semana del 9 al 15. La campaña nueva partió sin historial y con Maximizar
+  clics no ganaba subastas. **Lección: en una cuenta chica, no separar grupos
+  que funcionan en una campaña nueva; pierden su historial.**
+- **Además, E se llevaba la mitad:** 69 de los 131 clics. De los 10 contactos
+  del 1 al 15 de noviembre, 4 fueron por portones.
+- El lunes 16 y el martes 17 no hubo cambios en la campaña: esos dos días sin
+  contactos pueden ser variación normal (los contactos llegan a saltos, varios
+  en domingo).
+
+**Cambios aplicados el 20 de noviembre** (con OK de Cristian; por la API, en
+un solo paso atómico de 16 operaciones, validado antes y verificado después):
+
+1. **Vuelta a una sola campaña:** A (197106233177) y D (197106233417)
+   reactivados en Zona Sur; campaña "Obra Nueva y Ampliaciones" (24490769191)
+   **pausada**; presupuesto de Zona Sur otra vez en **$4.930 diarios**.
+2. **Portones fuera** (Andrés no los quiere; toda la energía a obra nueva y
+   ampliaciones):
+   - 6 palabras clave de E pausadas: portones corredizos, reparacion de porton,
+     fabricacion de portones, porton metalico, porton de fierro y porton
+     corredero. "porton de fierro" en amplia ya estaba pausada desde el 17.
+   - Quitados de la campaña el vínculo "Portones y Cierres" y las 2 imágenes del
+     portón de El Manzano.
+   - Negativas en amplia en la lista compartida: porton, portón y portones
+     (total 328).
+   - Siguen: la palabra clave "cierre perimetral", que lleva a la página de
+     portones, y el título "Fabricación de Portones" en el anuncio de E
+     (821174095152). Las negativas impiden que salga en búsquedas de portones.
+     Cambiar el título obliga a una nueva revisión del anuncio: se puede hacer
+     más adelante si Cristian quiere.
+
+**Autorización de Google vencida:** los conectores y el script de respaldo
+dejaron de funcionar el 18 de noviembre ("Token has been expired or revoked"),
+justo 7 días después de autorizar el 11. Pasa cuando la app OAuth del proyecto
+`espiritu-digital` está en modo de prueba. Se renovó el 20 con
+`C:/Users/cristian1/.codex/mcp/autenticar-google-ecosistema.py --completo`.
+Cristian abre el enlace que el script imprime y acepta. **Va a vencer de nuevo el
+27 de noviembre** si la app no se pasa a producción en Google Cloud.
 
 ### Sitio: archivos internos ya no se publican (17 de noviembre)
 
@@ -1134,10 +1191,13 @@ guardada en `C:/Users/cristian1/.codex/credentials/google-ecosystem/` (nunca
 copiarla al repo ni pegarla en el chat).
 
 - Google Ads: customer_id **3656571293**, login_customer_id **5347879097**
-  (MCC). Campaña Zona Sur 24141314300, con grupos A 197106233177 (pausado),
-  B 197106233217, C 197106233257, D 197106233417 (pausado), E 197106233457 y
-  F 197106233497. Campaña Obra Nueva y Ampliaciones 24490769191, con grupos
+  (MCC). Campaña Zona Sur 24141314300, con grupos A 197106233177,
+  B 197106233217, C 197106233257, D 197106233417, E 197106233457 y
+  F 197106233497 (todos activos desde el 20 de noviembre). Campaña Obra Nueva y
+  Ampliaciones 24490769191 (**pausada** el 20 de noviembre), con grupos
   A 209020822504 y D 209020822544. Lista de negativas 12326891240.
+- La autorización vence cada 7 días mientras la app OAuth esté en modo de
+  prueba (ver "Semana sin contactos", 20 de noviembre).
 - GA4: propiedad **549900997**.
 - Arrancan lento (de 25 a 75 segundos). Por eso en `~/.claude/settings.json`
   quedó `MCP_TIMEOUT=120000`.
