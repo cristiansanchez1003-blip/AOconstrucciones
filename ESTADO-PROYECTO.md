@@ -995,6 +995,7 @@ de ser un pendiente nuestro.
 | Semana | Contactos | Clics | Gasto | Costo por contacto | A + D | Notas |
 |---|---|---|---|---|---|---|
 | 2–8 nov | 5 | 123 | $36.019 | ~$7.200 | $6.725 (19%), 22 clics, 1 conv. en D | E: $18.847 (52%), 12 conv. **C Techumbres: $571 y 2 clics** (en octubre, 106 clics en el mes): revisar. GA4: 145 usuarios, 16 WhatsApp, 3 formularios, 1 llamada. Negativa candidata: `usados`. Borrador: `_entregables-andres/informes-semanales/2026-11-09.md` |
+| 16–20 nov (adelantado al viernes 20) | 0 | 77 | $21.349 | — | A + D en Zona Sur: $3.575, 13 clics (hasta el 18); campaña aparte: 17 impresiones, 0 clics | Andrés avisó que no le llegaban contactos. Lunes a viernes 9–13: 4 contactos, 86 clics. Google midió 2 WhatsApp (martes 17, E). GA4: 61 personas, 2 WhatsApp (1 persona), 0 formularios. E: $10.990 (51%). Se contó como una prueba que se revirtió, sin hablar de error y sin dar el presupuesto como causa. Borrador: `_entregables-andres/informes-semanales/2026-11-20.md` |
 | 9–15 nov | 5 (3 de A/D) | 125 | $34.438 | ~$6.900 | $4.744 (14%), 18 clics, 1 conv. medida (A) | Google midió 1 contacto en A y D, pero llegaron 3 reales: preguntarle a Andrés por dónde entraron. E: $16.977 (49%). GA4: 119 usuarios, 5 WhatsApp, 3 formularios, 1 llamada. Borrador: `_entregables-andres/informes-semanales/2026-11-16.md` |
 
 **Decisiones del 9 de noviembre:**
@@ -1159,9 +1160,11 @@ un solo paso atómico de 16 operaciones, validado antes y verificado después):
      portón de El Manzano.
    - Negativas en amplia en la lista compartida: porton, portón y portones
      (total 328).
-   - Siguen: la palabra clave "cierre perimetral", que lleva a la página de
-     portones, y el título "Fabricación de Portones" en el anuncio de E
-     (821174095152). Las negativas impiden que salga en búsquedas de portones.
+   - "cierre perimetral" (302582793798) también se pausó el mismo 20, con OK
+     de Cristian: Andrés solo quiere servicios de gran valor. Quinchos y
+     terrazas siguen; para Cristian pueden contar como ampliación.
+   - Sigue el título "Fabricación de Portones" en el anuncio de E
+     (821174095152), junto con "Cierres Perimetrales". Las negativas impiden que salga en búsquedas de portones.
      Cambiar el título obliga a una nueva revisión del anuncio: se puede hacer
      más adelante si Cristian quiere.
 
