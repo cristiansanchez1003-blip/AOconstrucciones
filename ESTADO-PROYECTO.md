@@ -995,6 +995,7 @@ de ser un pendiente nuestro.
 | Semana | Contactos | Clics | Gasto | Costo por contacto | A + D | Notas |
 |---|---|---|---|---|---|---|
 | 2–8 nov | 5 | 123 | $36.019 | ~$7.200 | $6.725 (19%), 22 clics, 1 conv. en D | E: $18.847 (52%), 12 conv. **C Techumbres: $571 y 2 clics** (en octubre, 106 clics en el mes): revisar. GA4: 145 usuarios, 16 WhatsApp, 3 formularios, 1 llamada. Negativa candidata: `usados`. Borrador: `_entregables-andres/informes-semanales/2026-11-09.md` |
+| 16–22 nov (semana completa; seguimiento del lunes 23) | 0 de lunes a viernes; fin de semana por confirmar | 120 | $35.968 | — | $8.082 (22%), 26 clics; sáb 21–lun 23: D 9 y A 2 de 33 clics | **Del 18 al 22, cero acciones de contacto en GA4** con tráfico normal (13–16 sesiones diarias desde anuncios). Medición verificada en vivo: funciona. Portones era la página que más convertía (24 vistas, las 2 únicas acciones de la semana). Portada: 87 vistas, 0 acciones. Borrador: `_entregables-andres/informes-semanales/2026-11-23.md` |
 | 16–20 nov (adelantado al viernes 20) | 0 | 77 | $21.349 | — | A + D en Zona Sur: $3.575, 13 clics (hasta el 18); campaña aparte: 17 impresiones, 0 clics | Andrés avisó que no le llegaban contactos. Lunes a viernes 9–13: 4 contactos, 86 clics. Google midió 2 WhatsApp (martes 17, E). GA4: 61 personas, 2 WhatsApp (1 persona), 0 formularios. E: $10.990 (51%). Se contó como una prueba que se revirtió, sin hablar de error y sin dar el presupuesto como causa. Borrador: `_entregables-andres/informes-semanales/2026-11-20.md` |
 | 9–15 nov | 5 (3 de A/D) | 125 | $34.438 | ~$6.900 | $4.744 (14%), 18 clics, 1 conv. medida (A) | Google midió 1 contacto en A y D, pero llegaron 3 reales: preguntarle a Andrés por dónde entraron. E: $16.977 (49%). GA4: 119 usuarios, 5 WhatsApp, 3 formularios, 1 llamada. Borrador: `_entregables-andres/informes-semanales/2026-11-16.md` |
 
@@ -1182,6 +1183,30 @@ justo 7 días después de autorizar el 11. Pasa cuando la app OAuth del proyecto
 `C:/Users/cristian1/.codex/mcp/autenticar-google-ecosistema.py --completo`.
 Cristian abre el enlace que el script imprime y acepta. **Va a vencer de nuevo el
 27 de noviembre** si la app no se pasa a producción en Google Cloud.
+
+### Portafolio: 3 obras del Drive del 21 de noviembre (publicadas el 23)
+
+Andrés subió el sábado 21 tres carpetas a "Imagenes para subir a instagram de
+AOconstrucciones" (Drive de Espíritu Digital), con 36 fotos de WhatsApp, todas
+fechadas el 13 de junio de 2026. Se revisaron todas y ninguna repite obras que
+ya estaban en el portafolio. Quedaron primeras en la grilla (commit `212f5dc`):
+
+- **Remodelación interior en Los Maitenes** (San José de Maipo), con 11 fotos:
+  living con chimenea antes y después, pintura de cielos con vigas, escalera,
+  piso flotante en dormitorios. Las del baño no se usaron porque no hay foto
+  del después.
+- **Renovación de techumbre en El Manzano**, con 7 fotos: OSB, aislación,
+  barrera de humedad y zinc nuevo.
+- **Remodelación de techumbre en Puente Alto**, con 6 fotos: alero de acceso con
+  tejas asfálticas. A la portada se le recortó un dedo que tapaba una esquina.
+
+Los textos (`projectDetails`) describen solo lo que se ve en las fotos; no hay
+metrajes. Los JPEG originales y el script que hace los `.webp` con la marca de
+agua están en `_fotos-originales/drive-21-nov/` y
+`_fotos-originales/procesar-obras-21-nov.py` (fuera de git). Las landings se
+regeneraron con `tools-generar-landings.py`: San José de Maipo suma las 2 obras
+y el sector Los Maitenes, y Puente Alto suma la suya. Después hay que correr
+`tools-versionar-assets.py`, porque el generador borra los hash del CSS y el JS.
 
 ### Sitio: archivos internos ya no se publican (17 de noviembre)
 
