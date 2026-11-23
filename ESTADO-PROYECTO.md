@@ -1184,6 +1184,28 @@ justo 7 días después de autorizar el 11. Pasa cuando la app OAuth del proyecto
 Cristian abre el enlace que el script imprime y acepta. **Va a vencer de nuevo el
 27 de noviembre** si la app no se pasa a producción en Google Cloud.
 
+### 23 de noviembre: negativas, autorización permanente y páginas de A y D
+
+- **15 negativas nuevas en la lista compartida** (con OK de Cristian; total
+  343). En amplia: tecnofast, construtecnic, sigro, maule. En frase: tecno
+  fast, constructora planet, constructora alamo, casas chile cl, casa chile
+  spa, aquí tu remodelación, aqui tu remodelacion, parrillas para quincho,
+  pintura para paredes, revestimiento para escaleras, sin levantarlo. Sumaban
+  17 clics y ~$5.700 en la semana del 16 al 23.
+- **Autorización de Google permanente:** la app OAuth de `espiritu-digital`
+  pasó a producción. Se completó la marca con espiritudigital.cl, su política
+  de privacidad y sus términos, y el dominio quedó autorizado. Además se
+  activaron las APIs de Perfil de Empresa y se sumó el permiso
+  `business.manage`. Las APIs de Perfil de Empresa tienen cuota 0 hasta que
+  Google apruebe el formulario de acceso, que completa Cristian. Las reglas
+  para todos los chats quedaron en `~/.claude/CLAUDE.md`.
+- **Páginas propias para obra nueva y ampliaciones:** hacen falta. Los
+  anuncios de A y D llevan a la portada, que tuvo 87 vistas y 0 acciones en la
+  semana del 16 al 22. Andrés no quiso pagarlas como opcional. **Decisión de
+  Cristian:** si Andrés renueva en diciembre, se le ofrecen incluidas en el
+  plan, como incentivo para que continúe. Esto entra en la propuesta del cierre
+  de noviembre.
+
 ### Portafolio: 3 obras del Drive del 21 de noviembre (publicadas el 23)
 
 Andrés subió el sábado 21 tres carpetas a "Imagenes para subir a instagram de
