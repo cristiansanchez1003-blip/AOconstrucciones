@@ -1184,6 +1184,31 @@ justo 7 días después de autorizar el 11. Pasa cuando la app OAuth del proyecto
 Cristian abre el enlace que el script imprime y acepta. **Va a vencer de nuevo el
 27 de noviembre** si la app no se pasa a producción en Google Cloud.
 
+### 26 de noviembre: tope mensual, cobros y semana del 23 al 26
+
+- **Regla automática "AO - Tope mensual 150.000"** (ID 62774480, creada desde
+  la MCC con OK de Cristian). Pausa las campañas de la cuenta de AO cuando el
+  costo del mes pasa de $148.500. Se revisa cada hora con datos de "este mes"
+  y avisa por correo a espiritudigital.chile@gmail.com. **No reactiva nada
+  sola:** si pausa la campaña el 30, hay que reactivarla a mano el 1 de
+  diciembre, y solo si Andrés renovó. Además, Google nunca cobra más que el
+  presupuesto diario × 30,4 en el mes: $4.930 × 30,4 = $149.872. Las otras 3
+  reglas de la MCC ("Tope del programa", "Tope tramo 1", "Campaña sin
+  impresiones") son de las campañas de Espíritu Digital, no de AO.
+- **Cobros (Facturación → Resumen, 26 de noviembre):** costo de noviembre
+  $130.193. Pagos con tarjeta en noviembre: $179.557, que son el saldo de
+  octubre ($59.557) más un cobro por umbral de $120.000 el 24 de noviembre.
+  Saldo pendiente: $10.193. El próximo cobro es el 1 de diciembre o cuando el
+  saldo llegue a $180.000. Costo neto de octubre: $149.557. Ese "170.000" que
+  vio Cristian eran los pagos del mes, no el gasto.
+- **Semana del 23 al 26:** 53 clics, $17.716. Andrés recibió 1 cotización: el
+  formulario de la página de quinchos del 24 (Google lo midió en E). GA4: 1
+  WhatsApp el 23 y 2 formularios empezados. Del 21 al 26, A + D se llevaron 34
+  de 85 clics (D 27, A 7) y 0 contactos; la portada tuvo 54 vistas y 1 acción.
+- **Acciones de contacto en GA4 por semana:** 1–7 nov: 16 WhatsApp, 1
+  formulario, 1 llamada; 8–14: 6, 4, 0; 15–21: 3, 1, 1; 22–26: 1, 1, 0. Las
+  visitas desde los anuncios se mantienen (12 a 16 por día).
+
 ### 23 de noviembre: negativas, autorización permanente y páginas de A y D
 
 - **15 negativas nuevas en la lista compartida** (con OK de Cristian; total
